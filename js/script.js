@@ -28,6 +28,13 @@ $(document).ready(function () {
     .setPin("#tagline")
     .addTo(controller);
 
+  var slowGallery = new ScrollMagic.Scene({
+      offset: 20,
+      duration: 200
+    })
+    .setPin("#gallery")
+    .addTo(controller);
+
   // console.log(scene.triggerElement());
   console.log(scene2);
 });

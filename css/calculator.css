@@ -1,0 +1,114 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  padding-top: 7%;
+/*   background-color: lightblue; */
+  background: linear-gradient(#0283b7, #06437e);
+  color: #fedd03;
+  font-family: 'Dosis', 'Britannic Bold', sans-serif;
+  font-size: 2.5vmax;
+  transition: 1s;
+  height: 100vh;
+}
+#calculator{
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+#title{
+  font-size: 6vw;
+}
+div.row{
+  display: flex;
+  flex-wrap: nowrap;
+}
+button {
+  padding: 10px;
+  border: 2px solid #1c1700;
+  background-color: #fbbd1e;
+  font-size: 1.3em;
+}
+#calcInput{
+  text-align: center;
+  margin-top: 30px;
+  border: 3px solid #1c1700;
+  border-radius: 7px 7px 0px 0px;
+  transition: 1s;
+  background-color: #fbf0dc;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #f3b6cf;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #f3b6cf;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #f3b6cf;
+}
+.result{
+  font-size: 2em;
+  background-color: #f2faff;
+}
+#result{
+  border: 3px solid #1c1700;
+  border-radius: 0px 0px 7px 7px;
+  width: 100%;
+  color: #e11c16;
+  background-color: #fbeacc;
+}
+#result.enabled{
+  animation: shake 1.5s;
+  font-size: 2em;
+}
+#credits{
+  margin-top: 25px;
+}
+a{
+  color: #fedd03;
+  font-weight: 600;
+}
+a:hover{
+  text-decoration: none;
+  color: #f8ead5;
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-1px, -2px) rotate(-1deg); }
+    40% { transform: translate(-3px, 0px) rotate(1deg); }
+    60% { transform: translate(3px, 2px) rotate(0deg); }
+    80% { transform: translate(1px, -1px) rotate(1deg); }
+    100% { transform: translate(-1px, 2px) rotate(-1deg); }
+}
+@media only screen and (min-width: 800px) {
+  body{
+    margin-right: 35%;
+    margin-left: 35%;
+    transition: 3s;
+  }
+}
+@media only screen and (max-width: 800px) {
+  body{
+    margin-right: 15%;
+    margin-left: 15%;
+    transition: 3s;
+    font-size: 3.6vw;
+  }
+  button{
+    border-width: 1px;
+  }
+}
+@media only screen and (max-height: 615px){
+  body{
+    padding-top: 4%;
+    transition: 1s;
+  }
+  input{
+    margin-top: 10px;
+    transition: 1s;
+  }
+}
