@@ -34,6 +34,9 @@ body{
   letter-spacing: -2px;
   word-wrap: nowrap;
 }
+.hide{
+  opacity: 0;
+}
 
 #tagline{
   width: 225px;

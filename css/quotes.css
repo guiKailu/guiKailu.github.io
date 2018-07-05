@@ -31,10 +31,23 @@ body {
   flex: 0 1 0%;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 20px;
+  text-decoration: none;
 }
-.btn-primary {
+#footer:visited {
+  color: black;
+}
+
+.btn{
+  padding: 16px 6px 16px 6px;
   font-size: 0.7em;
+  font-size: 30px;
+  border-radius: 15px;
+  color: white;
+  font-family: "Hi Melody", Arial, Helvetica, sans-serif;
+  background: #3399cc;
+  outline: none;
 }
+
 
 @media only screen and (max-width: 1225px) {
   #message {

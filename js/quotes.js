@@ -13,7 +13,6 @@ $(document).ready(function () {
           randomID = Math.floor(Math.random() * (data.length - 1));
         }
 
-
         html += "<div>" + data[randomID].quote + "</div><br>";
 
         html += "<div>" + "—" + data[randomID].author + "</div><br>";
@@ -42,7 +41,7 @@ $(document).ready(function () {
 
 
         //only shows twitter icon once a quote shows:
-        $("#tweet-classy").html('<a href="' + tweetHtml + '" target="_blank"><button class="btn btn-primary"> <i class="fa fa-twitter"></i> Tweet this!</button></a>');
+        $("#tweet-classy").html('<a href="' + tweetHtml + '" target="_blank"><button class="btn"> <i class="fa fa-twitter"></i> Tweet this!</button></a>');
 
         //when button is clicked, reflect that:
         $("#getMessage").html("Another One!");
@@ -51,4 +50,3 @@ $(document).ready(function () {
     );
   });
 });
-//now find out why there is still one undefined result.
