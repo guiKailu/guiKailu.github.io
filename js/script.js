@@ -1,26 +1,33 @@
+var TAGLINE_DELAY = 60;
+
 $(document).ready(function () {
 
   // init controller
   var controller = new ScrollMagic.Controller();
 
   // create a scene
-  var scene = new ScrollMagic.Scene({
-      duration: 300, // the scene should last for a scroll distance of 100px
-      offset: 20 // start this scene after scrolling for 50px
+  var scene1 = new ScrollMagic.Scene({
+      offset: 1
     })
-    .setTween(".thumbnail1", 1.5, {
+    .setTween(".thumbnail1", {
       width: "90%"
     })
-    // .setClassToggle(".thumbnail-img", "thumbnail-img-t")
-    .addIndicators()
-    .addTo(controller); // assign the scene to the controller
+    .addTo(controller);
 
+  var scene2 = new ScrollMagic.Scene({
+      offset: 2,
+    })
+    .setTween("#gallery", {
+      marginTop: "50px"
+    })
+    .addTo(controller);
 
-  // $(".thumbnail-img").animate({
-  //   width: "90%"
-  // }, 6000);
-
+  var sceneTagline = new ScrollMagic.Scene({
+      duration: 88
+    })
+    .setPin("#tagline")
+    .addTo(controller);
 
   // console.log(scene.triggerElement());
-  console.log(scene);
+  console.log(scene2);
 });

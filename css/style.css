@@ -2,33 +2,48 @@ html{
   font-family: Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
   text-transform: uppercase;
 }
-h1{
-  font-weight: 600;
-  font-size: 3vmax;
-  letter-spacing: -3px;
-}
 
-p{
-  font-size: 1vw;
+body{
+  margin: 0;
 }
 
 #main{
-  display: flex;
+  display: grid;
+  grid-template-columns: 225px auto;
 }
 
 #about{
-  flex: 1 1 0%;
-  margin-left: 9px;
+  margin-left: 25px;
+  /* position: fixed; */
+  display: grid;
+  grid-template-rows: 60px auto;
+}
 
-  /* Toggle */
-  margin-right: -22px;
+#logo{
+
+  background-color: white;
+  height: 48px;
+  width: 250px;
+  position: fixed;
+  z-index: 5000;
+}
+
+#name{
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -2px;
+  word-wrap: nowrap;
+}
+
+#tagline{
+  width: 225px;
+  font-size: 18px;
 }
 
 #gallery{
-  flex: 4 1 0%;
+  /* flex: 4 1 0%; */
   display: flex;
   flex-direction: column;
-
   /* Toggle... or maybe just keep this off */
   /* justify-content: center;
   height: 100vh; */
@@ -36,11 +51,9 @@ p{
 
 .thumb-row{
   display: flex;
-
   /* Toggle... or maybe just keep this off */
   /* flex: 1 1 0%; */
 }
-
 
 /* Toggle */
 .thumbnail{
@@ -50,7 +63,7 @@ p{
   align-items: center;
   height: auto;
   min-height: 100px;
-  width: 100%;  
+  width: 100%;
 }
 
 .thumbnail > *{
@@ -63,7 +76,11 @@ p{
 }
 
 .thumbnail1{
-  display: fixed;
-  width: 270%;
-  z-index: 2000;
+  width: 280%;
+}
+
+#first-thumbnail{
+  position: relative;
+  z-index: 3000;
+  margin-left: 22px;
 }
