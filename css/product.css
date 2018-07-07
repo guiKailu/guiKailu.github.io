@@ -5,9 +5,10 @@ body {
   font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
+  font-size: 17px;
 }
 h1{
-  font-size: 225%;
+  font-size: 46px;
 }
 h2{
   font-size: 185%;
@@ -33,11 +34,10 @@ button:hover, [type=submit] {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: center;
   flex-flow: row wrap;
-  padding-bottom: 2px;
-  /* padding-left: 3vw; */
-    /* padding-right: 3vw; */
+  padding-bottom: 15px;
+  padding-top: 15px;
   /* border: 6px solid pink; */
 }
 #header * {
@@ -47,20 +47,17 @@ button:hover, [type=submit] {
 #logo{
   flex: 0 0 0%;
   display: flex;
-  align-items: center;
-  /* align-self: center; */
   transition: 0.4s;
   /* border: 2px solid white; */
-  margin: 0 3vw;
+  padding: 0 100px;
+  /* padding-bottom: 6px; */
 }
 #logo h1 {
   font-family: "Quattrocento", serif;
   flex: 0 0 0%;
-  font-size: 36px;
+  text-shadow: -1px 0 #242f3e, 0 1px #242f3e, 1px 0 #242f3e, 0 -1px #242f3e;
   /* border: 3px solid red; */
   margin: 0;
-  /* margin-left: -14%;
-  display: inline-block; */
 }
 #logo-img{
   flex: 0 0 0%;
@@ -79,18 +76,17 @@ button:hover, [type=submit] {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin: 0 3vw;
+  margin: 0.1vh 3vw 0.2vh;
 }
 #nav-bar > * {
   flex: 1 1 10%;
 }
 #nav-bar a button {
-  font-size: 110%;
-  padding: 5px;
-  border: none;
+  font-size: inherit;
   background: inherit;
-  font-weight: 600;
-  font-size: 14px;
+  padding: 5px 26px;
+  border: none;
+  font-weight: 300;
   white-space: nowrap;
   overflow: hidden;
 }
