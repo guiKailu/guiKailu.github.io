@@ -6,24 +6,25 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 20px;
+  color: #002f36;
 }
 h1{
-  font-size: 46px;
+  font-size: 50px;
 }
 h2{
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 900;
 }
 h3{
-  font-size: 38px;
+  font-size: 34px;
   font-weight: 700;
 }
 h4{
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 600;
 }
 h5{
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 500;
 }
 button:hover, [type=submit] {
@@ -91,32 +92,47 @@ button:hover, [type=submit] {
   overflow: hidden;
 }
 #info-collect {
-  margin-top: 20px;
+  margin-top: 12vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-#info-collect h2 {
-  margin-top: 0px;
+#info-collect h2, #info-collect p {
+  margin: 3px;
 }
-#features {
-  margin-top: 5%;
+#newspaper{
+  letter-spacing: -0.5px;
+}
+#form{
+  margin: 3vh 0 12vh;
+  display: flex;
+  justify-content: center;
+  width: 50vw;
 }
 #email {
+  flex: 1 1 70%;
   font-size: 80%;
-  width: 30%;
+  /* width: 30%; */
   padding: 3px 5px 3px 7px;
+  font-size: inherit;
+  text-align: center;
+  border-radius: 10px 0px 0px 10px;
 }
 #submit {
-  display: block;
-  text-transform: uppercase;
-  font-size: 100%;
-  margin-top: 10px;
+  flex: 1 1 30%;
+  /* display: block; */
+  /* text-transform: uppercase; */
+  font-size: inherit;
+  border-radius: 0px 10px 10px 0px;
   border: none;
   padding: 7px 12px 7px 12px;
   margin-left: auto;
   margin-right: auto;
-  background: linear-gradient(white, #ffebc9);
-  background-color: #ffebc9;
+  background-color: #aee423;
+  color: inherit;
 }
 #features{
+  margin-top: 5%;
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
@@ -127,12 +143,24 @@ button:hover, [type=submit] {
 }
 #features i{
   font-size: 50px;
-  color: #586650;
+  /* color: #586650; */
   justify-self: end;
 }
 #features div{
   text-align: left;
   justify-self: start;
+}
+#tree{
+  color: #96c718; /* #aee423;*/
+}
+#sun{
+  color: #7ca414; /* #e45923; /* #ba23e4;/* #e45923; #e423ae;*/
+}
+#handshake{
+  color: #628110; /* #234ee4;/* #23aee4;  #5923e4;  #23aee4;*/
+}
+#video{
+  margin: 12vh 0 8vh;
 }
 #pricing{
   display: flex;
@@ -153,20 +181,27 @@ button:hover, [type=submit] {
   padding: 10px 5px;
 }
 #footer{
-  text-align: right;
-  margin-top: 5%;
   background: #121a23;
-  padding: 2px 5%;
+  display: flex;
+  align-items: center;
+  /* align-content: space-around; */
+  flex-flow: row wrap;
+  height: 10vh;
+  padding-left: 10vw;
 }
-#footer *{
+.divider{
+  color: grey;
+  margin: 0 2vw;
+}
+#footer > *{
+  margin: 0 20px;
+}
+#footer-links a{
+  text-decoration: none;
   color: white;
 }
-#footer div p{
-  display: inline-block;
-  margin: 1%;
-}
-#footer a{
-  text-decoration: none;
+#copyright{
+  color: white;
 }
 
 @media only screen
