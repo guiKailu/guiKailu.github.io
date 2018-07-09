@@ -103,11 +103,16 @@ button:hover, [type=submit] {
 #info-collect h2, #info-collect p {
   margin: 3px;
 }
+#info-collect p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 #newspaper{
   letter-spacing: -0.5px;
 }
 #form{
-  margin: 3vh 0 12vh;
+  margin: 3vh 0 10vmin;
   display: flex;
   justify-content: center;
   width: 50vw;
@@ -134,6 +139,7 @@ button:hover, [type=submit] {
   margin-right: auto;
   background-color: #aee423;
   color: inherit;
+  white-space: nowrap;
 }
 #features{
   display: flex;
