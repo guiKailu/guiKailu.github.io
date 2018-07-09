@@ -119,14 +119,15 @@ button:hover, [type=submit] {
   padding: 3px 5px 3px 7px;
   font-size: inherit;
   text-align: center;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 10px 0 0 10px;
+  border-right: 0;
 }
 #submit {
   flex: 1 1 30%;
   /* display: block; */
   /* text-transform: uppercase; */
   font-size: inherit;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0 10px 10px 0;
   border: none;
   padding: 7px 12px 7px 12px;
   margin-left: auto;
