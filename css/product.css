@@ -95,7 +95,7 @@ button:hover, [type=submit] {
   overflow: hidden;
 }
 #info-collect {
-  margin-top: 12vh;
+  margin-top: 11vw  ;
   display: flex;
   flex-direction: column;
   align-items: center;
