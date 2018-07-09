@@ -5,6 +5,7 @@ body {
   font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   font-size: 20px;
   color: #002f36;
 }
@@ -18,14 +19,17 @@ h2{
 h3{
   font-size: 34px;
   font-weight: 700;
+  margin: 0;
 }
 h4{
   font-size: 30px;
   font-weight: 600;
+  position: 2px;
 }
 h5{
   font-size: 26px;
   font-weight: 500;
+  margin: 1vw 0 0;
 }
 button:hover, [type=submit] {
   cursor: pointer;
@@ -44,7 +48,6 @@ button:hover, [type=submit] {
 #header * {
   color: white;
 }
-
 #logo{
   flex: 0 0 0%;
   display: flex;
@@ -132,25 +135,20 @@ button:hover, [type=submit] {
   color: inherit;
 }
 #features{
-  margin-top: 5%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  grid-column-gap: 4%;
-  margin-bottom: 3%;
-  width: 50%;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border: 2px solid red; */
 }
 #features i{
   font-size: 50px;
-  /* color: #586650; */
-  justify-self: end;
 }
-#features div{
-  text-align: left;
-  justify-self: start;
+
+#features p{
+  margin: 0 0 5vh;
 }
 #tree{
+  margin-top: 3vh;
   color: #96c718; /* #aee423;*/
 }
 #sun{
@@ -159,35 +157,45 @@ button:hover, [type=submit] {
 #handshake{
   color: #628110; /* #234ee4;/* #23aee4;  #5923e4;  #23aee4;*/
 }
+#how{
+  height: 3vh;
+}
 #video{
-  margin: 12vh 0 8vh;
+  margin-bottom: 8vh;
 }
 #pricing{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 5%;
+  justify-content: center;
   background-color: #ebeded;
+  padding: 0 1vh ;
+  /* width: 90%; */
 }
-#pricing div{
-  border: 1px solid grey;
-  margin: 12px 25px;
+.price-box{
+  flex-basis: 225px;
   background-color: white;
+  margin: 15px;
+  padding: 2px 15px;
 }
 #pricing h4{
-  background: #eef4ff;
-  width: 150px;
-  margin-top: 0;
-  padding: 10px 5px;
+  margin: 0;
+  padding: 0;
+}
+.blue-line{
+  background-color: #82d8e3;
+  width: 100%;
+  height: 5px;
 }
 #footer{
   background: #121a23;
+  align-self: stretch;
+  justify-content: center;
   display: flex;
   align-items: center;
   /* align-content: space-around; */
   flex-flow: row wrap;
   height: 10vh;
-  padding-left: 10vw;
+  padding-left: 1vh;
 }
 .divider{
   color: grey;
