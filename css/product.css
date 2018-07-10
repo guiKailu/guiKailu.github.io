@@ -239,5 +239,14 @@ button:hover, [type=submit] {
     body{
       font-size: 40px;
     }
+    h4{
+      font-size: 50px;
+    }
+    h5{
+      font-size: 46px;
+    }
+    footer {
+      font-size: 30px;
+    }
 
 }
