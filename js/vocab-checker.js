@@ -8,11 +8,12 @@ console.log('hi');
     dataType: "text",
     complete: function () {
         // call a function on complete
-
+        var vocabList = data.filter(function(d){
+          return d[2];
+        });
+        console.log(vocabList);
     }
-    // var vocabList = data.map(function(data){
-    //   return data[2];
-    // })
+
 
 });
 
