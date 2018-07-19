@@ -98,6 +98,10 @@ $(document).ready(function () {
       })
       .attr("fill", "grey");
 
+d3.interval(function(){
+  console.log("hello world");
+}, 1000);
+
   });
 
 });
