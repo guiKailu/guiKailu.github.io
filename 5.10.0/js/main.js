@@ -13,10 +13,6 @@ var margin = {
 	top: 10
 };
 
-var parseTime = d3.timeParse("%d-%m/%Y");
-var example = parseTime("01-01/00");
-console.log(example);
-
 var width = 800 - margin.left - margin.right;
 var height = 500 - margin.bottom - margin.top;
 
