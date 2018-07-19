@@ -23,12 +23,32 @@ var keyMargin = {
 
 var headingSize = 20;
 
+// format big numbers with commas
+// add dollar sign to currency
+var formatMoney = d3.format('$,.0f');
+var formatPopulation = d3.format(',');
+// round to the closest hundredth
+var formatLifeExp = d3.format('.2f')
+
 var g = d3.select("#chart-area")
 	.append("svg")
 	.attr("width", width + margin.left + margin.right)
 	.attr("height", height + margin.bottom + margin.top)
 	.append("g")
 	.attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+
+var tip = d3.tip().attr("class", "d3-tip")
+	.html(function(d){
+		// console.log(d);
+		var bigRed = "<span style='color:red; text-transform: uppercase' >";
+		var br = '</span><br/>'
+		var text = "Country: " + bigRed + d.country + br;
+		text += "Population: " + bigRed + formatPopulation(d.population) + br;
+		text += "Life Expectancy: " + bigRed + d.life_exp + br;
+		text += "Income: " + bigRed + formatMoney(d.income) + br;
+		return text;
+	});
+g.call(tip);
 
 var xLabel = g.append("text")
 	.attr("x", height/-2)
@@ -150,7 +170,7 @@ function update(data){
 
 	var xAxisCall = d3.axisBottom(x)
 		.tickFormat(function(d){
-			return d3.format('$,')(d);
+			return formatMoney(d);
 		});
 	// tick values start/end closer to data's min/max.
 	xAxisCall.tickValues([4e+2, 4e+3, 4e+4]);
@@ -175,6 +195,8 @@ function update(data){
 	circles.enter()
 		.append("circle")
 		// AND UPDATE circles with new data
+		.on("mouseover", tip.show)
+		.on("mouseout", tip.hide)
 		.merge(circles)
 		.attr("cx", function(d){
 			// Hide countries without income data
