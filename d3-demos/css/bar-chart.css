@@ -1,9 +1,9 @@
 h1, h2 {
   text-align: center;
 }
-svg {
-  /* border: 2px solid black; */
-}
-.bar {
 
+#chart-area svg{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

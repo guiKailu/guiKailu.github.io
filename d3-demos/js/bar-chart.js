@@ -11,23 +11,67 @@ var height = 500 - margin.top - margin.bottom;
 var g = d3.select("#chart-area")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom);
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
 var x = d3.scaleTime()
   .range([0, width]);
 
-// var y = d3.scaleLinear()
-//   .domain()
-//   .range();
+var y = d3.scaleLinear()
+  .range([height, 0]);
+
+var xAxisGroup = g.append("g")
+  .attr("class", "x-axis")
+  .attr("transform", "translate(0, " + height + ")");
+
+var yAxisGroup = g.append("g")
+  .attr("class", "y-axis");
 
 d3.json("data/GDP-data.json").then(function(data){
 
+  var dataset = data.data;
+
+  // Clean data: make dates be data objects
+  dataset.map(function(d){
+    d[0] = d3.timeParse("%Y-%m-%d")(d[0]);
+  });
+
   // Convert strings to date objects.
-  x.domain([0, d3.max(data.data, function(d){
-    return d3.timeParse("%Y-%m-%d")(d[0]);
+  x.domain([d3.min(dataset, function(d){
+    return d[0];
+  }), d3.max(dataset, function(d){
+    return d[0];
   })]);
 
+  // Get highest recorded GDP for domain
+  y.domain([0, d3.max(dataset, function(d){
+    return d[1];
+  })]);
 
+  var xAxisCall = d3.axisBottom(x);
+  xAxisGroup.call(xAxisCall);
+
+  var yAxisCall = d3.axisLeft(y);
+  yAxisGroup.call(yAxisCall);
+
+  var rects = g.selectAll("rects")
+    .data(dataset);
+
+  // ADD new objects from new data
+  rects.enter()
+    .append("rect")
+    .attr("x", function(d){
+      return x(d[0]);
+    })
+    .attr("y", function(d){
+      return y(d[1]);
+    })
+    .attr("width", 1)
+    .attr("height", function(d){
+      return height - y(d[1]);
+    })
+    .attr("fill", "#0000CC");
 });
 
 
