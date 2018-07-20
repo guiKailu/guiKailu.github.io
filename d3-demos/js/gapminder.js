@@ -66,7 +66,7 @@ var yLabel = g.append("text")
 	.text("GDP per Capita ($)");
 
 var yearLabel = g.append("text")
-	.attr("x", keyMargin.x + 11)
+	.attr("x", keyMargin.x + 11)]
 	.attr("y", keyMargin.y)
 	.attr("text-anchor", "end")
 	.style("fill", "grey")

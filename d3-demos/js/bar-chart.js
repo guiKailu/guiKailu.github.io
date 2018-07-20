@@ -1,12 +1,12 @@
 var margin = {
   left: 100,
-  right: 10,
-  top: 10,
+  right: 20,
+  top: 20,
   bottom: 100
 };
 
-var width = 700 - margin.left - margin.right;
-var height = 500 - margin.top - margin.bottom;
+var width = 1000 - margin.left - margin.right;
+var height = 700 - margin.top - margin.bottom;
 
 var g = d3.select("#chart-area")
   .append("svg")
@@ -14,6 +14,24 @@ var g = d3.select("#chart-area")
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
+
+var labelFontSize = 24;
+var formatTime = d3.timeParse("%Y-%m-%d");
+
+var xLabel = g.append("text")
+  .attr("x", height/-2)
+  .attr("y", -margin.left + labelFontSize*2)
+  .attr("text-anchor", "middle")
+  .attr("font-size", labelFontSize)
+  .attr("transform", "rotate(-90)")
+  .text("GDP (billions)");
+
+var yLabel = g.append("text")
+  .attr("x", width/2)
+  .attr("y", height + margin.bottom/2)
+  .attr("text-anchor", "middle")
+  .attr("font-size", labelFontSize)
+  .text("Year");
 
 var x = d3.scaleTime()
   .range([0, width]);
@@ -23,25 +41,27 @@ var y = d3.scaleLinear()
 
 var xAxisGroup = g.append("g")
   .attr("class", "x-axis")
+  .attr("id", "x-axis")
   .attr("transform", "translate(0, " + height + ")");
 
 var yAxisGroup = g.append("g")
-  .attr("class", "y-axis");
+  .attr("class", "y-axis")
+  .attr("id", "y-axis");
+
+var tooltip = d3.select("#chart-area").append("div")
+  .attr("class", "tooltip")
+  .attr("id", "tooltip")
+  .style("opacity", 0);
 
 d3.json("data/GDP-data.json").then(function(data){
 
   var dataset = data.data;
 
-  // Clean data: make dates be data objects
-  dataset.map(function(d){
-    d[0] = d3.timeParse("%Y-%m-%d")(d[0]);
-  });
-
   // Convert strings to date objects.
   x.domain([d3.min(dataset, function(d){
-    return d[0];
+    return formatTime(d[0]);
   }), d3.max(dataset, function(d){
-    return d[0];
+    return formatTime(d[0]);
   })]);
 
   // Get highest recorded GDP for domain
@@ -52,7 +72,10 @@ d3.json("data/GDP-data.json").then(function(data){
   var xAxisCall = d3.axisBottom(x);
   xAxisGroup.call(xAxisCall);
 
-  var yAxisCall = d3.axisLeft(y);
+  var yAxisCall = d3.axisLeft(y)
+  .tickFormat(function(d){
+    return d3.format("$,")(d);
+  });
   yAxisGroup.call(yAxisCall);
 
   var rects = g.selectAll("rects")
@@ -61,8 +84,9 @@ d3.json("data/GDP-data.json").then(function(data){
   // ADD new objects from new data
   rects.enter()
     .append("rect")
+    .attr("class", "bar")
     .attr("x", function(d){
-      return x(d[0]);
+      return x(formatTime(d[0]));
     })
     .attr("y", function(d){
       return y(d[1]);
@@ -71,116 +95,31 @@ d3.json("data/GDP-data.json").then(function(data){
     .attr("height", function(d){
       return height - y(d[1]);
     })
-    .attr("fill", "#0000CC");
+    .attr("data-date", function(d){
+      return d[0];
+    })
+    .attr("data-gdp", function(d){
+      return d[1];
+    })
+    .attr("fill", "#0000CC")
+    .on("mouseover", function(d){
+      tooltip
+        .style("opacity", .9);
+      tooltip
+        .attr("data-date", d[0])
+        .html(function(){
+          var text = "<div id='tooltip' data-date=" + d[0] + ">";
+          text += d3.timeFormat("%b %Y")(formatTime(d[0])) + "<br/>";
+          text += "<span style='color:red'>" + d3.format("$,")(d[1]);
+          text += "B" + "</span></div>";
+          return text;
+        })
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY - 28) + "px");
+    })
+    .on("mouseout", function(d){
+      tooltip
+        .style("opacity", 0);
+    });
+
 });
-
-
-
-
-
-
-
-
-
-
-// var w = 700;
-// var h = 500;
-// var padding = 50;
-//
-// function doD3stuff(rawdata) {
-//   //converts years to floats:
-//   var dataset = rawdata.map(function (val) {
-//     var year = val[0].match(/\d{4}/);
-//     var month = val[0].match(/\D\d{2}\D/)[0].match(/\d+/);
-//     var mon = void 0;
-//     switch (parseInt(month)) {
-//       case 1:
-//         mon = 0;
-//         break;
-//       case 4:
-//         mon = 0.25;
-//         break;
-//       case 7:
-//         mon = 0.5;
-//         break;
-//       case 10:
-//         mon = 0.75;
-//         break;
-//     }
-//     return [parseInt(year) + mon, val[1]];
-//   });
-//
-//   //EDIT THIS LATER TO BE THE DATE
-//   var xScale = d3.scaleLinear().domain([d3.min(dataset, function (d) {
-//     return d[0];
-//   }), d3.max(dataset, function (d) {
-//     return d[0];
-//   })]).range([padding, w - padding]);
-//   var yScale = d3.scaleLinear().domain([0, d3.max(dataset, function (d) {
-//     return d[1];
-//   })]).range([h - padding, padding]);
-//
-//   var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
-//
-//   svg.selectAll("rect")
-//     .data(dataset)
-//     .enter()
-//     .append("rect")
-//     .attr("x", function (d) {
-//       return xScale(d[0]);
-//     })
-//     .attr("y", function (d) {
-//       return yScale(d[1]);
-//     }) //here
-//     .attr("width", 1).attr("height", function (d) {
-//       return h - yScale(d[1]) - padding;
-//     }) //or here
-//     .attr("class", "bar").attr("fill", "#0000CC").attr('data-date', function (d) {
-//       var Q = void 0;
-//       if (d[0] % 1 === 0) {
-//         Q = 1;
-//       } else if (d[0] % 1 === 1) {
-//         Q = 2;
-//       } else if (d[0] % 1 === 2) {
-//         Q = 3;
-//       } else if (d[0] % 1 === 3) {
-//         Q = 4;
-//       }
-//       return d[0] % 1 + " Q" + Q;
-//     }).attr("data-gdp", function (d) {
-//       return d[1];
-//     });
-//
-//   svg.selectAll("rect")
-//     .data(dataset)
-//       .enter()
-//       .append("title")
-//       .text("hi");
-//
-//   var xAxis = d3.axisBottom(xScale);
-//
-//   svg.append("g")
-//     .attr("transform", "translate( 0, " + (h - padding) + ")")
-//     .call(xAxis)
-//     .attr("id", "x-axis");
-//   //Both axes should contain multiple tick labels, each with the corresponding class="tick".
-//
-//   var yAxis = d3.axisLeft(yScale);
-//
-//   svg.append("g")
-//     .attr("transform", "translate( " + padding + ", 0)")
-//     .call(yAxis)
-//     .attr("id", "y-axis");
-//   //Both axes should contain multiple tick labels, each with the corresponding class="tick".
-// }
-//
-// //import the data:
-// document.addEventListener("DOMContentLoaded", function () {
-//   req = new XMLHttpRequest();
-//   req.open("GET", "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json", true);
-//   req.send();
-//   req.onload = function () {
-//     json = JSON.parse(req.responseText);
-//     doD3stuff(json.data);
-//   };
-// });
