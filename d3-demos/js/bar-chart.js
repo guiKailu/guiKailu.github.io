@@ -24,7 +24,7 @@ var xLabel = g.append("text")
   .attr("text-anchor", "middle")
   .attr("font-size", labelFontSize)
   .attr("transform", "rotate(-90)")
-  .text("GDP (billions)");
+  .text("GDP (billions of USD)");
 
 var yLabel = g.append("text")
   .attr("x", width/2)
@@ -56,7 +56,6 @@ var tooltip = d3.select("#chart-area").append("div")
 d3.json("data/GDP-data.json").then(function(data){
 
   var dataset = data.data;
-
   // Convert strings to date objects.
   x.domain([d3.min(dataset, function(d){
     return formatTime(d[0]);
@@ -74,7 +73,7 @@ d3.json("data/GDP-data.json").then(function(data){
 
   var yAxisCall = d3.axisLeft(y)
   .tickFormat(function(d){
-    return d3.format("$,")(d);
+    return d3.format(",")(d);
   });
   yAxisGroup.call(yAxisCall);
 
