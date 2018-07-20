@@ -13,19 +13,20 @@ var g = d3.select("#chart-area")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom);
 
-var x = d3.scaleLinear()
+var x = d3.scaleTime()
   .range([0, width]);
 
 // var y = d3.scaleLinear()
 //   .domain()
 //   .range();
 
-d3.json("https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json").then(function(data){
+d3.json("data/GDP-data.json").then(function(data){
 
-  // x.domain([0, d3.max(function(d){
-  //   return d.
-  // })]);
-  console.log(data.data);
+  // Convert strings to date objects.
+  x.domain([0, d3.max(data.data, function(d){
+    return d3.timeParse("%Y-%m-%d")(d[0]);
+  })]);
+
 
 });
 
