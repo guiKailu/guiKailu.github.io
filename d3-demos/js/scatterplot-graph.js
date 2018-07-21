@@ -27,6 +27,10 @@ function numToTime(num){
   return formatMinSec(parseMinSec(timeString));
 }
 
+function roundToQuarter(toRound){
+  return (Math.round((toRound * 100) / 25) * 25) / 100;
+}
+
 var dotColors = {doped: "#e9a3c9", clean: "#a1d76a"}
 var dotOutline = {doped: "#862058", clean: "#2f4914"};
 
@@ -102,17 +106,22 @@ d3.json("data/cyclist-data.json").then(function(data){
 
   console.log(data);
 
+  var minTime = d3.min(data, function(d){
+    return timeToNum(d.Time);
+  });
+  var maxTime = d3.max(data, function(d){
+    return timeToNum(d.Time);
+  });
+  var ticks = d3.range(roundToQuarter(minTime), maxTime, 0.25)
+  ticks.shift();
+
   x.domain([d3.min(data, function(d){
     return parseYear(d.Year);
   }), d3.max(data, function(d){
     return parseYear(d.Year);
   })]);
 
-  y.domain([d3.min(data, function(d){
-    return timeToNum(d.Time);
-  })  , d3.max(data, function(d){
-    return timeToNum(d.Time);
-  })]);
+  y.domain([minTime, maxTime]);
 
   var xAxisCall = d3.axisBottom(x);
   xAxisGroup.call(xAxisCall);
@@ -121,7 +130,8 @@ d3.json("data/cyclist-data.json").then(function(data){
     // .ticks(d3.time.second, 15)
     .tickFormat(function(d){
       return numToTime(d);
-    });
+    })
+    .tickValues(ticks);
 
   yAxisGroup.call(yAxisCall);
 
