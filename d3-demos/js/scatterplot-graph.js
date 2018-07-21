@@ -102,7 +102,14 @@ d3.json("data/cyclist-data.json").then(function(data){
           return parseYear(d.Year);
         })
         .html(function(){
-          return d.Year;
+          var infoStyle = "<span style='font-weight: 700'>";
+          var text = "Name: " + infoStyle + d.Name + "</span><br/>";
+          text += "Nationality: " + infoStyle + d.Nationality + "</span><br/>";
+          text += "Place: " + infoStyle + d.Place + "</span><br/>";
+          text += "Time: " + infoStyle + d.Time + "</span><br/>";
+          text = d.Doping ? text + "Doping: " + infoStyle + d.Doping + "</span>"
+            : text;
+          return text;
         })
       .style("left", (d3.event.pageX) + "px")
       .style("top", (d3.event.pageY - 28) + "px");

@@ -12,13 +12,14 @@ header{
   align-items: center;
   background: #f3fafe;
 }
-header div{
+header > div{
   flex: 1 1 0%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 #project-name{
-  text-align: center;
   font-weight: 600;
 }
 
@@ -53,8 +54,6 @@ h2{
   color: inherit;
 }
 
-#fcc-logo{
-  color: #036300;
-  font: 24px monospace;
-  font-weight: bold;
+svg{
+  /* border: 1px solid black; */
 }
