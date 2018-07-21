@@ -72,9 +72,9 @@ d3.json("data/GDP-data.json").then(function(data){
   xAxisGroup.call(xAxisCall);
 
   var yAxisCall = d3.axisLeft(y)
-  .tickFormat(function(d){
-    return d3.format(",")(d);
-  });
+    .tickFormat(function(d){
+      return d3.format(",")(d);
+    });
   yAxisGroup.call(yAxisCall);
 
   var rects = g.selectAll("rects")

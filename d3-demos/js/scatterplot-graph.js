@@ -35,6 +35,12 @@ var yAxisGroup = g.append("g")
   .attr("class", "y-axis")
   .attr("id", "y-axis");
 
+var tooltip = d3.select("#chart-area")
+  .append("div")
+  .attr("id", "tooltip")
+  .attr("class", "tooltip")
+  .style("opacity", 0);
+
 d3.json("data/cyclist-data.json").then(function(data){
 
   console.log(data);
@@ -72,17 +78,39 @@ d3.json("data/cyclist-data.json").then(function(data){
     .attr("cx", function(d){
       return x(parseYear(d.Year));
     })
+    .attr("data-xvalue", function(d){
+      return d.Year;
+    })
     .attr("cy", function(d){
       return y(parseMinSec(d.Time));
     })
-    .attr("r", 7)
+    .attr("data-yvalue", function(d){
+      return d3.isoFormat(parseMinSec(d.Time));
+    })
+    .attr("r", 6)
     .attr("fill", function(d){
       return d.Doping ? "#e9a3c9" : "#a1d76a";
     })
     .attr("stroke", function(d){
-      return d.Doping ? "#af2a73" : "#48711f";
+      return d.Doping ? "#862058" : "#2f4914";
     })
-    .attr("stroke-width", "1px");
+    .attr("stroke-width", "1px")
+    .on("mouseover", function(d){
+      tooltip
+        .style("opacity", 0.9)
+        .attr("data-year", function(){
+          return parseYear(d.Year);
+        })
+        .html(function(){
+          return d.Year;
+        })
+      .style("left", (d3.event.pageX) + "px")
+      .style("top", (d3.event.pageY - 28) + "px");
+    })
+    .on("mouseout", function(d){
+      tooltip
+        .style("opacity", 0)
+    });
 
 
 });
