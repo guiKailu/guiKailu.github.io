@@ -42,6 +42,11 @@ h2{
   justify-content: center;
 }
 
+#chart-area svg{
+  background: linear-gradient(#fef8fb, white);
+  border-radius: 15px;
+}
+
 .tooltip{
   font-family: sans-serif;
 }
@@ -52,8 +57,4 @@ h2{
 
 .link:visited{
   color: inherit;
-}
-
-svg{
-  /* border: 1px solid black; */
 }

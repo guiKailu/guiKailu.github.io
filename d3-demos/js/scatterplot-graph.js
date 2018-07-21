@@ -12,6 +12,8 @@ var parseMinSec = d3.timeParse("%M:%S");
 var parseYear = d3.timeParse("%Y");
 var formatMinSec = d3.timeFormat("%M:%S");
 
+var dotColors = {doped: "#e9a3c9", clean: "#a1d76a"}
+var dotOutline = {doped: "#862058", clean: "#2f4914"};
 
 var g = d3.select("#chart-area")
   .append("svg")
@@ -35,11 +37,51 @@ var yAxisGroup = g.append("g")
   .attr("class", "y-axis")
   .attr("id", "y-axis");
 
+var xAxisLabel = g.append("text")
+  .attr("x", height / -2 )
+  .attr("y", margin.left / -2 )
+  .attr("transform", "rotate(-90)")
+  .attr("text-anchor", "middle")
+  .attr("font-size", 20)
+  .text("Time in Minutes");
+
 var tooltip = d3.select("#chart-area")
   .append("div")
   .attr("id", "tooltip")
   .attr("class", "tooltip")
   .style("opacity", 0);
+
+var legend = g.append("g")
+  .attr("id", "legend")
+  .attr("transform", "translate("
+  + (width - margin.right) + ", 0)");
+
+var i = 0;
+for (var key in dotColors){
+  var legendRow = legend.append("g")
+    .attr("transform", "translate(0, " + (i * 30) + ")");
+
+  legendRow.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", -10)
+    .attr("y", 15)
+    .text(function(){
+      return key == "doped" ? "Riders with doping allegations" : "No doping allegations";
+    });
+
+  legendRow.append("rect")
+    .attr("width", 20)
+    .attr("height", 20)
+    .attr("fill", function(){
+      return dotColors[key];
+    })
+    .attr("stroke", function(){
+      return dotOutline[key];
+    })
+    .attr("stroke-width", 1);
+    i++;
+}
+
 
 d3.json("data/cyclist-data.json").then(function(data){
 
@@ -89,17 +131,17 @@ d3.json("data/cyclist-data.json").then(function(data){
     })
     .attr("r", 6)
     .attr("fill", function(d){
-      return d.Doping ? "#e9a3c9" : "#a1d76a";
+      return d.Doping ? dotColors.doped : dotColors.clean;
     })
     .attr("stroke", function(d){
-      return d.Doping ? "#862058" : "#2f4914";
+      return d.Doping ? dotOutline.doped : dotOutline.clean;
     })
     .attr("stroke-width", "1px")
     .on("mouseover", function(d){
       tooltip
         .style("opacity", 0.9)
         .attr("data-year", function(){
-          return parseYear(d.Year);
+          return d.Year;
         })
         .html(function(){
           var infoStyle = "<span style='font-weight: 700'>";
