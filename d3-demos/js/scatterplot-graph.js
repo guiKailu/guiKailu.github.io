@@ -55,10 +55,34 @@ d3.json("data/cyclist-data.json").then(function(data){
   xAxisGroup.call(xAxisCall);
 
   var yAxisCall = d3.axisLeft(y)
+    // .ticks(d3.time.second, 15)
     .tickFormat(function(d){
       return formatMinSec(d);
     });
 
   yAxisGroup.call(yAxisCall);
+
+  // JOIN data
+  var circles = g.selectAll("circle")
+    .data(data);
+
+  circles.enter()
+    .append("circle")
+    .attr("class", "dot")
+    .attr("cx", function(d){
+      return x(parseYear(d.Year));
+    })
+    .attr("cy", function(d){
+      return y(parseMinSec(d.Time));
+    })
+    .attr("r", 7)
+    .attr("fill", function(d){
+      return d.Doping ? "#e9a3c9" : "#a1d76a";
+    })
+    .attr("stroke", function(d){
+      return d.Doping ? "#af2a73" : "#48711f";
+    })
+    .attr("stroke-width", "1px");
+
 
 });

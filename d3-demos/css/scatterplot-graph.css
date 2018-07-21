@@ -58,3 +58,8 @@ h2{
   font: 24px monospace;
   font-weight: bold;
 }
+
+.dot{
+  stroke: black;
+  stroke-width: 3px;
+}
