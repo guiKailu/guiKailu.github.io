@@ -1,0 +1,55 @@
+body{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header{
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #f3fafe;
+}
+header div{
+  flex: 1 1 0%;
+  display: flex;
+  justify-content: center;
+}
+#project-name{
+  text-align: center;
+  font-weight: 600;
+}
+
+#title{
+  text-align: center;
+}
+
+h1{
+  font-weight: 500;
+  font-size: 2.2em;
+  margin: 40px 0 12px;
+}
+h2{
+  font-weight: 200;
+  margin: 0 0 40px;
+}
+
+.tooltip{
+  font-family: sans-serif;
+}
+
+.link{
+  text-decoration: none;
+}
+
+.link:visited{
+  color: inherit;
+}
+
+#fcc-logo{
+  color: #036300;
+  font: 24px monospace;
+  font-weight: bold;
+}
