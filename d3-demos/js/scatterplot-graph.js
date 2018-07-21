@@ -12,6 +12,21 @@ var parseMinSec = d3.timeParse("%M:%S");
 var parseYear = d3.timeParse("%Y");
 var formatMinSec = d3.timeFormat("%M:%S");
 
+function timeToNum(time){
+  var parsedTime = parseMinSec(time);
+  var mins = parsedTime.getMinutes();
+  var secs = parsedTime.getSeconds();
+  return mins + (secs / 60);
+}
+
+function numToTime(num){
+  var mins = num - num % 1;
+  var secs = (num % 1) * 60;
+  secs = d3.format(".0f")(secs);
+  var timeString = mins + ":" + secs;
+  return formatMinSec(parseMinSec(timeString));
+}
+
 var dotColors = {doped: "#e9a3c9", clean: "#a1d76a"}
 var dotOutline = {doped: "#862058", clean: "#2f4914"};
 
@@ -25,7 +40,7 @@ var g = d3.select("#chart-area")
 var x = d3.scaleTime()
   .range([0, width]);
 
-var y = d3.scaleTime()
+var y = d3.scaleLinear()
   .range([0, height]);
 
 var xAxisGroup = g.append("g")
@@ -94,9 +109,9 @@ d3.json("data/cyclist-data.json").then(function(data){
   })]);
 
   y.domain([d3.min(data, function(d){
-    return parseMinSec(d.Time);
-  }), d3.max(data, function(d){
-    return parseMinSec(d.Time);
+    return timeToNum(d.Time);
+  })  , d3.max(data, function(d){
+    return timeToNum(d.Time);
   })]);
 
   var xAxisCall = d3.axisBottom(x);
@@ -105,7 +120,7 @@ d3.json("data/cyclist-data.json").then(function(data){
   var yAxisCall = d3.axisLeft(y)
     // .ticks(d3.time.second, 15)
     .tickFormat(function(d){
-      return formatMinSec(d);
+      return numToTime(d);
     });
 
   yAxisGroup.call(yAxisCall);
@@ -124,7 +139,7 @@ d3.json("data/cyclist-data.json").then(function(data){
       return d.Year;
     })
     .attr("cy", function(d){
-      return y(parseMinSec(d.Time));
+      return y(timeToNum(d.Time));
     })
     .attr("data-yvalue", function(d){
       return d3.isoFormat(parseMinSec(d.Time));
