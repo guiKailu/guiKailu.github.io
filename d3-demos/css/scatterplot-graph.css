@@ -36,6 +36,11 @@ h2{
   margin: 0 0 40px;
 }
 
+#chart-area{
+  display: flex;
+  justify-content: center;
+}
+
 .tooltip{
   font-family: sans-serif;
 }
