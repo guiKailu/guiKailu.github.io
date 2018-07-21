@@ -8,10 +8,18 @@ var margin = {
 var width = 600 + margin.left + margin.right;
 var height = 400 + margin.top + margin.bottom;
 
+// Creates date object out of mins:secs, e.g., 36:44
 var parseMinSec = d3.timeParse("%M:%S");
-var parseYear = d3.timeParse("%Y");
+
+// Reverses parseMinSec.
+// Converts date object to mins:secs, e.g., 36:44
 var formatMinSec = d3.timeFormat("%M:%S");
 
+// Creates date object out of year, e.g., 1994
+var parseYear = d3.timeParse("%Y");
+
+// Converts mins:secs string to a number
+// E.g., 35:45 -> 35.75
 function timeToNum(time){
   var parsedTime = parseMinSec(time);
   var mins = parsedTime.getMinutes();
@@ -19,6 +27,8 @@ function timeToNum(time){
   return mins + (secs / 60);
 }
 
+// Reverse of timeToNum
+// E.g., 34.25 -> 34:15
 function numToTime(num){
   var mins = num - num % 1;
   var secs = (num % 1) * 60;
@@ -27,10 +37,16 @@ function numToTime(num){
   return formatMinSec(parseMinSec(timeString));
 }
 
+// Rounds to the nearest 0.25
+// E.g., 36.82 -> 36.75
+// Useful for rounding x-axis tick marks
 function roundToQuarter(toRound){
   return (Math.round((toRound * 100) / 25) * 25) / 100;
 }
 
+// Colors for dots and legend.
+// Distinguishes cyclists who have doping allegations
+// from those who do not.
 var dotColors = {doped: "#e9a3c9", clean: "#a1d76a"}
 var dotOutline = {doped: "#862058", clean: "#2f4914"};
 
@@ -41,9 +57,11 @@ var g = d3.select("#chart-area")
   .append("g")
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
+// X-axis, based on years
 var x = d3.scaleTime()
   .range([0, width]);
 
+// Y-axis, based on durations of minutes
 var y = d3.scaleLinear()
   .range([0, height]);
 
@@ -75,6 +93,7 @@ var legend = g.append("g")
   .attr("transform", "translate("
   + (width - margin.right) + ", 0)");
 
+// Add two rows of information to legend
 var i = 0;
 for (var key in dotColors){
   var legendRow = legend.append("g")
@@ -101,7 +120,7 @@ for (var key in dotColors){
     i++;
 }
 
-
+// GET cyclist data
 d3.json("data/cyclist-data.json").then(function(data){
 
   console.log(data);
@@ -139,6 +158,7 @@ d3.json("data/cyclist-data.json").then(function(data){
   var circles = g.selectAll("circle")
     .data(data);
 
+  // ADD new items from data
   circles.enter()
     .append("circle")
     .attr("class", "dot")
@@ -155,6 +175,7 @@ d3.json("data/cyclist-data.json").then(function(data){
       return d3.isoFormat(parseMinSec(d.Time));
     })
     .attr("r", 6)
+    // Color circles and circle borders based on doping info
     .attr("fill", function(d){
       return d.Doping ? dotColors.doped : dotColors.clean;
     })
@@ -162,6 +183,7 @@ d3.json("data/cyclist-data.json").then(function(data){
       return d.Doping ? dotOutline.doped : dotOutline.clean;
     })
     .attr("stroke-width", "1px")
+    // Add tooltip on hover
     .on("mouseover", function(d){
       tooltip
         .style("opacity", 0.9)
@@ -185,6 +207,8 @@ d3.json("data/cyclist-data.json").then(function(data){
       tooltip
         .style("opacity", 0)
     });
-
-
+})
+// Error handler for failed JSON request
+.catch(function(error){
+  console.log("The cyclist data failed to load.");
 });
