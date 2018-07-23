@@ -17,6 +17,7 @@ var g = d3.select("#chart-area")
   .append("g")
   .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
+// X scale
 var x = d3.scaleBand()
   .range([0, width]);
 
@@ -34,14 +35,22 @@ var monthNames = (function(){
   return arr;
 })();
 
+// X-axis
+var xAxisGroup = g.append("g")
+  .attr("transform", "translate(0, " + height + ")");
+
+// The X and Y axes don't need labels "Month" and "Years"
+// because January and 1870 are obviously a month and a year.
+
+// Y scale
 var y = d3.scaleBand()
   .domain(monthsArr)
   .range([0, height]);
 
-// Y-Axis
+// Y-axis
 var yAxisGroup = g.append("g");
 
-// Y-Axis Call
+// Y-axis call
 var yAxisCall = d3.axisLeft(y)
   // Make Y-Axis ticks be month names
   .tickFormat(function(d){
@@ -49,15 +58,49 @@ var yAxisCall = d3.axisLeft(y)
   });
 yAxisGroup.call(yAxisCall);
 
-// X-axis
-var xAxisGroup = g.append("g")
-  .attr("transform", "translate(0, " + height + ")");
-
-// Color Scale
+// Color scale
 var colorScale = d3.scaleSequential()
   .interpolator(d3.interpolateCool);
 
-// GET data
+var tooltip = d3.select("#chart-area")
+  .append("div")
+  .attr("class", "tooltip")
+  .attr("id", "tooltip")
+  .style("opacity", 0);
+
+//
+//
+// ***LEGEND***
+//
+//
+
+var legendWidth = 300;
+var legendHeight = 20;
+
+// Colors for legend
+var legendColorScale = d3.scaleSequential()
+  .domain([1, legendWidth])
+  .interpolator(d3.interpolateCool);
+
+// Horizontal spacing for legend
+var legendWidthScale = d3.scaleBand()
+  .range([0, legendWidth]);
+
+// Append legend as group under chart
+// Halfway down the margin.bottom
+var legend = g.append("g")
+ .attr("transform", "translate(0, " + (height + margin.bottom/2) + ")");
+
+// Legend Axis,
+// to mark the temperatures in the legend
+var legendGroup = legend.append("g")
+  .attr("transform", "translate(0, 20)");
+
+//
+//
+// ***GET data***
+//
+//
 d3.json("data/global-temperature.json").then(function(data){
 
   var dataset = data.monthlyVariance;
@@ -122,19 +165,110 @@ d3.json("data/global-temperature.json").then(function(data){
     .attr("height", y.bandwidth())
     .attr("fill", function(d){
       return colorScale(d.variance);
+    })
+    .attr("stroke", "black")
+    .attr("stroke-width", 0)
+    // Mouseover a rectangle
+    .on("mouseover", function(d){
+
+      // Add border
+      var rect = d3.select(this);
+      rect.attr("stroke-width", 1);
+
+      // Distance of tooltip from pointer
+      var pxFromEvent = 28;
+
+      // Show tooltip
+      tooltip
+        .style("left", d3.event.pageX + pxFromEvent + "px")
+        .style("top", (d3.event.pageY - pxFromEvent) + "px")
+        .html(function(){
+          var text = monthNames[d.month - 1] + " ";
+          text += d.year + "<br/>";
+          text += d.variance;
+          return text;
+        })
+        .style("opacity", 0.9);
+    })
+    // Hide tooltip and border
+    .on("mouseout", function(d){
+      // Border
+      var rect = d3.select(this);
+      rect.attr("stroke-width", 0);
+      // Tooltip
+      tooltip.style("opacity", 0);
     });
-    // .attr("stroke", "black")
-    // .attr("stroke-width", "1px");
 
-    // for (var i = 0; i < yearsArr.length; i++){
-    //   var yearCol = yearLabels.append("text")
-    //     .attr("y", y(i) + y(monthNames.length-1)/2 + labelFontSize/4)
-    //     .attr("font-size", labelFontSize)
-    //     .attr("text-anchor", "end")
-    //     .text(monthNames[i-1] + "—");
-    // }
+//
+//
+//
+// ***Create legend based on temperatures from data***
+//
+//
+//
 
+    // ADD rects to legend AFTER adding rects to chart
+    for (var j = 0; j < legendWidth; j++){
+      // Create one rectangle of color for each pixel in legend
+      var legendColor = legend.append("rect")
+        // Each rectangle is one pixel more to the right.
+        .attr("transform", "translate(" + j + ", 0)")
+        // Rectangle width, should equal increment value of this loop, 1
+        .attr("width", 1)
+        // Rectangle height, should equal half of legend's height
+        .attr("height", 20)
+        // Color based on d3-chromatic
+        .attr("fill", function(){
+          return legendColorScale(j);
+        });
+     }
 
+    // Minimum temperature
+    var minTemp = d3.min(dataset, function(d){
+      return d.variance;
+    });
+    // Maximum temperature
+    var maxTemp = d3.max(dataset, function(d){
+      return d.variance;
+    });
+    // Difference between min and max temperatures
+    var tempRange = maxTemp - minTemp;
+    // Array of temperatures between min and max
+    var tempArray = d3.range(minTemp, maxTemp, tempRange/10 );
+    // Add base temperature
+    tempArray = tempArray.map(function(d){
+      return d3.format(".1f")(d + 8.66);
+    });
+
+    legendWidthScale
+      .domain(tempArray);
+
+    // Legend axis call
+    var legendAxisCall = d3.axisBottom(legendWidthScale);
+    legendGroup.call(legendAxisCall);
+
+   // var legendWidthOverTemperatureArguments = Math.round(legendWidth/tempArray.length);
+   //
+   // for (var k = 0; k < legendWidth; k += legendWidthOverTemperatureArguments){
+   //
+   //   var legendTick = legend.append("g")
+   //     .attr("transform", "translate(" + (k) + ", 40)")
+   //     .attr("width", 10)
+   //     .append("text")
+   //     .attr("text-anchor", "middle")
+   //     .text(function(){
+   //       return tempArray[k/legendWidthOverTemperatureArguments];
+   //     });
+   //
+   //  }
+
+//
+//
+//
+// ***END of json.then()***
+//
+//
+//
 });
 
 // .catch(function(error){
