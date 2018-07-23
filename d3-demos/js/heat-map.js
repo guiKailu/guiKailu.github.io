@@ -103,8 +103,11 @@ var legendGroup = legend.append("g")
 //
 d3.json("data/global-temperature.json").then(function(data){
 
+  var baseTemp = data.baseTemperature;
+
+  $("#base-temp").html(baseTemp);
+
   var dataset = data.monthlyVariance;
-  console.log(dataset);
 
   // Array of each year in the dataset
   var yearsArr = d3.range(d3.min(dataset, function(d){
@@ -178,14 +181,20 @@ d3.json("data/global-temperature.json").then(function(data){
       // Distance of tooltip from pointer
       var pxFromEvent = 28;
 
+      var b = "<span style='font-weight: bold'>";
+      var endLine = "</span><br/>";
+
       // Show tooltip
       tooltip
         .style("left", d3.event.pageX + pxFromEvent + "px")
         .style("top", (d3.event.pageY - pxFromEvent) + "px")
         .html(function(){
-          var text = monthNames[d.month - 1] + " ";
-          text += d.year + "<br/>";
-          text += d.variance;
+          var text = b + monthNames[d.month - 1] + " ";
+          text += d.year + endLine;
+          text += "Temperature: ";
+          text += b + d3.format(".2f")(d.variance + baseTemp) + "˚C" + endLine;
+          text += "Temperature variance: ";
+          text += b + d3.format("+.2f")(d.variance) + "˚C" + endLine;
           return text;
         })
         .style("opacity", 0.9);
@@ -237,7 +246,7 @@ d3.json("data/global-temperature.json").then(function(data){
     var tempArray = d3.range(minTemp, maxTemp, tempRange/10 );
     // Add base temperature
     tempArray = tempArray.map(function(d){
-      return d3.format(".1f")(d + 8.66);
+      return d3.format(".1f")(d + baseTemp);
     });
 
     legendWidthScale
@@ -246,21 +255,6 @@ d3.json("data/global-temperature.json").then(function(data){
     // Legend axis call
     var legendAxisCall = d3.axisBottom(legendWidthScale);
     legendGroup.call(legendAxisCall);
-
-   // var legendWidthOverTemperatureArguments = Math.round(legendWidth/tempArray.length);
-   //
-   // for (var k = 0; k < legendWidth; k += legendWidthOverTemperatureArguments){
-   //
-   //   var legendTick = legend.append("g")
-   //     .attr("transform", "translate(" + (k) + ", 40)")
-   //     .attr("width", 10)
-   //     .append("text")
-   //     .attr("text-anchor", "middle")
-   //     .text(function(){
-   //       return tempArray[k/legendWidthOverTemperatureArguments];
-   //     });
-   //
-   //  }
 
 //
 //
