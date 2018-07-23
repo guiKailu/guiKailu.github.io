@@ -37,6 +37,8 @@ var monthNames = (function(){
 
 // X-axis
 var xAxisGroup = g.append("g")
+  // Id for fcc tests
+  .attr("id", "x-axis")
   .attr("transform", "translate(0, " + height + ")");
 
 // The X and Y axes don't need labels "Month" and "Years"
@@ -48,7 +50,9 @@ var y = d3.scaleBand()
   .range([0, height]);
 
 // Y-axis
-var yAxisGroup = g.append("g");
+var yAxisGroup = g.append("g")
+  // Id for fcc tests
+  .attr("id", "y-axis");
 
 // Y-axis call
 var yAxisCall = d3.axisLeft(y)
@@ -89,6 +93,8 @@ var legendWidthScale = d3.scaleBand()
 // Append legend as group under chart
 // Halfway down the margin.bottom
 var legend = g.append("g")
+// id for fcc tests
+ .attr("id", "legend")
  .attr("transform", "translate(0, " + (height + margin.bottom/2) + ")");
 
 // Legend Axis,
@@ -149,8 +155,9 @@ d3.json("data/global-temperature.json").then(function(data){
   rects.enter()
     .append("rect")
     .attr("class", "cell")
+    // Three data attr's for fcc tests
     .attr("data-month", function(d){
-      return d.month;
+      return d.month - 1;
     })
     .attr("data-year", function(d){
       return d.year;
@@ -188,6 +195,10 @@ d3.json("data/global-temperature.json").then(function(data){
       tooltip
         .style("left", d3.event.pageX + pxFromEvent + "px")
         .style("top", (d3.event.pageY - pxFromEvent) + "px")
+        // data-year property to pass fcc tests
+        .attr("data-year", function(){
+          return d.year;
+        })
         .html(function(){
           var text = b + monthNames[d.month - 1] + " ";
           text += d.year + endLine;
