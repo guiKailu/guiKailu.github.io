@@ -114,12 +114,15 @@ d3.json("data/global-temperature.json").then(function(data){
   $("#base-temp").html(baseTemp);
 
   var dataset = data.monthlyVariance;
+  console.log(dataset);
 
   // Array of each year in the dataset
   var yearsArr = d3.range(d3.min(dataset, function(d){
     return d.year;
   }), d3.max(dataset, function(d){
-    return d.year;
+    // It's "+ 1" because d3.range doesn't
+    // include the last number in the range
+    return d.year + 1;
   }), 1);
 
   // Calculate 1st round decade in dataset
