@@ -102,6 +102,10 @@ var legend = g.append("g")
 var legendGroup = legend.append("g")
   .attr("transform", "translate(0, 20)");
 
+var legendLabel = legend.append("text")
+  .attr("transform", "translate(0, -5)")
+  .text("Base temperature in ˚C");
+
 //
 //
 // ***GET data***
