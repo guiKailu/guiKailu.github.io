@@ -8,6 +8,10 @@ var margin = {
 var width = 1000 - margin.left - margin.right;
 var height = 700 - margin.top - margin.bottom;
 
+// Approximate official colors of American Flag
+var oldGloryRed = "#BF0A30";
+var oldGloryBlue = "#002868";
+
 var g = d3.select("#chart-area")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
@@ -55,7 +59,11 @@ var tooltip = d3.select("#chart-area").append("div")
 
 d3.json("data/GDP-data.json").then(function(data){
 
+  // Data.data contains the data needed
   var dataset = data.data;
+
+  // Make raw data visible to power users in console
+  console.log(dataset);
   // Convert strings to date objects.
   x.domain([d3.min(dataset, function(d){
     return formatTime(d[0]);
@@ -77,6 +85,9 @@ d3.json("data/GDP-data.json").then(function(data){
     });
   yAxisGroup.call(yAxisCall);
 
+  // Width of each rectangle
+  var rectWidth = width/dataset.length;
+
   var rects = g.selectAll("rects")
     .data(dataset);
 
@@ -90,7 +101,7 @@ d3.json("data/GDP-data.json").then(function(data){
     .attr("y", function(d){
       return y(d[1]);
     })
-    .attr("width", 1)
+    .attr("width", rectWidth)
     .attr("height", function(d){
       return height - y(d[1]);
     })
@@ -100,8 +111,12 @@ d3.json("data/GDP-data.json").then(function(data){
     .attr("data-gdp", function(d){
       return d[1];
     })
-    .attr("fill", "#0000CC")
+    .attr("fill", oldGloryBlue)
     .on("mouseover", function(d){
+      // different fill color
+      var thisRect = d3.select(this);
+      thisRect.attr("fill", oldGloryRed);
+
       tooltip
         .style("opacity", .9);
       tooltip
@@ -117,8 +132,14 @@ d3.json("data/GDP-data.json").then(function(data){
         .style("top", (d3.event.pageY - 28) + "px");
     })
     .on("mouseout", function(d){
+      // revert fill color
+      var thisRect = d3.select(this);
+      thisRect.attr("fill", oldGloryBlue);
+
       tooltip
         .style("opacity", 0);
     });
 
-});
+}).catch(function(error){
+  console.log("Unable to load data");
+})

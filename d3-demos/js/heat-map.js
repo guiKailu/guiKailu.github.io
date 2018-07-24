@@ -277,8 +277,7 @@ d3.json("data/global-temperature.json").then(function(data){
 //
 //
 //
+})
+.catch(function(error){
+  console.log("Failed to load data.");
 });
-
-// .catch(function(error){
-//   console.log("Failed to load data.");
-// });
