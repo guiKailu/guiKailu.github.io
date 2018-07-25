@@ -13,6 +13,10 @@ var margin = {
 	top: 10
 };
 
+var latestYear = 2014;
+var earliestYear = 1901;
+var latestYearIndex = latestYear - earliestYear;
+
 var width = 800 - margin.left - margin.right;
 var height = 500 - margin.bottom - margin.top;
 
@@ -66,7 +70,7 @@ var yLabel = g.append("text")
 	.text("GDP per Capita ($)");
 
 var yearLabel = g.append("text")
-	.attr("x", keyMargin.x + 11)]
+	.attr("x", keyMargin.x + 11)
 	.attr("y", keyMargin.y)
 	.attr("text-anchor", "end")
 	.style("fill", "grey")
@@ -86,15 +90,30 @@ var colors = ["#2c7bb6", "#abd9e9", "#d7191c", "#fdae61"];
 
 // Scales
 var x = d3.scaleLog()
+	.domain([100, 50000])
 	.range([0, width])
 	.base(10);
 var y = d3.scaleLinear()
+	.domain([90, 0])
 	.range([0, height]);
 var r = d3.scaleLinear()
+	.domain([0, 2100000])
 	.range([4, 35])
 var continentColor = d3.scaleOrdinal()
 	.domain(continents)
 	.range(colors);
+
+var xAxisCall = d3.axisBottom(x)
+	.tickFormat(function(d){
+		return formatMoney(d);
+	});
+// tick values start/end closer to data's min/max.
+xAxisCall.tickValues([4e+2, 4e+3, 4e+4]);
+
+xAxisGroup.call(xAxisCall);
+
+var yAxisCall = d3.axisLeft(y);
+yAxisGroup.call(yAxisCall);
 
 var legendRowHeight = 20;
 
@@ -124,65 +143,47 @@ continents.forEach(function(continent, i){
 
 // Get Data
 d3.json("data/data.json").then(function(data){
-
-	// clean data
-	data.map(function(d){
-		d.year = +d.year;
+	console.log(data);
+	// Clean data
+	const formattedData = data.map(function(year){
+		return year["countries"].filter(function(country){
+			var dataExists = (country.income && country.life_exp);
+			return dataExists;
+		}).map(function(country){
+			country.income = +country.income;
+			country.life_exp = + country.life_exp;
+			return country;
+		});
 	});
+	//
+	// // get the total amount of years
+	// var yearTotalIndex = 0;
+	// data.map(function(d){
+	// 	yearTotalIndex++;
+	// });
+	//
+	// d3.interval(function(){
+	// 	update(data);
+	// 	yearIndex = (yearIndex + 1) % yearTotalIndex
+	// }, 150);
 
-	// get the total amount of years
-	var yearTotalIndex = 0;
-	data.map(function(d){
-		yearTotalIndex++;
-	});
+	// First run of the visualization
+	console.log(formattedData);
+	update(formattedData[0]);
 
-	d3.interval(function(){
-		update(data);
-		yearIndex = (yearIndex + 1) % yearTotalIndex
-	}, 150);
-
-	update(data);
 });
+
+function step(){
+	// At the end of our data, loop back
+	time = (time < 214) ? time+1 : 0
+	update(formattedData[time]);
+}
 
 function update(data){
 
-	var latestYear = d3.max(data, function(d){
-		return d.year;
-	});
-	var earliestYear = d3.min(data, function(d){
-		return d.year;
-	});
-	var latestYearIndex = latestYear - earliestYear;
-
-	var annualData = data[yearIndex].countries;
-
-	var latestYearData = data[latestYearIndex].countries;
-
-	x.domain([100, d3.max(latestYearData, function(d){
-		return d.income;
-	})]);
-	y.domain([d3.max(latestYearData, function(d){
-		return d.life_exp;
-	}), 0]);
-	r.domain([0, d3.max(latestYearData, function(d){
-		return d.population;
-	})])
-
-	var xAxisCall = d3.axisBottom(x)
-		.tickFormat(function(d){
-			return formatMoney(d);
-		});
-	// tick values start/end closer to data's min/max.
-	xAxisCall.tickValues([4e+2, 4e+3, 4e+4]);
-
-	xAxisGroup.call(xAxisCall);
-
-	var yAxisCall = d3.axisLeft(y);
-	yAxisGroup.call(yAxisCall);
-
 	// Data JOIN
 	var circles = g.selectAll("circle")
-		.data(annualData);
+		.data(data);
 
 	// REMOVE old data that's not in new data
 	circles.exit().remove();
