@@ -22,6 +22,7 @@ var legendMargin = {
 
 // ** Time trackers **
 var time = 0;
+var interval;
 var earliestYear = 1800;
 var latestYear = 2014;
 var lastYearIndex = latestYear - earliestYear;
@@ -62,7 +63,7 @@ g.call(tip);
 
 // Scales
 var x = d3.scaleLog()
-	.domain([142, 142893])
+	.domain([142, 150000])
 	.range([0, width])
 	.base(10);
 var y = d3.scaleLinear()
@@ -146,7 +147,7 @@ d3.json("data/data.json").then(function(data){
 	console.log(data);
 
 	// Clean data
-	const formattedData = data.map(function(year){
+	formattedData = data.map(function(year){
 		return year["countries"].filter(function(country){
 			var dataExists = (country.income && country.life_exp);
 			return dataExists;
@@ -157,21 +158,45 @@ d3.json("data/data.json").then(function(data){
 		});
 	});
 
-	// Run the code every 0.15 second
-	d3.interval(function(){
-		// At the end of our data, loop back
-		time = (time < lastYearIndex)? time + 1 : 0;
-		update(formattedData[time]);
-	}, duration);
-
 	// First run of the visualization
 	update(formattedData[0]);
 
 });
 
+$("#play-button")
+	.on("click", function(){
+		var button = $(this);
+		if (button.text() == "Play"){
+			button.text("Pause");
+			interval = setInterval(step, duration);
+		}
+	  else {
+			button.text("Play");
+			clearInterval(interval);
+	  }
+	});
+
+$("#reset-button")
+	.on("click", function(){
+		if (interval){
+			clearInterval(interval);
+			$("#play-button").text("Play");
+	  }
+		time = 0;
+		update(formattedData[time]);
+	})
+
+$("#continent-select")
+	.on("change", function(){
+		if ($("#play-button").text() == "Play"){
+			update(formattedData[time]);
+		}
+	})
+
+
 function step(){
 	// At the end of our data, loop back
-	time = (time < 214) ? time+1 : 0
+	time = (time < 214) ? time+1 : 0;
 	update(formattedData[time]);
 }
 
@@ -180,10 +205,22 @@ function update(data){
 	var t = d3.transition()
 		.duration(duration);
 
+	var continent = $("#continent-select").val();
+
+	var data = data.filter(function(d){
+		console.log(continent);
+		if (continent == "all"){
+			return true;
+		}
+		else {
+			return continent == d.continent;
+		}
+	});
+
 	// JOIN new data with old elements
 	var circles = g.selectAll("circle")
 		.data(data, function(d){
-			return d.country;
+				return d.country;
 		});
 
 	// REMOVE old data that's not in new data
