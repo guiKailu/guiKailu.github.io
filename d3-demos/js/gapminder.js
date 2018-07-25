@@ -163,6 +163,17 @@ d3.json("data/data.json").then(function(data){
 
 });
 
+$("#time-select")
+	.attr("min", earliestYear)
+	.attr("max", latestYear)
+	.on("change", function(){
+		var year = $(this).val();
+		$("#slider-label")
+			.html(year);
+		time = year - earliestYear	;
+		update(formattedData[time]);
+	});
+
 $("#play-button")
 	.on("click", function(){
 		var button = $(this);
@@ -193,7 +204,6 @@ $("#continent-select")
 		}
 	})
 
-
 function step(){
 	// At the end of our data, loop back
 	time = (time < 214) ? time+1 : 0;
@@ -211,8 +221,7 @@ function update(data){
 		console.log(continent);
 		if (continent == "all"){
 			return true;
-		}
-		else {
+		} else {
 			return continent == d.continent;
 		}
 	});
