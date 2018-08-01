@@ -19,6 +19,7 @@ body {
 }
 #title{
   font-size: 6vw;
+  margin-top: 0;
 }
 div.row, div.equals-row, div.result{
   display: flex;
