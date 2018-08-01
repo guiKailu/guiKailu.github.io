@@ -1,11 +1,9 @@
 #drum-body {
   background: #f2f2f2;
-  margin-top: 150px;
 }
 
 #drum-machine {
   position: relative;
-  top: 75px;
 }
 
 #display {

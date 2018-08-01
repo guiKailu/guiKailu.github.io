@@ -1,14 +1,19 @@
+#drum-machine {
+  position: relative;
+  top: 0px;
+}
 
 .grid-container {
+  flex: 1 1 0%;
   border-radius: 3px;
 }
 .grid-container #btn-grid {
   padding: 10px;
 }
 .grid-container #btn-grid .drum-pad {
-  height: 25px;
-  margin: 2px;
-  width: 25px;
+  height: 65px;
+  margin: 5px;
+  width: 65px;
   font-size: 12px;
 }
 /* @media screen and (min-width: 720px) {

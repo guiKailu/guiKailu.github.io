@@ -79,4 +79,7 @@ body{
   position: relative;
   z-index: 3000;
   margin-left: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
