@@ -1,0 +1,44 @@
+$break-med: 720px;
+$red: rgb(235, 61, 60);
+$blue: rgb(132, 200, 182);
+$grey: rgb(242, 242, 242);
+$bigFont: 24px monospace;
+
+body {
+  background: $grey;
+  margin-top: 150px;
+}
+#drum-machine {
+  position: relative;
+  top: 75px;
+}
+#display {
+  font: $bigFont;
+  margin-bottom: 0px;
+  background: $grey;
+}
+.grid-container {
+  border-radius: 10px;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  #btn-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 50px;
+    background-color: $red;
+    .drum-pad {
+      height: 75px;
+      margin: 5px;
+      width: 75px;
+      font: $bigFont;
+      transition: 0.8s;
+      background: $blue;
+      box-shadow: -2px 0px $red, 2px 0px $red, 0 2px $red, 0 -2px $red;
+      @media screen and (min-width: $break-med) {
+        width: 125px;
+        height: 125px;
+      }
+    }
+  }
+}
