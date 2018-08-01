@@ -1,22 +1,23 @@
 html{
   font-family: Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
-  text-transform: uppercase;
+
 }
 
 body{
   margin: 0;
 }
 
-#main{
+/* #main{
   display: grid;
   grid-template-columns: 225px auto;
-}
+} */
 
 #about{
   margin-left: 25px;
   /* position: fixed; */
   display: grid;
   grid-template-rows: 60px auto;
+  text-transform: uppercase;
 }
 
 #logo{
@@ -25,6 +26,26 @@ body{
   width: 250px;
   position: fixed;
   z-index: 5000;
+}
+
+#description{
+  padding: 10vw 4vw 4vw 10vw;
+  font-size: 36px;
+}
+
+#toolkit{
+  padding: 10vw 4vw 4vw 10vw;
+  font-size: 26px;
+}
+
+h2{
+  font-size: 36px;
+  font-weight: 400;
+}
+h3{
+  font-size: 30px;
+  font-weight: 200;
+  margin-bottom: 0;
 }
 
 .hide{
@@ -40,9 +61,16 @@ body{
   /* flex: 4 1 0%; */
   display: flex;
   flex-direction: column;
+  display: none;
+  opacity: 0;
   /* Toggle... or maybe just keep this off */
   /* justify-content: center;
   height: 100vh; */
+}
+
+#porfolioBtn{
+  display: flex;
+  justify-content: center;
 }
 
 .thumb-row{
