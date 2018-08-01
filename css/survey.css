@@ -3,10 +3,16 @@ body {
   font-size: 18px;
   font-family: arial;
   color: hsl(223, 25%, 20%);
-  padding: 4%;
-  margin-left: 10%;
-  margin-right: 10%;
+  padding: 1vw;
+  margin: 0 10%;
   transition: 1s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header{
+  text-align: center;
 }
 .container {
   background: white;
@@ -28,7 +34,6 @@ label {
   text-align: right;
   transition: 1s;
 }
-
 #description {
   margin-bottom: 3%;
   text-align: center;
@@ -66,25 +71,30 @@ textarea{
   align-self: center;
   justify-self: center;
 }
+footer{
+  color: white;
+  text-align: center;
+  padding-top: 1vw;
+}
+footer a{
+  text-decoration: none;
+  color: white;
+}
 @media (max-width: 1200px){
   body{
     margin-left: 7%;
     margin-right: 7%;
     transition: 0.5s;
   }
-  
-  #name,
-#email,
-#number, textarea{
-  margin-right: 7%;
-  font-size: 80%;
-  transition: 0.5s;
-}
+  #name, #email, #number, textarea{
+    margin-right: 7%;
+    font-size: 80%;
+    transition: 0.5s;
+  }
 }
 @media (max-width: 875px){
   body{
-    width: 85%;
-    margin: auto;
+    margin: 0 5%
   }
   #survey-form{
     grid-row-gap: 0px;
@@ -103,7 +113,6 @@ textarea{
 
 @media (max-width: 600px){
   body{
-    width: 75%;
-    margin: 5px;
+    margin: 0 1%;
   }
 }

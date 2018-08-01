@@ -33,6 +33,10 @@ h5{
   font-weight: 500;
   margin: 1vw 0 0;
 }
+a::selection{
+  border: none;
+}
+
 button:hover, [type="submit"] {
   cursor: pointer;
 }
