@@ -33,7 +33,7 @@ h5{
   font-weight: 500;
   margin: 1vw 0 0;
 }
-button:hover, [type=submit] {
+button:hover, [type="submit"] {
   cursor: pointer;
 }
 #header{
@@ -212,14 +212,19 @@ button:hover, [type=submit] {
   height: 5px;
 }
 #footer{
-  background: #121a23;
+  background: #242f3e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+#company{
   align-self: stretch;
   justify-content: center;
   align-items: center;
   /* align-content: space-around; */
   flex-flow: row wrap;
-  height: 10vh;
-  padding-left: 1vh;
+  padding-top: 2vh;
+  /* padding-left: 1vh; */
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
@@ -228,15 +233,15 @@ button:hover, [type=submit] {
   color: grey;
   margin: 0 2vw;
 }
-#footer > *{
-  margin: 0 20px;
+#company > *{
+  padding: 0 5vh;
 }
-#footer-links a{
+#footer a{
   text-decoration: none;
   color: white;
 }
-#copyright{
-  color: white;
+#credits{
+  padding-bottom: 2vh;
 }
 
 @media only screen
