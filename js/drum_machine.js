@@ -33,7 +33,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
     {
       return (
-        React.createElement("body", { onKeyPress: this.playKey },
+        React.createElement("div", { onKeyPress: this.playKey },
           React.createElement("div", { id: "drum-machine", className: "grid-container container" },
             React.createElement("div", { className: "jumbotron animated flipInX", id: "display" },
               this.state.display),
