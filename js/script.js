@@ -16,20 +16,35 @@ function showGallery(){
 }
 
 function showMore(){
-  // Make it togglable
-  $("#gallery2").show()
-    .animate({
-    opacity: "1"
-  }, 1000);
-  $("#seeMoreBtn :child").text("See less");
-  $("#toolkit").animate({
-    paddingBottom: 0,
-    marginBottom: 0
-  }, 1000);
+  var text = $("#seeMoreBtn>button").text();
+  console.log(text);
+  if (text == "See more demos"){
+    $("#gallery2").show()
+      .animate({
+      opacity: "1"
+    }, 1000);
+    $("#seeMoreBtn>button").text("See less");
+    $("#seeMoreBtn").appendTo("#gallery2");
+    $("#toolkit").animate({
+      paddingBottom: 0,
+      marginBottom: 0
+    }, 1000);
+  } else {
+    $("#seeMoreBtn").appendTo("#toolkit");
+    $("#gallery2").animate({
+      opacity: 0
+    }, 1000).hide();
+    $("#seeMoreBtn>button").text("See more demos");
+
+    $("#toolkit").animate({
+      paddingBottom: 0,
+      marginBottom: 0
+    }, 1000);
+  }
+
 
   // $("#contact").css("paddingTop", 0);
 }
-
 
 $(document).ready(function () {
 
