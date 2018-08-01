@@ -9,7 +9,7 @@ body {
   color: #fedd03;
   font-family: 'Dosis', 'Britannic Bold', sans-serif;
   font-size: 2.5vmax;
-  transition: 1s;
+  transition: 0.8s;
   height: 100vh;
 }
 #calculator{
@@ -20,22 +20,42 @@ body {
 #title{
   font-size: 6vw;
 }
-div.row{
+div.row, div.equals-row, div.result{
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+}
+div.result{
+  font-size: 2em;
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+}
+input {
+  height: 100%;
+  width: 100%;
+  font-size: 2em;
+}
+div.row > * {
+  flex: 1 1 25%;
+}
+#zero, #point {
+  flex: 1 1 25%;
+}
+#myBtn {
+  flex: 1 1 50%;
 }
 button {
-  padding: 10px;
+  padding: 10px 0;
   border: 2px solid #1c1700;
   background-color: #fbbd1e;
   font-size: 1.3em;
 }
 #calcInput{
   text-align: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   border: 3px solid #1c1700;
   border-radius: 7px 7px 0px 0px;
-  transition: 1s;
+  transition: 0.8s;
   background-color: #fbf0dc;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -50,14 +70,9 @@ button {
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: #f3b6cf;
 }
-.result{
-  font-size: 2em;
-  background-color: #f2faff;
-}
 #result{
   border: 3px solid #1c1700;
   border-radius: 0px 0px 7px 7px;
-  width: 100%;
   color: #e11c16;
   background-color: #fbeacc;
 }
@@ -88,14 +103,14 @@ a:hover{
   body{
     margin-right: 35%;
     margin-left: 35%;
-    transition: 3s;
+    transition: 0.8s;
   }
 }
 @media only screen and (max-width: 800px) {
   body{
     margin-right: 15%;
     margin-left: 15%;
-    transition: 3s;
+    transition: 0.8s;
     font-size: 3.6vw;
   }
   button{
@@ -105,10 +120,10 @@ a:hover{
 @media only screen and (max-height: 615px){
   body{
     padding-top: 4%;
-    transition: 1s;
+    transition: 0.8s;
   }
   input{
     margin-top: 10px;
-    transition: 1s;
+    transition: 0.8s;
   }
 }

@@ -69,11 +69,11 @@ function clickIt() {
 function wiggle() {
   var d = document.getElementById("result");
   d.className = "enabled result col";
-  
+
   setTimeout(function() {
     d.className = "result col";
   }, 1000);
-  
+
 }
 
 function calc() {
@@ -169,3 +169,9 @@ function display(inp) {
     }
   }
 }
+
+
+$(document).ready(function(){
+  $("#divide").html("&#247");
+
+});

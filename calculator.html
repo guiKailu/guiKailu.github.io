@@ -2,15 +2,13 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>JavaScript Calculator</title>
     <link href="https://fonts.googleapis.com/css?family=Dosis:800" rel="stylesheet">
-
-    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Dosis:800">
 
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/calculator.css">
-
 
   </head>
 
@@ -21,64 +19,61 @@
   Interwebulator
 </h1>
 
-      <div class="container">
+      <div>
+
+        <input class="result" id="calcInput" oninput="display(this.value)" onkeypress="final(event)" placeholder="0">
 
         <div class="row">
-          <input class="col result" id="calcInput" oninput="display(this.value)" onkeypress="final(event)" placeholder="0">
+          <button onclick="ac()">AC</button>
+          <button onclick="ce()">CE</button>
+          <button onclick="percent()">%</button>
+          <!-- Divide symbol added in document.ready function,
+              because Atom for some reason doesn't like it here,
+              even though codepen is fine with it. -->
+          <button id="divide" onclick="writeToBox('/')"></button>
         </div>
 
         <div class="row">
-          <button class="col" onclick="ac()">AC</button>
-          <button class="col" onclick="ce()">CE</button>
-          <button class="col" onclick="percent()">%</button>
-          <button class="col" id="divide" onclick="writeToBox('/')"> &#247 </button>
+          <button onclick="writeToBox('7')">7</button>
+          <button conclick="writeToBox('8')">8</button>
+          <button onclick="writeToBox('9')">9</button>
+          <button id="multiply" onclick="writeToBox('*')">x</button>
         </div>
 
         <div class="row">
-          <button class="col" onclick="writeToBox('7')">7</button>
-          <button class="col" onclick="writeToBox('8')">8</button>
-          <button class="col" onclick="writeToBox('9')">9</button>
-          <button class="col" id="multiply" onclick="writeToBox('*')">x</button>
+          <button onclick="writeToBox('4')">4</button>
+          <button onclick="writeToBox('5')">5</button>
+          <button onclick="writeToBox('6')">6</button>
+          <button id="minus" onclick="writeToBox('-')">-</button>
         </div>
 
         <div class="row">
-          <button class="col" onclick="writeToBox('4')">4</button>
-          <button class="col" onclick="writeToBox('5')">5</button>
-          <button class="col" onclick="writeToBox('6')">6</button>
-          <button class="col" id="minus" onclick="writeToBox('-')">-</button>
+          <button onclick="writeToBox('1')">1</button>
+          <button onclick="writeToBox('2')">2</button>
+          <button onclick="writeToBox('3')">3</button>
+          <button id="plus" onclick="writeToBox('+')">+</button>
         </div>
 
-        <div class="row">
-          <button class="col" onclick="writeToBox('1')">1</button>
-          <button class="col" onclick="writeToBox('2')">2</button>
-          <button class="col" onclick="writeToBox('3')">3</button>
-          <button class="col" id="plus" onclick="writeToBox('+')">+</button>
+        <div class="equals-row">
+          <button id="zero" onclick="writeToBox('0')">0</button>
+          <button id="point" onclick="writeToBox('.')">.</button>
+          <button id="myBtn" onclick="clickIt()">=</button>
         </div>
 
-        <div class="row">
-          <button class="col-6" onclick="writeToBox('0')">0</button>
-          <button class="col" id="point" onclick="writeToBox('.')">.</button>
-          <button class="col" id="myBtn" onclick="clickIt()">=</button>
-        </div>
-
-        <div class="row">
-          <div class="result col" id="result">
-            0
-          </div>
+        <div class="result" id="result">
+          0
         </div>
       </div>
 
       <p id="credits">
-        by <a href="https://codepen.io/janshe/full/xWwRwB" target="_blank">Yann Stoneman</a>
+        by <a href="portfolio.html" target="_blank">Yann Stoneman</a>
       </p>
     </div>
 
-
-
+    <!-- jQuery library -->
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+    <!-- Custom JS -->
     <script src="js/calculator.js"></script>
-
-
-
 
   </body>
 
