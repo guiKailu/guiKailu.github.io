@@ -46,7 +46,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
                   onClick: this.define }, "Q",
 
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Chord+rhythm.m4a",
+                  src: "portfolio/sounds/Chord-rhythm.m4a",
                   className: "clip",
                   id: "Q" })),
 
@@ -54,7 +54,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
               React.createElement("button", { className: "btn drum-pad", id: "Chord", onClick: this.define }, "W",
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Chord.m4a",
+                  src: "portfolio/sounds/Chord.m4a",
                   className: "clip",
                   id: "W" })),
 
@@ -62,7 +62,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
               React.createElement("button", { className: "btn drum-pad", id: "Conga", onClick: this.define }, "E",
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Conga.m4a",
+                  src: "portfolio/sounds/Conga.m4a",
                   className: "clip",
                   id: "E" })),
 
@@ -70,7 +70,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
               React.createElement("button", { className: "btn drum-pad", id: "Crash", onClick: this.define }, "A",
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Crash.m4a",
+                  src: "portfolio/sounds/Crash.m4a",
                   className: "clip",
                   id: "A" })),
 
@@ -78,7 +78,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
               React.createElement("button", { className: "btn drum-pad", id: "Cymbal", onClick: this.define }, "S",
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Cymbal+Hit.m4a",
+                  src: "portfolio/sounds/Cymbal-hit.m4a",
                   className: "clip",
                   id: "S" })),
 
@@ -86,7 +86,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
               React.createElement("button", { className: "btn drum-pad", id: "Kick", onClick: this.define }, "D",
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Kick.m4a",
+                  src: "portfolio/sounds/Kick.m4a",
                   className: "clip",
                   id: "D" })),
 
@@ -94,7 +94,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
               React.createElement("button", { className: "btn drum-pad", id: "Scratch", onClick: this.define }, "Z",
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Scratch.m4a",
+                  src: "portfolio/sounds/Scratch.m4a",
                   className: "clip",
                   id: "Z" })),
 
@@ -102,7 +102,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
               React.createElement("button", { className: "btn drum-pad", id: "Serve", onClick: this.define }, "X",
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Serve.m4a",
+                  src: "portfolio/sounds/Serve.m4a",
                   className: "clip",
                   id: "X" })),
 
@@ -110,7 +110,7 @@ Presentational = function (_React$Component) {_inherits(Presentational, _React$C
 
               React.createElement("button", { className: "btn drum-pad", id: "Volley", onClick: this.define }, "C",
                 React.createElement("audio", {
-                  src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Volley.m4a",
+                  src: "portfolio/sounds/Volley.m4a",
                   className: "clip",
                   id: "C" }))))));
 
