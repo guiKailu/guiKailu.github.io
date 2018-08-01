@@ -5,15 +5,31 @@ function showGallery(){
     .animate({
     opacity: "1"
   }, 1000);
-  $("#portfolioBtn").hide();
   $("#description").animate({
     paddingBottom: 0
   }, 1000);
+  $("#portfolioBtn").hide();
   $("#description :last-child").animate({
     marginBottom: 0
   }, 1000);
   $("#toolkit").css("paddingTop", 0);
 }
+
+function showMore(){
+  // Make it togglable
+  $("#gallery2").show()
+    .animate({
+    opacity: "1"
+  }, 1000);
+  $("#seeMoreBtn :child").text("See less");
+  $("#toolkit").animate({
+    paddingBottom: 0,
+    marginBottom: 0
+  }, 1000);
+
+  // $("#contact").css("paddingTop", 0);
+}
+
 
 $(document).ready(function () {
 

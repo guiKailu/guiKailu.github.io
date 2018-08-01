@@ -51,12 +51,12 @@
 
       <div id="description">
         <p>Hi, I'm Yann. I can build websites for you.</p>
-        <p>Past clients can vouch for my responsibility and efficiency working both remotely and in the office.
+        <p>Past collaborators can vouch for my responsibility and efficiency working both remotely and in the office.
           <p>If you're in Portland, Oregon, let's grab coffee. It's on me.</p>
       </div>
 
-      <div id="portfolioBtn">
-        <button onclick="showGallery()">See Portfolio</button>
+      <div id="portfolioBtn" class="galleryBtn">
+        <button onclick="showGallery()">See portfolio</button>
       </div>
 
       <div id="gallery">
@@ -153,7 +153,60 @@
       </div>
     </div>
 
+    <div class="galleryBtn" id="seeMoreBtn">
+      <button onclick="showMore()">See more demos</button>
+    </div>
 
+    <div id="gallery2">
+      <div class="thumb-row">
+        <!-- Insert a live version of the drum machine -->
+        <!-- with same proportions as thumbnails -->
+        <!-- and ideally with the ipad frame around it -->
+        <div class="thumbnail">
+          <div>
+            <div>
+              <div id="drum" class="thumbnail-img"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="thumbnail">
+          <div>
+            <a href="calculator.html" target="_blank">
+              <img class="thumbnail-img" src="portfolio/img/calculator.png"
+                alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="thumb-row">
+        <div class="thumbnail">
+          <div>
+            <a href="quotes.html" target="_blank">
+            <img class="thumbnail-img" src="portfolio/img/quotes.png"
+              alt="">
+              </a>
+          </div>
+        </div>
+
+        <div class="thumbnail">
+          <a href="product.html" target="_blank">
+            <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- <div class="thumb-row hide">
+        <div class="thumbnail">
+          <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
+        </div>
+        <div class="thumbnail hide">
+          <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
+        </div>
+      </div> -->
+
+    </div>
 
     <script src="js/drum-machine.js"></script>
 

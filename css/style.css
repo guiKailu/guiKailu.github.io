@@ -29,38 +29,31 @@ body{
 }
 
 #description{
-  padding: 4vw 4vw 4vw 10vw;
+  padding: 4vw 10vw;
   font-size: 36px;
 }
 
-#toolkit{
-  padding: 3vw 4vw 4vw 10vw;
-  font-size: 26px;
-}
-#toolkit > div{
+.galleryBtn{
   display: flex;
-}
-#toolkit > div > div {
-  flex: 1 1 30%;
+  justify-content: center;
 }
 
-h2{
-  font-size: 36px;
-  font-weight: 400;
-}
-h3{
+.galleryBtn > button {
+  padding: 12px 18px;
+  border-radius: 15px;
   font-size: 30px;
-  font-weight: 200;
-  margin-bottom: 0;
+  font-weight: 400;
+  letter-spacing: 1.5px;
 }
 
-.hide{
-  opacity: 0;
+#portfolioBtn > button {
+  background-color: #e600e6;
+  color: white;
 }
 
-#tagline{
-  width: 225px;
-  font-size: 18px;
+#seeMoreBtn > button {
+  background-color: #e6e600;
+  color: #444;
 }
 
 #gallery{
@@ -73,20 +66,11 @@ h3{
   /* justify-content: center;
   height: 100vh; */
 }
-
-#portfolioBtn{
+#gallery2{
   display: flex;
-  justify-content: center;
-}
-
-#portfolioBtn > button {
-  padding: 12px 18px;
-  border-radius: 5px;
-  font-size: 30px;
-  font-weight: 400;
-  letter-spacing: 1.5px;
-  background-color: #ea4bea;
-  color: white;
+  flex-direction: column;
+  display: none;
+  opacity: 0;
 }
 
 .thumb-row{
@@ -126,4 +110,39 @@ h3{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#toolkit{
+  padding: 3vw 10vw 4vw;
+  font-size: 26px;
+}
+
+#toolkit > div{
+  display: flex;
+}
+#toolkit > div > div {
+  flex: 1 1 30%;
+}
+
+#toolkit h2{
+  text-decoration: solid #00e6e6 underline;
+}
+
+h2{
+  font-size: 36px;
+  font-weight: 400;
+}
+h3{
+  font-size: 30px;
+  font-weight: 200;
+  margin-bottom: 0;
+}
+
+.hide{
+  opacity: 0;
+}
+
+#tagline{
+  width: 225px;
+  font-size: 18px;
 }
