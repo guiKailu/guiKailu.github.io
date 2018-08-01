@@ -5,6 +5,14 @@ function showGallery(){
     .animate({
     opacity: "1"
   }, 1000);
+  $("#portfolioBtn").hide();
+  $("#description").animate({
+    paddingBottom: 0
+  }, 1000);
+  $("#description :last-child").animate({
+    marginBottom: 0
+  }, 1000);
+  $("#toolkit").css("paddingTop", 0);
 }
 
 $(document).ready(function () {
