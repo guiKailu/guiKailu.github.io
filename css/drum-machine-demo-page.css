@@ -1,3 +1,9 @@
+#drum > * {
+  background: #f2f2f2;
+  padding: 15px;
+  border-radius: 5px;
+}
+
 #drum-machine {
   position: relative;
   top: 0px;
@@ -6,6 +12,7 @@
 .grid-container {
   flex: 1 1 0%;
   border-radius: 3px;
+  margin-top: 10px;
 }
 .grid-container #btn-grid {
   padding: 10px;
