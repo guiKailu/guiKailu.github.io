@@ -13,6 +13,7 @@ function showGallery(){
     marginBottom: 0
   }, 1000);
   $("#toolkit").css("paddingTop", 0);
+  $("#seeMoreBtn").css("opacity", 1);
 }
 
 function showMore(){
@@ -30,7 +31,7 @@ function showMore(){
       marginBottom: 0
     }, 1000);
   } else {
-    $("#seeMoreBtn").appendTo("#toolkit");
+    $("#seeMoreBtn").insertAfter("#toolkit");
     $("#gallery2").animate({
       opacity: 0
     }, 1000).hide();
@@ -41,7 +42,6 @@ function showMore(){
       marginBottom: 0
     }, 1000);
   }
-
 
   // $("#contact").css("paddingTop", 0);
 }
