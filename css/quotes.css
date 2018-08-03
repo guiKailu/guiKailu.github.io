@@ -17,18 +17,25 @@ body {
   font-size: 3vmax;
 }
 
+button{
+  cursor: pointer;
+}
+
 #message {
   padding: 15vh 15vw 0 15vw;
 }
+#message > div {
+  padding: 2vw;
+}
 
 #message-getter {
-  flex: 5 1 0%;
+  flex: 8 1 0%;
   font-family: "Hi Melody", Arial, Helvetica, sans-serif;
   font-size: 4vmax;
 }
 
 #footer {
-  flex: 0 1 0%;
+  flex: 1 1 0%;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 20px;
   text-decoration: none;
