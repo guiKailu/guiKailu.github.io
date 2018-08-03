@@ -7,7 +7,6 @@ function getMessage(){
       var html = "";
 
       var randomID = Math.floor(Math.random() * (data.quotes.length - 1));
-      console.log(data);
 
       //catches any undefined authors or quotes, and replaces them with a complete entry.
       while (data.quotes[randomID].author == undefined || data.quotes[randomID].quote == undefined) {
@@ -29,9 +28,6 @@ function getMessage(){
       //adds the quote, author, and, if applicable, date to the URL.
       quoteString += " - ";
       quoteString += data.quotes[randomID].author;
-
-      // TEST*****
-      console.log('html is ' + html + ' and quote string for URL is ' + quoteString);
 
       var arr = quoteString.split(" ");
       quoteString = arr.join("%20");
