@@ -57,7 +57,7 @@ body{
   flex-wrap: wrap;
   display: none;
   opacity: 0;
-  padding: 1vw 10vw;
+  padding: 1vw 5vw;
 }
 
 /* Toggle */
