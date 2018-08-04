@@ -56,15 +56,11 @@
         <p>If you're in Portland, Oregon, let's grab coffee. It's on me.</p>
       </div>
 
-      <div id="portfolioBtn" class="galleryBtn animated pulse">
-        <button onclick="showGallery()">See demos</button>
+      <div id="portfolioBtn" class="galleryBtn animated pulse" onclick="showGallery()">
+        <button>See demos</button>
       </div>
 
       <div id="gallery" class="gallery">
-
-        <!-- Insert a live version of the drum machine -->
-        <!-- with same proportions as thumbnails -->
-        <!-- and ideally with the ipad frame around it -->
         <div class="gallery-item">
           <div class="thumbnail">
             <a href="drum-machine.html" target="_blank">
@@ -115,134 +111,126 @@
             <p>Mobile friendly.</p>
           </div>
         </div>
-
-
-
-        <!-- <div class="thumb-row hide">
-          <div class="thumbnail">
-            <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
-          </div>
-          <div class="thumbnail hide">
-            <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
-          </div>
-        </div> -->
-
       </div>
-    </div>
 
-    <div id="toolkit">
-      <h2>
+
+      <div id="toolkit">
+        <h2>
           My Toolkit
         </h2>
 
-      <div>
         <div>
-          <div class="toolkit-header">
-            <h3>
+          <div>
+            <div class="toolkit-header">
+              <h3>
                 The basics
               </h3>
+            </div>
+            <ul>
+              <li>HTML 5 and 6</li>
+              <li>CSS 3</li>
+              <li>Javascript</li>
+            </ul>
           </div>
-          <ul>
-            <li>HTML 5 and 6</li>
-            <li>CSS 3</li>
-            <li>Javascript</li>
-          </ul>
-        </div>
 
-        <div>
-          <div class="toolkit-header">
-            <h3>
+          <div>
+            <div class="toolkit-header">
+              <h3>
                 Javascript Libraries
               </h3>
+            </div>
+            <ul>
+              <li>jQuery</li>
+              <li>React</li>
+              <li>Underscore</li>
+              <li>ScrollMagic</li>
+            </ul>
           </div>
-          <ul>
-            <li>jQuery</li>
-            <li>React</li>
-            <li>Underscore</li>
-            <li>ScrollMagic</li>
-          </ul>
-        </div>
 
-        <div>
-          <div class="toolkit-header">
-            <h3>
+          <div>
+            <div class="toolkit-header">
+              <h3>
                 CSS Libraries
               </h3>
+            </div>
+            <ul>
+              <li>Bootstrap</li>
+              <li>Sass</li>
+              <li>Animate.css</li>
+            </ul>
           </div>
-          <ul>
-            <li>Bootstrap</li>
-            <li>Sass</li>
-            <li>Animate.css</li>
-          </ul>
-        </div>
 
-        <div>
-          <div class="toolkit-header">
-            <h3>
+          <div>
+            <div class="toolkit-header">
+              <h3>
                 Data Visualization
               </h3>
+            </div>
+            <ul>
+              <li>D3</li>
+            </ul>
           </div>
-          <ul>
-            <li>D3</li>
-          </ul>
+
         </div>
-
       </div>
-    </div>
 
-    <div class="galleryBtn hide animated pulse" id="seeMoreBtn">
-      <button onclick="showMore()">See more demos</button>
-    </div>
+      <div class="galleryBtn hide animated pulse" id="seeMoreBtn" onclick="showMore()">
+        <button>See more demos</button>
+      </div>
 
-    <div id="gallery2" class="gallery">
-
-      <!-- Insert a live version of the drum machine -->
-      <!-- with same proportions as thumbnails -->
-      <!-- and ideally with the ipad frame around it -->
-      <div class="thumbnail">
-        <div>
-          <a href="drum-machine.html" target="_blank">
-              <img class="thumbnail-img" src="portfolio/img/drum-machine.png">
+      <div id="gallery2" class="gallery">
+        <div class="gallery-item">
+          <div class="thumbnail">
+            <a href="drum-machine.html" target="_blank">
+              <div class="centered-img"><img class="thumbnail-img" src="portfolio/img/drum-machine.png"></div>
             </a>
+          </div>
+          <div class="item-info">
+            <p>Retro themed drum machine.</p>
+            <p>Coded with React.</p>
+            <p>Can be played by computer's mouse or keyboard, or by touchscreen.</p>
+          </div>
         </div>
-      </div>
-
-      <div class="thumbnail">
-        <div>
-          <a href="calculator.html" target="_blank">
-              <img class="thumbnail-img" src="portfolio/img/calculator.png"
-                alt="">
+        <div class="gallery-item">
+          <div class="thumbnail">
+            <a href="calculator.html" target="_blank">
+              <div class="centered-img"><img class="thumbnail-img" src="portfolio/img/calculator.png" alt=""></div>
             </a>
+          </div>
+          <div class="item-info">
+            <p>Calculator coded with CSS flexbox.</p>
+            <p>Able to string together multiple calculations.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="thumbnail">
+            <a href="quotes.html" target="_blank">
+              <div class="centered-img"><img class="thumbnail-img" src="portfolio/img/quotes.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="item-info">
+            <p>Quote generator coded with jQuery.</p>
+            <p>Data retrieved with json requests.</p>
+            <p>Converts quotes and author's names to twitter URLs for easy tweeting.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="thumbnail">
+            <a href="product.html" target="_blank">
+              <div class="centered-img"><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
+            </a>
+          </div>
+          <div class="item-info">
+            <p>Product page with email form, embedded video, and pricing boxes.</p>
+            <p>Menu fluidly resizes for all window sizes.</p>
+            <p>Mobile friendly.</p>
+          </div>
         </div>
       </div>
-
-      <div class="thumbnail">
-        <div>
-          <a href="quotes.html" target="_blank">
-            <img class="thumbnail-img" src="portfolio/img/quotes.png"
-              alt="">
-              </a>
-        </div>
-      </div>
-
-      <div class="thumbnail">
-        <a href="product.html" target="_blank">
-          <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
-        </a>
-      </div>
-
-
-      <!-- <div class="thumb-row hide">
-        <div class="thumbnail">
-          <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
-        </div>
-        <div class="thumbnail hide">
-          <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
-        </div>
-      </div> -->
-
     </div>
-
   </body>
 
 </html>

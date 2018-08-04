@@ -1,5 +1,3 @@
-var TAGLINE_DELAY = 60;
-
 function showGallery(){
   $("#gallery").show()
     .animate({
@@ -42,50 +40,4 @@ function showMore(){
       marginBottom: 0
     }, 1000);
   }
-
-  // $("#contact").css("paddingTop", 0);
 }
-
-$(document).ready(function () {
-// 
-//   var loc = window.location.href+'';
-// if (loc.indexOf('http://')==0){
-//     window.location.href = loc.replace('http://','https://');
-// }
-
-  // // init controller
-  // var controller = new ScrollMagic.Controller();
-  //
-  // // create a scene
-  // var scene1 = new ScrollMagic.Scene({
-  //     offset: 1
-  //   })
-  //   .setTween(".thumbnail1", {
-  //     width: "90%"
-  //   })
-  //   .addTo(controller);
-  //
-  // var scene2 = new ScrollMagic.Scene({
-  //     offset: 2,
-  //   })
-  //   .setTween("#gallery", {
-  //     marginTop: "50px"
-  //   })
-  //   .addTo(controller);
-  //
-  // var sceneTagline = new ScrollMagic.Scene({
-  //     duration: 88
-  //   })
-  //   .setPin("#tagline")
-  //   .addTo(controller);
-  //
-  // var slowGallery = new ScrollMagic.Scene({
-  //     offset: 20,
-  //     duration: 200
-  //   })
-  //   .setPin("#gallery")
-  //   .addTo(controller);
-  //
-  // // console.log(scene.triggerElement());
-  // // console.log(scene2);
-});
