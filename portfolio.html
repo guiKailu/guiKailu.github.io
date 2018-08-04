@@ -25,7 +25,7 @@
     <script src="js/script.js"></script>
 
     <title>
-      Yann Stoneman | Web Developer
+      Stoneman | Front End Developer
     </title>
   </head>
 
@@ -52,53 +52,71 @@
 
       <div id="description">
         <p>Hi, I'm Yann. I can build websites for you.</p>
-        <p>Past collaborators can vouch for my responsibility and efficiency working both remotely and in the office.
-          <p>If you're in Portland, Oregon, let's grab coffee. It's on me.</p>
+        <p>Past collaborators can vouch for my responsibility and efficiency working both remotely and in the office.</p>
+        <p>If you're in Portland, Oregon, let's grab coffee. It's on me.</p>
       </div>
 
       <div id="portfolioBtn" class="galleryBtn">
         <button onclick="showGallery()">See demos</button>
       </div>
 
-      <div id="gallery">
-        <div class="thumb-row">
-          <!-- Insert a live version of the drum machine -->
-          <!-- with same proportions as thumbnails -->
-          <!-- and ideally with the ipad frame around it -->
-          <div class="thumbnail">
-            <div>
-              <div>
-                <div id="drum" class="thumbnail-img"></div>
-              </div>
-            </div>
-          </div>
+      <div id="gallery" class="gallery">
 
+        <!-- Insert a live version of the drum machine -->
+        <!-- with same proportions as thumbnails -->
+        <!-- and ideally with the ipad frame around it -->
+        <div class="gallery-item">
           <div class="thumbnail">
-            <div>
-              <a href="calculator.html" target="_blank">
-                <img class="thumbnail-img" src="portfolio/img/calculator.png"
-                  alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="thumb-row">
-          <div class="thumbnail">
-            <div>
-              <a href="quotes.html" target="_blank">
-              <img class="thumbnail-img" src="portfolio/img/quotes.png"
-                alt="">
-                </a>
-            </div>
-          </div>
-
-          <div class="thumbnail">
-            <a href="product.html" target="_blank">
-              <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
+            <a href="drum-machine.html" target="_blank">
+              <div class="centered-img"><img class="thumbnail-img" src="portfolio/img/drum-machine.png"></div>
             </a>
           </div>
+          <div class="item-info">
+            <p>Retro themed drum machine.</p>
+            <p>Coded with React.</p>
+            <p>Can be played by computer's mouse or keyboard, or by touchscreen.</p>
+          </div>
         </div>
+        <div class="gallery-item">
+          <div class="thumbnail">
+            <a href="calculator.html" target="_blank">
+              <div class="centered-img"><img class="thumbnail-img" src="portfolio/img/calculator.png" alt=""></div>
+            </a>
+          </div>
+          <div class="item-info">
+            <p>Calculator coded with CSS flexbox.</p>
+            <p>Able to string together multiple calculations.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="thumbnail">
+            <a href="quotes.html" target="_blank">
+              <div class="centered-img"><img class="thumbnail-img" src="portfolio/img/quotes.png" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="item-info">
+            <p>Quote generator coded with jQuery.</p>
+            <p>Data retrieved with json requests.</p>
+            <p>Converts quotes and author's names to twitter URLs for easy tweeting.</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="thumbnail">
+            <a href="product.html" target="_blank">
+              <div class="centered-img"><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
+            </a>
+          </div>
+          <div class="item-info">
+            <p>Product page with email form, embedded video, and pricing boxes.</p>
+            <p>Menu fluidly resizes for all window sizes.</p>
+            <p>Mobile friendly.</p>
+          </div>
+        </div>
+
+
 
         <!-- <div class="thumb-row hide">
           <div class="thumbnail">
@@ -176,45 +194,43 @@
       <button onclick="showMore()">See more demos</button>
     </div>
 
-    <div id="gallery2">
-      <div class="thumb-row">
-        <!-- Insert a live version of the drum machine -->
-        <!-- with same proportions as thumbnails -->
-        <!-- and ideally with the ipad frame around it -->
-        <div class="thumbnail">
-          <div>
-            <div>
-              <div id="drum" class="thumbnail-img"></div>
-            </div>
-          </div>
-        </div>
+    <div id="gallery2" class="gallery">
 
-        <div class="thumbnail">
-          <div>
-            <a href="calculator.html" target="_blank">
+      <!-- Insert a live version of the drum machine -->
+      <!-- with same proportions as thumbnails -->
+      <!-- and ideally with the ipad frame around it -->
+      <div class="thumbnail">
+        <div>
+          <a href="drum-machine.html" target="_blank">
+              <img class="thumbnail-img" src="portfolio/img/drum-machine.png">
+            </a>
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <div>
+          <a href="calculator.html" target="_blank">
               <img class="thumbnail-img" src="portfolio/img/calculator.png"
                 alt="">
             </a>
-          </div>
         </div>
       </div>
 
-      <div class="thumb-row">
-        <div class="thumbnail">
-          <div>
-            <a href="quotes.html" target="_blank">
+      <div class="thumbnail">
+        <div>
+          <a href="quotes.html" target="_blank">
             <img class="thumbnail-img" src="portfolio/img/quotes.png"
               alt="">
               </a>
-          </div>
-        </div>
-
-        <div class="thumbnail">
-          <a href="product.html" target="_blank">
-            <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
-          </a>
         </div>
       </div>
+
+      <div class="thumbnail">
+        <a href="product.html" target="_blank">
+          <div><img class="thumbnail-img" src="portfolio/img/product.png" alt=""></div>
+        </a>
+      </div>
+
 
       <!-- <div class="thumb-row hide">
         <div class="thumbnail">
@@ -226,8 +242,6 @@
       </div> -->
 
     </div>
-
-    <script src="js/drum-machine.js"></script>
 
   </body>
 
