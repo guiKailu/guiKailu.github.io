@@ -33,13 +33,16 @@ h5{
   font-weight: 500;
   margin: 1vw 0 0;
 }
-a::selection{
-  border: none;
-}
 
 button:hover, [type="submit"] {
   cursor: pointer;
 }
+
+/* Make links light green on hover */
+#footer a:hover, #nav-bar a:hover{
+  color: #aee423;
+}
+
 #header{
   background: #242f3e;
   width: 100%;
@@ -97,14 +100,15 @@ button:hover, [type="submit"] {
 #nav-bar > * {
   flex: 1 1 10%;
 }
-#nav-bar a button {
+#nav-bar a {
   font-size: inherit;
   background: inherit;
   padding: 5px 26px;
   border: none;
   font-weight: 300;
   white-space: nowrap;
-  overflow: hidden;
+  /* overflow: hidden; */
+  text-decoration: none;
 }
 #info-collect {
   margin-top: 11vw  ;
@@ -242,10 +246,14 @@ button:hover, [type="submit"] {
 }
 #footer a{
   text-decoration: none;
+  padding: 15px 10px;
   color: white;
 }
 #credits{
   padding-bottom: 2vh;
+}
+#credits a {
+  padding: 5px 0;
 }
 
 @media only screen
