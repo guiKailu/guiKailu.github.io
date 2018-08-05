@@ -16,7 +16,6 @@ function showGallery(){
 
 function showMore(){
   var text = $("#seeMoreBtn>button").text();
-  console.log(text);
   if (text == "See more demos"){
     $("#gallery2").show()
       .animate({
