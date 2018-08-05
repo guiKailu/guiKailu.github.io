@@ -111,7 +111,8 @@ button:hover, [type="submit"] {
   text-decoration: none;
 }
 #info-collect {
-  margin-top: 11vw  ;
+  margin-top: 11vw;
+  margin-bottom: 8vmin;
   flex-direction: column;
   align-items: center;
   display: -webkit-flex;
@@ -132,7 +133,7 @@ button:hover, [type="submit"] {
   letter-spacing: -0.5px;
 }
 #form{
-  margin: 3vh 0 10vmin;
+  margin: 3vh 0 15px;
   justify-content: center;
   width: 50vw;
   display: -webkit-flex;
@@ -142,7 +143,6 @@ button:hover, [type="submit"] {
 #email {
   flex: 1 1 70%;
   font-size: 80%;
-  /* width: 30%; */
   padding: 3px 5px 3px 7px;
   font-size: inherit;
   text-align: center;
@@ -151,8 +151,6 @@ button:hover, [type="submit"] {
 }
 #submit {
   flex: 1 1 30%;
-  /* display: block; */
-  /* text-transform: uppercase; */
   font-size: inherit;
   border-radius: 0 10px 10px 0;
   border: none;

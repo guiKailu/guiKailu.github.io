@@ -6,14 +6,15 @@
     <title>FCC Product Landing Page Project</title>
     <link rel="stylesheet" href="css/product.css">
 
-  </head>
-
-  <body>
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+    <script src="js/product.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Helvetica%20Neue" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
+  <body>
     <header id="header">
       <div id="logo">
         <div id="logo-img"><img src="portfolio/product/img/Driftwood_tiny.png"></div>
@@ -29,7 +30,7 @@
     <div id="info-collect">
       <h2>Get Your Driftwood Today!</h2>
       <p><span>"Nature's Masterpiece!" </span><i id="newspaper">--The New Fork Rhymes</i></p>
-      <form id="form" action="https://www.freecodecamp.com/email-submit">
+      <form id="form" action="#" onsubmit="submitMessage();return false">
         <input name="email" id="email" type="email" placeholder="Enter your email to..." required/>
         <button id="submit" type="submit">get started.</button>
       </form>
