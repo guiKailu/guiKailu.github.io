@@ -126,9 +126,9 @@ class Presentational extends React.Component {
                />
             </button>
           </div>
-        <footer>
-          {/*Copyright with link to homepage*/}
-          <a id="footer" href="https://www.ystoneman.com/portfolio" alt="Developer's Portfolio" target="_blank"> Yann Stoneman © 2018</a>
+          <footer>
+            {/*Copyright with link to homepage*/}
+            <a id="footer" href="portfolio.html" alt="Developer's Portfolio" target="_blank"> Yann Stoneman © 2018</a>
         </footer>
         </div>
 

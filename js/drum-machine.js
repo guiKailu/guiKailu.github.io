@@ -184,7 +184,7 @@ var Presentational = function (_React$Component) {
             null,
             React.createElement(
               "a",
-              { id: "footer", href: "https://www.ystoneman.com/portfolio", alt: "Developer's Portfolio", target: "_blank" },
+              { id: "footer", href: "portfolio.html", alt: "Developer's Portfolio", target: "_blank" },
               " Yann Stoneman \xA9 2018"
             )
           )
