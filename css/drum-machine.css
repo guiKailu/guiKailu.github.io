@@ -1,10 +1,11 @@
-#drum-body {
+body {
   background: #f2f2f2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 100vh;
+  margin-top: 150px;
+}
+
+#drum-machine {
+  position: relative;
+  top: 75px;
 }
 
 #display {
@@ -14,29 +15,42 @@
 }
 
 .grid-container {
+  border-radius: 10px;
+  position: relative;
   display: grid;
   justify-items: center;
   align-items: center;
 }
-
 .grid-container #btn-grid {
   grid-template-columns: 1fr 1fr 1fr;
+  padding: 50px;
   background-color: #eb3d3c;
 }
-
+.grid-container #btn-grid button {
+  outline: none;
+}
 .grid-container #btn-grid .drum-pad {
-  font-family: monospace;
+  height: 75px;
+  margin: 5px;
+  width: 75px;
+  font: 24px monospace;
   transition: 0.8s;
   background: #84c8b6;
   box-shadow: -2px 0px #eb3d3c, 2px 0px #eb3d3c, 0 2px #eb3d3c, 0 -2px #eb3d3c;
 }
+@media screen and (min-width: 720px) {
+  .grid-container #btn-grid .drum-pad {
+    width: 125px;
+    height: 125px;
+  }
+}
 
-footer{
+footer {
   display: flex;
   align-items: flex-end;
 }
 
-footer a{
+footer a {
   /* border: 1px solid black; */
   padding: 20px;
   font-family: monospace;

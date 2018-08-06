@@ -10,16 +10,19 @@ class Presentational extends React.Component {
     this.play = this.play.bind(this);
     this.define = this.define.bind(this);
   }
+
   playKey(event) {
     let button = String.fromCharCode(event.charCode);
     let note = button.toUpperCase();
     let drumPad = document.getElementById(note).parentElement;
     this.play(drumPad);
   }
+
   define(event) {
     let key = event.currentTarget;
     this.play(key);
   }
+
   play(key) {
     if (keys.includes(key.innerText)) {
       let audio = document.getElementById(key.innerText);
@@ -31,9 +34,15 @@ class Presentational extends React.Component {
     }
   }
 
+  // focus a button upon load, so that
+  // keypress event listener is active.
+  componentDidMount(){
+    this.firstBtn.focus();
+  }
+
   render() {
     return (
-      <body onKeyPress={this.playKey}>
+      <div onKeyPress={this.playKey}>
         <div id="drum-machine" className="grid-container container">
           <div className="jumbotron animated flipInX" id="display">
             {this.state.display}
@@ -44,12 +53,13 @@ class Presentational extends React.Component {
               className="btn drum-pad"
               id="ChordRhythm"
               onClick={this.define}
+              ref={(input) => { this.firstBtn = input; }}
             >
               Q<audio
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Chord+rhythm.m4a"
                 className="clip"
                 id="Q"
-              />
+               />
             </button>
 
             <button className="btn drum-pad" id="Chord" onClick={this.define}>
@@ -57,7 +67,7 @@ class Presentational extends React.Component {
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Chord.m4a"
                 className="clip"
                 id="W"
-              />
+               />
             </button>
 
             <button className="btn drum-pad" id="Conga" onClick={this.define}>
@@ -65,7 +75,7 @@ class Presentational extends React.Component {
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Conga.m4a"
                 className="clip"
                 id="E"
-              />
+               />
             </button>
 
             <button className="btn drum-pad" id="Crash" onClick={this.define}>
@@ -73,7 +83,7 @@ class Presentational extends React.Component {
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Crash.m4a"
                 className="clip"
                 id="A"
-              />
+               />
             </button>
 
             <button className="btn drum-pad" id="Cymbal" onClick={this.define}>
@@ -81,7 +91,7 @@ class Presentational extends React.Component {
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Cymbal+Hit.m4a"
                 className="clip"
                 id="S"
-              />
+               />
             </button>
 
             <button className="btn drum-pad" id="Kick" onClick={this.define}>
@@ -89,7 +99,7 @@ class Presentational extends React.Component {
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Kick.m4a"
                 className="clip"
                 id="D"
-              />
+               />
             </button>
 
             <button className="btn drum-pad" id="Scratch" onClick={this.define}>
@@ -97,7 +107,7 @@ class Presentational extends React.Component {
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Scratch.m4a"
                 className="clip"
                 id="Z"
-              />
+               />
             </button>
 
             <button className="btn drum-pad" id="Serve" onClick={this.define}>
@@ -105,7 +115,7 @@ class Presentational extends React.Component {
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Serve.m4a"
                 className="clip"
                 id="X"
-              />
+               />
             </button>
 
             <button className="btn drum-pad" id="Volley" onClick={this.define}>
@@ -113,11 +123,16 @@ class Presentational extends React.Component {
                 src="https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Volley.m4a"
                 className="clip"
                 id="C"
-              />
+               />
             </button>
           </div>
+        <footer>
+          {/*Copyright with link to homepage*/}
+          <a id="footer" href="https://www.ystoneman.com/portfolio" alt="Developer's Portfolio" target="_blank"> Yann Stoneman © 2018</a>
+        </footer>
         </div>
-      </body>
+
+      </div>
     );
   }
 }

@@ -27,6 +27,9 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     padding: 50px;
     background-color: $red;
+    button{
+      outline: none;
+    }
     .drum-pad {
       height: 75px;
       margin: 5px;
@@ -41,4 +44,17 @@ body {
       }
     }
   }
+}
+
+footer{
+  display: flex;
+  align-items: flex-end;
+}
+
+footer a{
+  /* border: 1px solid black; */
+  padding: 20px;
+  font-family: monospace;
+  font-size: 18px;
+  text-decoration: none;
 }
