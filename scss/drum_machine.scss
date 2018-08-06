@@ -48,12 +48,15 @@ body {
 footer{
   display: flex;
   align-items: flex-end;
-}
-
-footer a{
-  /* border: 1px solid black; */
-  padding: 20px;
-  font-family: monospace;
-  font-size: 18px;
-  text-decoration: none;
+  a{
+    /* border: 1px solid black; */
+    padding: 20px;
+    font-family: monospace;
+    font-size: 18px;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #1c4567;
+    text-decoration: none;
+  }
 }
