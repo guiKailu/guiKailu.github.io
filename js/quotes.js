@@ -21,9 +21,10 @@ function getMessage(){
       $(".message").html(html);
 
       //initiates URL for tweet and replaces symbols with the html url code.
-      var quoteString = data.quotes[randomID].quote.replace(/\;/g, "%3B");
-      quoteString = quoteString.replace(/\+/g, "%2B");
-      quoteString = quoteString.replace(/%/g, "%25");
+      var quoteString = data.quotes[randomID].quote
+        .replace(/%/g, "%25")
+        .replace(/;/g, "%3B")
+        .replace(/\+/g, "%2B");
 
       //adds the quote, author, and, if applicable, date to the URL.
       quoteString += " - ";
