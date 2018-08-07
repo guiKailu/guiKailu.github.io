@@ -1,132 +1,216 @@
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   text-align: center;
-  padding-top: 7%;
-/*   background-color: lightblue; */
+  margin-top: 0;
+  padding-top: 1vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0283b7), to(#06437e));
+  background: -webkit-linear-gradient(#0283b7, #06437e);
+  background: -o-linear-gradient(#0283b7, #06437e);
   background: linear-gradient(#0283b7, #06437e);
   color: #fedd03;
-  font-family: 'Dosis', 'Britannic Bold', sans-serif;
+  font-family: "Dosis", "Britannic Bold", sans-serif;
   font-size: 2.5vmax;
-  transition: 0.8s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
   height: 100vh;
 }
-#calculator{
-  max-height: 80vh;
+body div.equals-row, body div.result, body div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-#title{
-  font-size: 6vw;
-  margin-top: 0;
-}
-div.row, div.equals-row, div.result{
-  display: flex;
-  flex-wrap: wrap;
-}
-div.result{
+body div.result {
   font-size: 2em;
-  flex: 1 1 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-input {
-  height: 100%;
+body div.row > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25%;
+          flex: 1 1 25%;
+}
+body input {
+  /* height: 100%; */
   font-size: 2em;
 }
-div.row > * {
-  flex: 1 1 25%;
-}
-#zero, #point {
-  flex: 1 1 25%;
-}
-#myBtn {
-  flex: 1 1 50%;
-}
-button {
+body button {
   padding: 10px 0;
   border: 2px solid #1c1700;
   background-color: #fbbd1e;
   font-size: 1.3em;
 }
-#calcInput{
+
+#calculator {
+  max-height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#title {
+  font-size: 6vw;
+  margin-top: 0;
+}
+
+#zero, #point {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25%;
+          flex: 1 1 25%;
+}
+
+#myBtn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+}
+
+#calcInput {
   text-align: center;
-  /* margin-top: 30px; */
   border: 3px solid #1c1700;
   border-radius: 7px 7px 0px 0px;
-  transition: 0.8s;
   background-color: #fbf0dc;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #f3b6cf;
-    opacity: 1; /* Firefox */
+
+::-webkit-input-placeholder {
+  color: #f3b6cf;
+  opacity: 1;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #f3b6cf;
+:-ms-input-placeholder {
+  color: #f3b6cf;
+  opacity: 1;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: #f3b6cf;
+::-ms-input-placeholder {
+  color: #f3b6cf;
+  opacity: 1;
 }
-#result{
+
+::placeholder {
+  color: #f3b6cf;
+  opacity: 1;
+}
+
+#result {
   border: 3px solid #1c1700;
   border-radius: 0px 0px 7px 7px;
   color: #e11c16;
   background-color: #fbeacc;
 }
-#result.enabled{
-  animation: shake 1.5s;
+
+#result.enabled {
+  -webkit-animation: shake 1.5s;
+          animation: shake 1.5s;
   font-size: 2em;
 }
-#credits{
+
+#credits {
   margin-top: 25px;
 }
-a{
+#credits a {
   color: #fedd03;
   font-weight: 600;
   text-decoration: none;
   padding: 15px 10px;
 }
-a:hover{
+#credits a:hover {
   color: #f8ead5;
   text-decoration: none;
-
 }
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translate(1px, 1px) rotate(0deg);
+            transform: translate(1px, 1px) rotate(0deg);
+  }
+  20% {
+    -webkit-transform: translate(-1px, -2px) rotate(-1deg);
+            transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  40% {
+    -webkit-transform: translate(-3px, 0px) rotate(1deg);
+            transform: translate(-3px, 0px) rotate(1deg);
+  }
+  60% {
+    -webkit-transform: translate(3px, 2px) rotate(0deg);
+            transform: translate(3px, 2px) rotate(0deg);
+  }
+  80% {
+    -webkit-transform: translate(1px, -1px) rotate(1deg);
+            transform: translate(1px, -1px) rotate(1deg);
+  }
+  100% {
+    -webkit-transform: translate(-1px, 2px) rotate(-1deg);
+            transform: translate(-1px, 2px) rotate(-1deg);
+  }
+}
+
 @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    20% { transform: translate(-1px, -2px) rotate(-1deg); }
-    40% { transform: translate(-3px, 0px) rotate(1deg); }
-    60% { transform: translate(3px, 2px) rotate(0deg); }
-    80% { transform: translate(1px, -1px) rotate(1deg); }
-    100% { transform: translate(-1px, 2px) rotate(-1deg); }
+  0% {
+    -webkit-transform: translate(1px, 1px) rotate(0deg);
+            transform: translate(1px, 1px) rotate(0deg);
+  }
+  20% {
+    -webkit-transform: translate(-1px, -2px) rotate(-1deg);
+            transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  40% {
+    -webkit-transform: translate(-3px, 0px) rotate(1deg);
+            transform: translate(-3px, 0px) rotate(1deg);
+  }
+  60% {
+    -webkit-transform: translate(3px, 2px) rotate(0deg);
+            transform: translate(3px, 2px) rotate(0deg);
+  }
+  80% {
+    -webkit-transform: translate(1px, -1px) rotate(1deg);
+            transform: translate(1px, -1px) rotate(1deg);
+  }
+  100% {
+    -webkit-transform: translate(-1px, 2px) rotate(-1deg);
+            transform: translate(-1px, 2px) rotate(-1deg);
+  }
 }
 @media only screen and (min-width: 800px) {
-  body{
-    margin-right: 35%;
-    margin-left: 35%;
-    transition: 0.8s;
+  body {
+    margin: 0 35%;
   }
 }
 @media only screen and (max-width: 800px) {
-  body{
-    margin-right: 15%;
-    margin-left: 15%;
-    transition: 0.8s;
+  body {
+    margin: 0 15%;
     font-size: 3.6vw;
   }
-  button{
+  body button {
     border-width: 1px;
   }
 }
-@media only screen and (max-height: 615px){
-  body{
+@media only screen and (max-height: 615px) {
+  body {
     padding-top: 4%;
-    transition: 0.8s;
   }
-  input{
+  body input {
     margin-top: 10px;
-    transition: 0.8s;
   }
 }

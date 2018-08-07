@@ -1,0 +1,121 @@
+$black: #1c1700;
+$beige: #fbeacc;
+$yellow: #fedd03;
+$pink: #f3b6cf;
+$t: 0.5s;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 1vh;
+  background: linear-gradient(#0283b7, #06437e);
+  color: $yellow;
+  font-family: 'Dosis', 'Britannic Bold', sans-serif;
+  font-size: 2.5vmax;
+  transition: $t;
+  height: 100vh;
+  div.equals-row, div.result, div.row{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  div.result{
+    font-size: 2em;
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+  }
+  div.row > * {
+    flex: 1 1 25%;
+  }
+  input {
+    font-size: 2em;
+  }
+  button {
+    padding: 10px 0;
+    border: 2px solid $black;
+    background-color: #fbbd1e;
+    font-size: 1.3em;
+  }
+}
+#calculator{
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+#title{
+  font-size: 6vw;
+  margin-top: 0;
+}
+#zero, #point {
+  flex: 1 1 25%;
+}
+#myBtn {
+  flex: 1 1 50%;
+}
+#calcInput{
+  text-align: center;
+  border: 3px solid $black;
+  border-radius: 7px 7px 0px 0px;
+  background-color: #fbf0dc;
+}
+::placeholder {
+    color: $pink;
+    opacity: 1;
+}
+#result{
+  border: 3px solid $black;
+  border-radius: 0px 0px 7px 7px;
+  color: #e11c16;
+  background-color: $beige;
+}
+#result.enabled{
+  animation: shake 1.5s;
+  font-size: 2em;
+}
+#credits{
+  margin-top: 25px;
+  a{
+    color: $yellow;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 15px 10px;
+  }
+  a:hover{
+    color: #f8ead5;
+    text-decoration: none;
+  }
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-1px, -2px) rotate(-1deg); }
+    40% { transform: translate(-3px, 0px) rotate(1deg); }
+    60% { transform: translate(3px, 2px) rotate(0deg); }
+    80% { transform: translate(1px, -1px) rotate(1deg); }
+    100% { transform: translate(-1px, 2px) rotate(-1deg); }
+}
+@media only screen and (min-width: 800px) {
+  body{
+    margin: 0 35%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  body{
+    margin: 0 15%;
+    font-size: 3.6vw;
+    button{
+      border-width: 1px;
+    }
+  }
+}
+@media only screen and (max-height: 615px){
+  body{
+    padding-top: 4%;
+    input{
+      margin-top: 10px;
+    }
+  }
+}
