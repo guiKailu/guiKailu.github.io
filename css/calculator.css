@@ -47,7 +47,7 @@ body div.row > * {
           flex: 1 1 25%;
 }
 body input {
-  margin-bottom: 0;
+  margin: 0;
   font-size: 2em;
 }
 body button {
