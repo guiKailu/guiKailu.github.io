@@ -47,10 +47,11 @@ body div.row > * {
           flex: 1 1 25%;
 }
 body input {
-  /* height: 100%; */
+  margin-bottom: 0;
   font-size: 2em;
 }
 body button {
+  margin: 0;
   padding: 10px 0;
   border: 2px solid #1c1700;
   background-color: #fbbd1e;
