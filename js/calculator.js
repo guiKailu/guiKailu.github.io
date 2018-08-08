@@ -156,38 +156,46 @@ function ce() {
   }
 }
 
+// Remove operator from input
+// And return just the number.
+// 'dirt' is the index at which the operator is at.
+function cleanNumber(dirt, numberString){
+  var num = numberString.split("");
+  num.splice(dirt, 1);
+  num = num.join("");
+  num = parseFloat(num);
+  return num;
+}
 
-function display(inp) {
-  var sum;
-  var num = parseFloat(inp);
-  var match;
-
-  if (inp.match(operators)) {
-    match = operators.exec(inp).index;
-    // store number without operators
-    var pureNumber = inp.split("");
-    pureNumber.splice(match, 1);
-    num = pureNumber.join("");
-    num = parseFloat(num);
-  }
-
-  if (num && inp.match(operators) && match !== 0) {
+// Take user input, update top box and entries array.
+function displayTopBox(inp){
+  // store which index that operator is at.
+  var operatorIndex = operators.exec(inp).index;
+  // Remove operator from number input
+  var num = cleanNumber(operatorIndex, inp);
+  // If the first number in the input is a number
+  if (operatorIndex !== 0) {
+    // add that number to the entries array
     entries.push(num);
+    // and display only the operator
     document.getElementById("topBox").value = inp.match(operators);
-  }
-
-  if (num && inp.match(operators) && match === 0) {
+  } else {
     if (inp.match(operators) !== "=") {
+      // otherwise, add the operator to the entries array,
       entries.push(inp.match(operators));
     }
+    // preserve negatives,
     if (num < 0) {
       num *= -1;
     }
+    // and show the number.
     document.getElementById("topBox").value = num;
   }
+}
 
-  var resultHTML = entries[0];
-  for (var i = 1; i < entries.length; i++) {
+function displayBottomBox(){
+  var resultHTML = "";
+  for (var i = 0; i < entries.length; i++) {
     resultHTML += " " + entries[i];
   }
 
@@ -224,6 +232,14 @@ function display(inp) {
       document.getElementById("topBox").value = "";
     }
   }
+}
+
+function display(inp) {
+  // Take user input, update top box and entries array.
+  displayTopBox(inp);
+  // Update bottom box.
+  // The bottom box shows the results of calculations.
+  displayBottomBox();
 }
 
 // Add divide symbol to document
