@@ -86,7 +86,7 @@ body button {
           flex: 1 1 50%;
 }
 
-#calcInput {
+#topBox {
   text-align: center;
   border: 3px solid #1c1700;
   border-radius: 7px 7px 0px 0px;

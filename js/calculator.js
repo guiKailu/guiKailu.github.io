@@ -1,55 +1,95 @@
+// final result of all operations
 var total = 0;
-var operators = /\+|\-|\/|\*|=/g;
+// five operators
+var operators = /\+|-|\/|\*|=/g;
+// all numbers
 var numbers = /\d/;
 var subtotal;
+// Array to keep track of all buttons pressed
+// since the last AC press.
 var entries = [];
 
+var selectedOperatorBgColor = "background-color: #c9ddff;";
+
+// Set all buttons to their default background color
 function resetButtons() {
+  // Select all buttons
   var b = document.getElementsByTagName("button");
+  // loop through all buttons
   for (var c in b) {
     b[c].style = "background-color: #fbbd1e;";
   }
 }
 
+// Highlight operator button, when selected,
+// by changing its background color from yellow to blue
 function highlightOperator(operator) {
+  // First set all buttons to default color
   resetButtons();
+  // Plus
   if (operator.match(/\+/)) {
-    document.getElementById("plus").style = "background-color: #c9ddff;";
-  } else if (operator.match(/\-/)) {
-    document.getElementById("minus").style = "background-color: #c9ddff;";
+    document.getElementById("plus").style = selectedOperatorBgColor;
+  // Minus
+  } else if (operator.match(/-/)) {
+    document.getElementById("minus").style = selectedOperatorBgColor;
+  // Divide
   } else if (operator.match(/\//)) {
-    document.getElementById("divide").style = "background-color: #c9ddff;";
+    document.getElementById("divide").style = selectedOperatorBgColor;
+  // Multiply
   } else if (operator.match(/\*/)) {
-    document.getElementById("multiply").style = "background-color: #c9ddff;";
+    document.getElementById("multiply").style = selectedOperatorBgColor;
   }
 }
 
-function writeToBox(whatToWrite) {
-  highlightOperator(whatToWrite);
-  var whatsThere = document.getElementById("calcInput").value;
+// When a number or operator is clicked,
+// show it in the top box.
+function writeToBox(selectedButton) {
+  // First highlight the selected button
+  if (selectedButton.match(operators)){
+    highlightOperator(selectedButton);
+  }
+  // Save what's currently displayed in the top box.
+  var currentTopBoxVal = document.getElementById("topBox").value;
 
-  if (document.getElementById("calcInput").value) {
-    var boxValue = document.getElementById("calcInput").value;
-    boxValue += whatToWrite;
+  // If something's displayed in the top box, then proceed
+  if (currentTopBoxVal) {
+
+    var updatedTopBoxVal = currentTopBoxVal + selectedButton;
 
     if (
-      whatToWrite === "." ||
-      (whatToWrite.match(numbers) && !whatsThere.match(operators))
+      // if the selection is a decimal point, and there isn't yet a decimal point
+      (selectedButton === "." && !currentTopBoxVal.match(/\./)) ||
+      // or if the selection is a number
+      (selectedButton.match(numbers)
+      // AND the current value displayed in the top box is not an operator
+      && !currentTopBoxVal.match(operators))
     ) {
-      document.getElementById("calcInput").value = boxValue;
+      // Display the updatex value in the top box
+      document.getElementById("topBox").value = updatedTopBoxVal;
+      // If there's already a decimal point,
+      // and the user selects it again,
+      // stop running the function
+    } else if (selectedButton === "." && !currentTopBoxVal.match(/\./)){
+      break;
+      // if there's already something displayed in the top box,
+      // use display() to process the input
     } else {
-      display(boxValue);
+      display(updatedTopBoxVal);
     }
-  } else {
-    document.getElementById("calcInput").value = whatToWrite;
-    if (entries[entries.length - 1] == "=" && whatToWrite.match(operators)) {
-    }
+  }
+  // If nothing's in the top box yet,
+  // give it the value of the selected button
+  else {
+    document.getElementById("topBox").value = selectedButton;
   }
 }
 
+// If the percent button is pressed
 function percent() {
-  var decimal = document.getElementById("calcInput").value;
-  document.getElementById("calcInput").value = decimal * 0.01;
+  var topBox = document.getElementById("topBox");
+  // Multiply the number displayed in the top box by 1 percent.
+  // and then display the result in the same box.
+  topBox.value *= 0.01;
 }
 
 function final(event) {
@@ -60,10 +100,10 @@ function final(event) {
 }
 
 function clickIt() {
-  var y = document.getElementById("calcInput").value;
-  document.getElementById("calcInput").value = y + "=";
-  display(document.getElementById("calcInput").value);
-  document.getElementById("calcInput").value = "";
+  var y = document.getElementById("topBox").value;
+  document.getElementById("topBox").value = y + "=";
+  display(document.getElementById("topBox").value);
+  document.getElementById("topBox").value = "";
 }
 
 function wiggle() {
@@ -83,19 +123,19 @@ function calc() {
 function ac() {
   total = 0;
   entries = [];
-  document.getElementById("calcInput").value = "";
+  document.getElementById("topBox").value = "";
   document.getElementById("result").innerHTML = 0;
   resetButtons();
 }
 
 function ce() {
   //set a variable equal to the value of the entry field.
-  var ceField = document.getElementById("calcInput").value;
+  var ceField = document.getElementById("topBox").value;
   var isOperator = ceField.match(operators);
   //set that variable equal to itself minus the last ch.
   ceField = ceField.slice(0, -1);
   //set value of entry field to that variable.
-  document.getElementById("calcInput").value = ceField;
+  document.getElementById("topBox").value = ceField;
 
   if (isOperator) {
     resetButtons(); //only resetButtons if the last entry was an operator
@@ -109,7 +149,8 @@ function display(inp) {
 
   if (inp.match(operators)) {
     match = operators.exec(inp).index;
-    var pureNumber = inp.split(""); //store number without operators
+    // store number without operators
+    var pureNumber = inp.split("");
     pureNumber.splice(match, 1);
     num = pureNumber.join("");
     num = parseFloat(num);
@@ -117,7 +158,7 @@ function display(inp) {
 
   if (num && inp.match(operators) && match !== 0) {
     entries.push(num);
-    document.getElementById("calcInput").value = inp.match(operators);
+    document.getElementById("topBox").value = inp.match(operators);
   }
 
   if (num && inp.match(operators) && match === 0) {
@@ -127,7 +168,7 @@ function display(inp) {
     if (num < 0) {
       num *= -1;
     }
-    document.getElementById("calcInput").value = num;
+    document.getElementById("topBox").value = num;
   }
 
   var resultHTML = entries[0];
@@ -164,12 +205,11 @@ function display(inp) {
 
     wiggle();
 
-    if (document.getElementById("calcInput").value == "=") {
-      document.getElementById("calcInput").value = "";
+    if (document.getElementById("topBox").value == "=") {
+      document.getElementById("topBox").value = "";
     }
   }
 }
-
 
 $(document).ready(function(){
   $("#divide").html("&#247");
