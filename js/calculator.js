@@ -93,41 +93,44 @@ function percent() {
   topBox.value *= 0.01;
 }
 
-function final(event) {
-  //"enter" activates "=" when input box is active
-  // if (event.which === 13 || event.keyCode === 13) {
-  //   clickIt();
-  // }
-
+// Accept keyboard input
+function keyboard(event) {
+  // Save character code
   var entry = String.fromCharCode(event.charCode);
-  console.log(entry);
+  // If it's a number, decimal point, or operator,
   if (entry.match(numbers) || entry.match(decimal) || entry.match(operators)){
     writeToBox(entry);
+  } else if (entry.match(/c/i)){
+    // If it's a c, clear the calculator
+    ac();
   }
-
 }
 
-function clickIt() {
+// Get result
+function equals() {
   var y = document.getElementById("topBox").value;
-  document.getElementById("topBox").value = y + "=";
-  display(document.getElementById("topBox").value);
-  document.getElementById("topBox").value = "";
+  y+= "=";
+  display(y);
+  // Clear top box. Result will show in bottom box.
+  y = "";
 }
 
+// Gently shake bottom box when answer is calculated.
 function wiggle() {
   var d = document.getElementById("result");
+  // Add 'enabled' class, so that it shakes.
   d.className = "enabled result col";
 
+  // remove 'enabled' class after 1 second,
+  // so that it's ready to shake next 'equals'
   setTimeout(function() {
     d.className = "result col";
   }, 1000);
-
 }
 
-function calc() {
-  document.getElementById("result").innerHTML = total;
-}
-
+// Reset all data
+// when AC is clicked
+// or 'c' is entered
 function ac() {
   total = 0;
   entries = [];
@@ -136,6 +139,7 @@ function ac() {
   resetButtons();
 }
 
+// Go back one step.
 function ce() {
   //set a variable equal to the value of the entry field.
   var ceField = document.getElementById("topBox").value;
@@ -145,10 +149,13 @@ function ce() {
   //set value of entry field to that variable.
   document.getElementById("topBox").value = ceField;
 
+  // if the last entry was an operator
   if (isOperator) {
-    resetButtons(); //only resetButtons if the last entry was an operator
+    // reset buttons
+    resetButtons();
   }
 }
+
 
 function display(inp) {
   var sum;
@@ -219,7 +226,8 @@ function display(inp) {
   }
 }
 
-$(document).ready(function(){
-  $("#divide").html("&#247");
-
+// Add divide symbol to document
+// Added seperately because of a glitch with Atom
+document.addEventListener("DOMContentLoaded", function(){
+  document.getElementById("divide").innerHTML = "&#247";
 });
