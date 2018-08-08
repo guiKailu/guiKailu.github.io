@@ -4,6 +4,8 @@ var total = 0;
 var operators = /\+|-|\/|\*|=/g;
 // all numbers
 var numbers = /\d/;
+// decimal point
+var decimal = /\./;
 var subtotal;
 // Array to keep track of all buttons pressed
 // since the last AC press.
@@ -58,28 +60,27 @@ function writeToBox(selectedButton) {
 
     if (
       // if the selection is a decimal point, and there isn't yet a decimal point
-      (selectedButton === "." && !currentTopBoxVal.match(/\./)) ||
+      (selectedButton === "." && !currentTopBoxVal.match(decimal)) ||
       // or if the selection is a number
       (selectedButton.match(numbers)
       // AND the current value displayed in the top box is not an operator
       && !currentTopBoxVal.match(operators))
     ) {
-      // Display the updatex value in the top box
+      // Display the updated value in the top box
       document.getElementById("topBox").value = updatedTopBoxVal;
       // If there's already a decimal point,
       // and the user selects it again,
       // stop running the function
-    } else if (selectedButton === "." && !currentTopBoxVal.match(/\./)){
-      break;
-      // if there's already something displayed in the top box,
-      // use display() to process the input
     } else {
       display(updatedTopBoxVal);
     }
   }
   // If nothing's in the top box yet,
   // give it the value of the selected button
-  else {
+  else if (entries.length === 0){
+    document.getElementById("topBox").value = selectedButton;
+  } else if (selectedButton.match(operators)){
+    // Else if it's an operator, display that operator
     document.getElementById("topBox").value = selectedButton;
   }
 }
@@ -94,9 +95,16 @@ function percent() {
 
 function final(event) {
   //"enter" activates "=" when input box is active
-  if (event.which === 13 || event.keyCode === 13) {
-    clickIt();
+  // if (event.which === 13 || event.keyCode === 13) {
+  //   clickIt();
+  // }
+
+  var entry = String.fromCharCode(event.charCode);
+  console.log(entry);
+  if (entry.match(numbers) || entry.match(decimal) || entry.match(operators)){
+    writeToBox(entry);
   }
+
 }
 
 function clickIt() {

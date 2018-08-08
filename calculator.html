@@ -12,7 +12,7 @@
 
   </head>
 
-  <body>
+  <body onkeypress="final(event)">
     <div id="calculator">
       <h1 id="title">
   Interwebulator
@@ -20,7 +20,7 @@
 
       <div>
 
-        <input class="result" id="topBox" oninput="display(this.value)" onkeypress="final(event)" placeholder="0">
+        <input class="result" id="topBox" oninput="display(this.value)" placeholder="0">
 
         <div class="row">
           <button onclick="ac()">AC</button>
