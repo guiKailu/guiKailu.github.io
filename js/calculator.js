@@ -6,10 +6,15 @@ var operators = /\+|-|\/|\*|=/g;
 var numbers = /\d/;
 // decimal point
 var decimal = /\./;
-var subtotal;
+
 // Array to keep track of all buttons pressed
-// since the last AC press.
+// since the last result (the last '').
 var entries = [];
+
+var ADDITION = "+";
+var SUBTRACTION = "-";
+var MULTIPLICATION = "*";
+var DIVISION = "/";
 
 var selectedOperatorBgColor = "background-color: #c9ddff;";
 
@@ -193,34 +198,44 @@ function displayTopBox(inp){
   }
 }
 
-function displayBottomBox(){
-  var resultHTML = "";
+function makeResultString(){
+  var str = "";
   for (var i = 0; i < entries.length; i++) {
-    resultHTML += " " + entries[i];
+    str += " " + entries[i];
   }
+  str += " =";
+  return str;
+}
 
-  resultHTML += " =";
+function displayBottomBox(){
 
-  subtotal = entries[0];
-  for (
-    var j = 1;
-    j < entries.length && entries.length % 2 === 1 && entries.length > 2;
+  var resultHTML = makeResultString();
 
-  ) {
-    if (entries[j] == "+") {
-      total = subtotal + parseFloat(entries[j + 1]);
-    } else if (entries[j] == "-") {
-      total = subtotal - parseFloat(entries[j + 1]);
-    } else if (entries[j] == "*") {
-      total = subtotal * parseFloat(entries[j + 1]);
-    } else if (entries[j] == "/") {
-      total = subtotal / parseFloat(entries[j + 1]);
+  total = entries[0];
+  for ( var j = 1;
+    j < entries.length && entries.length % 2 === 1 && entries.length > 2; j += 2) {
+
+    // number to add/multiply/etc to total
+    var arg = parseFloat(entries[j+1]);
+    // operator
+    var op = entries[j] + '';
+
+    switch (op){
+      case ADDITION:
+        total += arg;
+        break;
+      case SUBTRACTION:
+        total -= arg;
+        break;
+      case MULTIPLICATION:
+        total *= arg;
+        break;
+      case DIVISION:
+        total /= arg;
     }
     total = total.toFixed(8);
     total *= 100000000;
     total /= 100000000;
-    subtotal = total;
-    j += 2;
   }
   resultHTML += " " + total;
   if (entries.length >= 3 && entries.length % 2 === 1) {
