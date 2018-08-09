@@ -198,6 +198,9 @@ function displayTopBox(inp){
   }
 }
 
+// Creates results message for bottom box
+// Looks like "5 + 3 * 2 = 16"
+// (It can be read from left to right, not by the order of operations)
 function makeResultString(){
   var str = "";
   for (var i = 0; i < entries.length; i++) {
@@ -207,6 +210,7 @@ function makeResultString(){
   return str;
 }
 
+// Fix js floating point weirdness
 function improveFloat(num){
   improved = num.toFixed(8);
   improved *= 100000000;
@@ -214,6 +218,7 @@ function improveFloat(num){
   return improved;
 }
 
+// Perform the actual operation
 function calculate(){
   total = entries[0];
   for ( var j = 1;
@@ -241,18 +246,22 @@ function calculate(){
   }
 }
 
+// Update bottom box.
+// The bottom box shows the results of calculations.
 function displayBottomBox(){
 
-  var resultHTML = makeResultString();
-
+  // if there's at least two arguments and an operator...
   if (entries.length >= 3 && entries.length % 2 === 1) {
-    document.getElementById("result").innerHTML = resultHTML;
+    // show the result in the bottom box (id=result)
+    document.getElementById("result").innerHTML = makeResultString();
 
+    // wiggle the bottom box to emphasize the results
+    // since some calculators show the results on the top
     wiggle();
 
-    if (document.getElementById("topBox").value == "=") {
-      document.getElementById("topBox").value = "";
-    }
+    var topBox = document.getElementById("topBox");
+    // clear the top box if there's an equals sign in it
+    if (topBox.value == "=") topBox.value = "";
   }
 }
 
