@@ -203,14 +203,18 @@ function makeResultString(){
   for (var i = 0; i < entries.length; i++) {
     str += " " + entries[i];
   }
-  str += " =";
+  str += " = " + total;
   return str;
 }
 
-function displayBottomBox(){
+function improveFloat(num){
+  improved = num.toFixed(8);
+  improved *= 100000000;
+  improved /= 100000000;
+  return improved;
+}
 
-  var resultHTML = makeResultString();
-
+function calculate(){
   total = entries[0];
   for ( var j = 1;
     j < entries.length && entries.length % 2 === 1 && entries.length > 2; j += 2) {
@@ -233,11 +237,14 @@ function displayBottomBox(){
       case DIVISION:
         total /= arg;
     }
-    total = total.toFixed(8);
-    total *= 100000000;
-    total /= 100000000;
+    total = improveFloat(total);
   }
-  resultHTML += " " + total;
+}
+
+function displayBottomBox(){
+
+  var resultHTML = makeResultString();
+
   if (entries.length >= 3 && entries.length % 2 === 1) {
     document.getElementById("result").innerHTML = resultHTML;
 
@@ -252,13 +259,17 @@ function displayBottomBox(){
 function display(inp) {
   // Take user input, update top box and entries array.
   displayTopBox(inp);
+
+  // Add/subtract/etc the updated elements of the entries array.
+  calculate();
+
   // Update bottom box.
   // The bottom box shows the results of calculations.
   displayBottomBox();
 }
 
-// Add divide symbol to document
-// Added seperately because of a glitch with Atom
+// Add divide symbol to document on load.
+// It's added seperately because of a glitch with the Atom code editor
 document.addEventListener("DOMContentLoaded", function(){
   document.getElementById("divide").innerHTML = "&#247";
 });
