@@ -29,33 +29,33 @@
           <!-- Divide symbol added in document.ready function,
               because the code editor Atom for some reason doesn't like it here,
               even though codepen is fine with it. -->
-          <button id="divide" onclick="writeToBox('/')"></button>
+          <button id="divide" onclick="checkInput('/')"></button>
         </div>
 
         <div class="row">
-          <button onclick="writeToBox('7')">7</button>
-          <button onclick="writeToBox('8')">8</button>
-          <button onclick="writeToBox('9')">9</button>
-          <button id="multiply" onclick="writeToBox('*')">x</button>
+          <button onclick="checkInput('7')">7</button>
+          <button onclick="checkInput('8')">8</button>
+          <button onclick="checkInput('9')">9</button>
+          <button id="multiply" onclick="checkInput('*')">x</button>
         </div>
 
         <div class="row">
-          <button onclick="writeToBox('4')">4</button>
-          <button onclick="writeToBox('5')">5</button>
-          <button onclick="writeToBox('6')">6</button>
-          <button id="minus" onclick="writeToBox('-')">-</button>
+          <button onclick="checkInput('4')">4</button>
+          <button onclick="checkInput('5')">5</button>
+          <button onclick="checkInput('6')">6</button>
+          <button id="minus" onclick="checkInput('-')">-</button>
         </div>
 
         <div class="row">
-          <button onclick="writeToBox('1')">1</button>
-          <button onclick="writeToBox('2')">2</button>
-          <button onclick="writeToBox('3')">3</button>
-          <button id="plus" onclick="writeToBox('+')">+</button>
+          <button onclick="checkInput('1')">1</button>
+          <button onclick="checkInput('2')">2</button>
+          <button onclick="checkInput('3')">3</button>
+          <button id="plus" onclick="checkInput('+')">+</button>
         </div>
 
         <div class="equals-row">
-          <button id="zero" onclick="writeToBox('0')">0</button>
-          <button id="point" onclick="writeToBox('.')">.</button>
+          <button id="zero" onclick="checkInput('0')">0</button>
+          <button id="point" onclick="checkInput('.')">.</button>
           <button id="myBtn" onclick="equals()">=</button>
         </div>
 

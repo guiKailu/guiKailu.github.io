@@ -14,45 +14,21 @@ var SUBTRACTION = "-";
 var MULTIPLICATION = "*";
 var DIVISION = "/";
 
-// Set all buttons to their default background color
-function resetButtons() {
-  // Select all buttons
-  var b = document.getElementsByTagName("button");
-  // loop through all buttons
-  for (var c in b) {
-    b[c].style = "background-color: #fbbd1e;";
-  }
+// Make sure the user isn't selecting "equals" at an invalid point in the equation
+function checkInput(selectedButton) {
+  if (selectedButton === "=" && entries.length % 2 !== 1 && entries.length > 1 || selectedButton !== "="){
+    writeToBox(selectedButton);
+  } else (
+    alert("You entered '=' too early. Please choose something else first.")
+  )
 }
 
-// Highlight operator button, when selected,
-// by changing its background color from yellow to blue
-function highlightOperator(operator) {
-  var selectedOperatorBgColor = "background-color: #c9ddff;";
-  // First set all buttons to default color
-  resetButtons();
-
-  switch(operator.match(operators)[0]){
-    case ADDITION:
-      document.getElementById("plus").style = selectedOperatorBgColor;
-      break;
-    case SUBTRACTION:
-      document.getElementById("minus").style = selectedOperatorBgColor;
-      break;
-    case MULTIPLICATION:
-      document.getElementById("multiply").style = selectedOperatorBgColor;
-      break;
-    case DIVISION:
-      document.getElementById("divide").style = selectedOperatorBgColor;
-    }
-  }
-
-// When a number or operator is clicked,
+// When a button is clicked,
 // show it in the top box.
-function writeToBox(selectedButton) {
-
+function writeToBox(btn){
   // First highlight the selected button
-  if (selectedButton.match(operators)){
-    highlightOperator(selectedButton);
+  if (btn.match(operators)){
+    highlightOperator(btn);
   }
   // Save what's currently displayed in the top box.
   var currentTopBoxVal = document.getElementById("topBox").value;
@@ -60,13 +36,13 @@ function writeToBox(selectedButton) {
   // If something's displayed in the top box, then proceed
   if (currentTopBoxVal) {
 
-    var updatedTopBoxVal = currentTopBoxVal + selectedButton;
+    var updatedTopBoxVal = currentTopBoxVal + btn;
 
     if (
       // if the selection is a decimal point, and there isn't yet a decimal point
-      (selectedButton === "." && !currentTopBoxVal.match(decimal)) ||
+      (btn === "." && !currentTopBoxVal.match(decimal)) ||
       // or if the selection is a number
-      (selectedButton.match(numbers)
+      (btn.match(numbers)
       // AND the current value displayed in the top box is not an operator
       && !currentTopBoxVal.match(operators))
     ) {
@@ -82,19 +58,11 @@ function writeToBox(selectedButton) {
   // If nothing's in the top box yet,
   // give it the value of the selected button
   else if (entries.length === 0){
-    document.getElementById("topBox").value = selectedButton;
-  } else if (selectedButton.match(operators)){
+    document.getElementById("topBox").value = btn;
+  } else if (btn.match(operators)){
     // Else if it's an operator, display that operator
-    document.getElementById("topBox").value = selectedButton;
+    document.getElementById("topBox").value = btn;
   }
-}
-
-// If the percent button is pressed
-function percent() {
-  var topBox = document.getElementById("topBox");
-  // Multiply the number displayed in the top box by 1 percent.
-  // and then display the result in the same box.
-  topBox.value *= 0.01;
 }
 
 function checkForEnter(inp){
@@ -103,17 +71,14 @@ function checkForEnter(inp){
 
 // Accept keyboard input
 function keyboard(event) {
-  // Save character code
-  var entry = String.fromCharCode(event.charCode);
 
-  if (checkForEnter(event.keyCode)){
-    entry = "=";
-  }
+  // Save character code
+  var entry = checkForEnter(event.keyCode) ?
+    "=" : String.fromCharCode(event.charCode);
 
   // If it's a number, decimal point, or operator,
   if (entry.match(numbers) || entry.match(decimal) || entry.match(operators)){
-
-    writeToBox(entry);
+    checkInput(entry);
   } else if (entry.match(/c/i)){
     // If it's a c, clear the calculator
     ac();
@@ -129,17 +94,12 @@ function equals() {
   y = "";
 }
 
-// Gently shake bottom box when answer is calculated.
-function wiggle() {
-  var d = document.getElementById("result");
-  // Add 'enabled' class, so that it shakes.
-  d.className = "enabled result col";
-
-  // remove 'enabled' class after 1 second,
-  // so that it's ready to shake next 'equals'
-  setTimeout(function() {
-    d.className = "result col";
-  }, 1000);
+// If the percent button is pressed
+function percent() {
+  var topBox = document.getElementById("topBox");
+  // Multiply the number displayed in the top box by 1 percent.
+  // and then display the result in the same box.
+  topBox.value *= 0.01;
 }
 
 // Reset all data
@@ -291,3 +251,52 @@ function display(inp) {
 document.addEventListener("DOMContentLoaded", function(){
   document.getElementById("divide").innerHTML = "&#247";
 });
+
+// **************************
+// ***APPEARANCE FUNCTIONS***
+// **************************
+
+// Set all buttons to their default background color
+function resetButtons() {
+  // Select all buttons
+  var b = document.getElementsByTagName("button");
+  // loop through all buttons
+  for (var c in b) {
+    b[c].style = "background-color: #fbbd1e;";
+  }
+}
+
+// Highlight operator button, when selected,
+// by changing its background color from yellow to blue
+function highlightOperator(operator) {
+  var selectedOperatorBgColor = "background-color: #c9ddff;";
+  // First set all buttons to default color
+  resetButtons();
+
+  switch(operator.match(operators)[0]){
+    case ADDITION:
+      document.getElementById("plus").style = selectedOperatorBgColor;
+      break;
+    case SUBTRACTION:
+      document.getElementById("minus").style = selectedOperatorBgColor;
+      break;
+    case MULTIPLICATION:
+      document.getElementById("multiply").style = selectedOperatorBgColor;
+      break;
+    case DIVISION:
+      document.getElementById("divide").style = selectedOperatorBgColor;
+    }
+  }
+
+// Gently shake bottom box when answer is calculated.
+function wiggle() {
+  var d = document.getElementById("result");
+  // Add 'enabled' class, so that it shakes.
+  d.className = "enabled result col";
+
+  // remove 'enabled' class after 1 second,
+  // so that it's ready to shake next 'equals'
+  setTimeout(function() {
+    d.className = "result col";
+  }, 1000);
+}
