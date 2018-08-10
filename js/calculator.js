@@ -6,17 +6,13 @@ var operators = /\+|-|\/|\*|=/g;
 var numbers = /\d/;
 // decimal point
 var decimal = /\./;
-
-// Array to keep track of all buttons pressed
-// since the last result (the last '').
+// Array to keep track of all buttons pressed since the last AC.
 var entries = [];
 
 var ADDITION = "+";
 var SUBTRACTION = "-";
 var MULTIPLICATION = "*";
 var DIVISION = "/";
-
-var selectedOperatorBgColor = "background-color: #c9ddff;";
 
 // Set all buttons to their default background color
 function resetButtons() {
@@ -31,26 +27,29 @@ function resetButtons() {
 // Highlight operator button, when selected,
 // by changing its background color from yellow to blue
 function highlightOperator(operator) {
+  var selectedOperatorBgColor = "background-color: #c9ddff;";
   // First set all buttons to default color
   resetButtons();
-  // Plus
-  if (operator.match(/\+/)) {
-    document.getElementById("plus").style = selectedOperatorBgColor;
-  // Minus
-  } else if (operator.match(/-/)) {
-    document.getElementById("minus").style = selectedOperatorBgColor;
-  // Divide
-  } else if (operator.match(/\//)) {
-    document.getElementById("divide").style = selectedOperatorBgColor;
-  // Multiply
-  } else if (operator.match(/\*/)) {
-    document.getElementById("multiply").style = selectedOperatorBgColor;
+
+  switch(operator.match(operators)[0]){
+    case ADDITION:
+      document.getElementById("plus").style = selectedOperatorBgColor;
+      break;
+    case SUBTRACTION:
+      document.getElementById("minus").style = selectedOperatorBgColor;
+      break;
+    case MULTIPLICATION:
+      document.getElementById("multiply").style = selectedOperatorBgColor;
+      break;
+    case DIVISION:
+      document.getElementById("divide").style = selectedOperatorBgColor;
+    }
   }
-}
 
 // When a number or operator is clicked,
 // show it in the top box.
 function writeToBox(selectedButton) {
+
   // First highlight the selected button
   if (selectedButton.match(operators)){
     highlightOperator(selectedButton);
@@ -98,12 +97,22 @@ function percent() {
   topBox.value *= 0.01;
 }
 
+function checkForEnter(inp){
+    return inp === 13 ? true : false;
+}
+
 // Accept keyboard input
 function keyboard(event) {
   // Save character code
   var entry = String.fromCharCode(event.charCode);
+
+  if (checkForEnter(event.keyCode)){
+    entry = "=";
+  }
+
   // If it's a number, decimal point, or operator,
   if (entry.match(numbers) || entry.match(decimal) || entry.match(operators)){
+
     writeToBox(entry);
   } else if (entry.match(/c/i)){
     // If it's a c, clear the calculator
