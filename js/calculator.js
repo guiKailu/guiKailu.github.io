@@ -2,6 +2,8 @@
 var total = 0;
 // five operators
 var operators = /\+|-|\/|\*|=/g;
+// four operators
+var operators4 = /\+|-|\/|\*/g;
 // all numbers
 var numbers = /\d/;
 // decimal point
@@ -16,11 +18,21 @@ var DIVISION = "/";
 
 // Make sure the user isn't selecting "equals" at an invalid point in the equation
 function checkInput(selectedButton) {
-  if (selectedButton === "=" && entries.length % 2 !== 1 && entries.length > 1 || selectedButton !== "="){
+  console.log(entries.length);
+  var topBox = document.getElementById("topBox").value;
+
+  if (
+    // If the input is an equals sign, make sure it's after a number, an operator, and a number.
+    (selectedButton === "=" && entries.length % 2 === 1 && entries.length > 1)
+    // If the input is an operator,
+  || topBox.match(numbers)
+  || entries.length % 2 === 0 && selectedButton.match(operators4)
+  || selectedButton.match(numbers)){
+
     writeToBox(selectedButton);
-  } else (
-    alert("You entered '=' too early. Please choose something else first.")
-  )
+  } else {
+    // flash the top box with the same value as before
+  }
 }
 
 // When a button is clicked,
