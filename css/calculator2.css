@@ -1,4 +1,5 @@
 body{
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -7,9 +8,17 @@ body{
   font-weight: 300;
 }
 
+h1{
+  font-size: 40px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+}
+
 main{
   width: 250px;
   height: 400px;
+  flex-basis: 60%;
   display: flex;
   flex-direction: column;
 }
