@@ -1,4 +1,4 @@
-var readingStr = 'I’m Nick. And this is my friend Civa. He is a robot. Civa goes to school with me. We play together. It is winter. It snows outside. I have a big blue jacket. The jacket is warm. Amy has a green sweater. She is not cold. Civa does not have clothing. Robots do have clothing. Grandma says, Civa! You can play in the snow. It cold. You do have a sweater. Civa says, Robots do wear sweaters! Civa plays with Amy and Nick. Nono jumps in the snow too. The snow is white. They are happy. The next day, Amy and Nick eat breakfast. Where is Civa? Civa in bed. He has the flu? Who? Civa has the flu? Civa sneezes: Achoo. ACHOOOO. ACHO01010001110111000001! Amy says, Robots do get the flu! Nick laughs. He says, Civa is a special robot. Grandma makes a red sweater for Civa. She says, Robots do wear sweaters. But Civa is a special robot. Five days later, Civa is healthy again. Grandma says, This sweater is for you. Civa laughs and says, Robots do wear sweaters. But I’m a special robot! Civa, Nick, Amy, and Nono play in the snow. Civa wears the red sweater.'.toLowerCase();
+var readingStr = 'Share Is Care visit  and  house The three friends and Nono play soccer together It is a warm day Afterwards they are tired  say I tired and hungry  say Me too has candy in his room  go to his room He eats some candy  and  are still outside and  play with Nono  go outside again  doesn’t tell them about the candy He feels a little guilty The next day  and  go to  house They play basketball It is fun They are happy Afterwards they are tired  say I tired and hungry  say Me too  think about yesterday He doesn’t have candy now because he is at  house say I have some candy in my room Do you want candy  and  say Yes please  run to his room He gets candy for his friends run outside  and  smile The three friends eat candy together  feels very guilty now He think Next time I will share with my friends A few day later are at  house After they play  gives them candy Now  is very happy'.toLowerCase();
 
 var PUNCTUATION = /,|\./g;
 
@@ -45,7 +45,7 @@ $(document).ready(function(){
           }
         }
 
-        console.log(vocabListArr);
+        // console.log(vocabListArr);
         // mammoth.extractRawText...
         var newWordsArr = wordsThatAreNotIn(vocabListArr, readingStr);
     }})
