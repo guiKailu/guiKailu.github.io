@@ -25,7 +25,7 @@ function initAudio() {
       muteBtn.style.opacity = 1;
     } else {
       audio.muted = true;
-      muteBtn.style.background = 
+      muteBtn.style.background =
       "url('https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Pomodoro+Clock/Audio-mute.png') no-repeat center/102%";
       muteBtn.style.opacity = 0.75;
     }
@@ -97,7 +97,7 @@ function holdit(btn, action, start, speedup, num, brSes) { //lets user hold -/+ 
     action(num, brSes);
     t = setTimeout(repeat, start);
     start = start / speedup;
-    }  
+    }
   }
   btn.onmousedown = function(){
     repeat();
@@ -142,7 +142,7 @@ function inc(num, brSes) {
     (brSes === 0 && document.getElementById("period").innerHTML == "BREAK!")
   ) {
     document.getElementById("timer").innerHTML = v + ":00";
-    document.getElementById("timer-btn").style.backgroundImage = "linear-gradient(to bottom, transparent 100%, #ffa8d6 100%)";
+    document.getElementById("timer-btn").style.backgroundImage = "linear-gradient(to bottom, transparent 100%, ##a966c3 100%)";
     reset();
   }
 }
@@ -190,9 +190,9 @@ function start() {
 function sandClock() {
   var color;
   if (breaktime) {
-    color = "#ffa8d6 ";
+    color = "#a966c3 ";
   } else {
-    color = "#b5ffd7 ";
+    color = "#80c366 ";
   }
   var percentLeft = clock / (targetTime * 60) * 100;
   document.getElementById("timer-btn").style.backgroundImage = "linear-gradient(to bottom, transparent " +
@@ -200,7 +200,7 @@ function sandClock() {
     "%," +
     color +
     percentLeft +
-    "%, lightblue 100%)";
+    "%, white 100%)";
 }
 
 function countdown() {

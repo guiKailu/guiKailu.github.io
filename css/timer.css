@@ -3,12 +3,14 @@ body{
   margin: 5%;
   background-color: #dcc2e7;
   font-color: #001b54;
+  font-family: sans-serif;
+}
+h1{
+  font-size: 50px;
 }
 p {
   display : inline-block;
-}
-button{
-  border: 1px solid #9ebeff;
+  font-size: 24px;
 }
 #settings button{
   background-color: #80c366;
@@ -40,8 +42,11 @@ button#muteBtn{
   width: 275px;
   height: 275px;
   margin-top: 2%;
-  font-size: 2em;
   text-align: center;
+}
+#timer-btn p{
+  font-size: 38px;
+  font-weight: 200;
 }
 .subtitle{
   margin-bottom: 0;
@@ -54,8 +59,8 @@ button#muteBtn{
   display: block;
 }
 
-@media only screen 
-and (min-device-width: 320px) 
+@media only screen
+and (min-device-width: 320px)
 and (max-device-width: 480px)  {
   h1{
     margin-bottom: 10%;
@@ -79,9 +84,9 @@ and (max-device-width: 480px)  {
     margin: 0px;
   }
 }
-@media only screen 
-and (min-device-width: 320px) 
-and (max-device-width: 480px) 
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
 and (orientation: landscape) {
   body{
     margin: 2%;
