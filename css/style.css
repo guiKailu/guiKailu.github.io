@@ -2,6 +2,10 @@ html{
   font-family: Optima, Segoe, Segoe UI, Candara, Calibri, Arial, sans-serif;
 }
 
+body{
+  margin: 0;
+}
+
 #main{
   display: flex;
   flex-direction: column;
@@ -141,4 +145,16 @@ h3{
 #tagline{
   width: 225px;
   font-size: 18px;
+}
+
+#footer{
+  margin-top: 3vw;
+  text-align: center;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+/* Make links light blue on hover */
+#footer a:hover, #nav-bar a:hover{
+  color: #00e6e6;
 }
