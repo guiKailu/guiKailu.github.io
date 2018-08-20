@@ -34,3 +34,13 @@
 #credits a {
   padding: 5px 0;
 }
+
+@media only screen
+  and (max-width: 620px)   {
+  /* #nav-bar > button{
+    font-size: 60px;
+  } */
+  #footer {
+    font-size: 36px;
+  }
+}
