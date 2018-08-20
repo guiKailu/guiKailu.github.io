@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pomodoro Timer</title>
+  
+  
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div container="fluid">
+  <h1>pomodoro clock</h1>
+
+  <div class="row">
+    <p class="col col-md-4">break length</p>
+    <p class="col offset-md-4 col-md-4">session length</p>
+  </div>
+
+  <div class="row" id="settings">
+    <div class="col col-md-4">
+      <button id = 'minBr'>-</button>
+      <p id="break">5</p>
+      <p>min</p>
+      <button id = 'plusBr'>+</button>
+    </div>
+
+    <div class="col offset-md-4 col-md-4">
+      <button id = 'minSes'>-</button> <!--onclick="inc(-1, 1)" -->
+      <p id="ses">25</p>
+      <p>min</p>
+      <button id = 'plusSes'>+</button>
+    </div>
+  </div>
+  
+  <div>
+    <button id="muteBtn"></button>
+  </div>
+
+  <button id="timer-btn" class="offset" onclick="start()">
+  <p id="timer">25:00</p>
+  <p id="period">session</p>
+</button>
+
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
