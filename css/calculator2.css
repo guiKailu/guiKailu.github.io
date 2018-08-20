@@ -101,7 +101,7 @@ footer a:hover {
   and (max-device-width: 900px) {
 
   main {
-    width: 285px;
+    width: 300px;
   }
 
   #buttons > * {
