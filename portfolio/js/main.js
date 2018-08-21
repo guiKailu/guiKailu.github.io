@@ -48,7 +48,7 @@ $(document).ready(function(){
 
   var buttonContent = $("#seeMoreBtn").text();
 
-  var scene = new ScrollMagic.Scene({triggerElement: "#toolkit"})
+  var scene = new ScrollMagic.Scene({triggerElement: "#seeMoreTrigger"})
   .setClassToggle("#seeMoreBtn", "jello")
   .addTo(controller);
 
