@@ -1,3 +1,5 @@
+/* This separation of css enables me to embed the drum machine as a 'not full page' app within another page. */
+
 #drum-body {
   /* margin-top: 150px; */
 }

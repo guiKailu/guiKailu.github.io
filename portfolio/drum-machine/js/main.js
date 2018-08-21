@@ -93,7 +93,7 @@ var Presentational = function (_React$Component) {
               },
               "Q",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Chord+rhythm.m4a",
+                src: "sounds/Chord-rhythm.m4a",
                 className: "clip",
                 id: "Q"
               })
@@ -103,7 +103,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Chord", onClick: this.define },
               "W",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Chord.m4a",
+                src: "sounds/Chord.m4a",
                 className: "clip",
                 id: "W"
               })
@@ -113,7 +113,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Conga", onClick: this.define },
               "E",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Conga.m4a",
+                src: "sounds/Conga.m4a",
                 className: "clip",
                 id: "E"
               })
@@ -123,7 +123,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Crash", onClick: this.define },
               "A",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Crash.m4a",
+                src: "sounds/Crash.m4a",
                 className: "clip",
                 id: "A"
               })
@@ -133,7 +133,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Cymbal", onClick: this.define },
               "S",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Cymbal+Hit.m4a",
+                src: "sounds/Cymbal-Hit.m4a",
                 className: "clip",
                 id: "S"
               })
@@ -143,7 +143,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Kick", onClick: this.define },
               "D",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Kick.m4a",
+                src: "sounds/Kick.m4a",
                 className: "clip",
                 id: "D"
               })
@@ -153,7 +153,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Scratch", onClick: this.define },
               "Z",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Scratch.m4a",
+                src: "sounds/Scratch.m4a",
                 className: "clip",
                 id: "Z"
               })
@@ -163,7 +163,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Serve", onClick: this.define },
               "X",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Serve.m4a",
+                src: "sounds/Serve.m4a",
                 className: "clip",
                 id: "X"
               })
@@ -173,7 +173,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Volley", onClick: this.define },
               "C",
               React.createElement("audio", {
-                src: "https://s3.us-east-2.amazonaws.com/fcc-projects-jms/Drum+Machine/Volley.m4a",
+                src: "sounds/Volley.m4a",
                 className: "clip",
                 id: "C"
               })
@@ -184,7 +184,7 @@ var Presentational = function (_React$Component) {
             null,
             React.createElement(
               "a",
-              { id: "footer", href: "portfolio.html", alt: "Developer's Portfolio", target: "_blank" },
+              { id: "footer", href: "../index.html", alt: "Developer's Portfolio", target: "_blank" },
               " Yann Stoneman \xA9 2018"
             )
           )
