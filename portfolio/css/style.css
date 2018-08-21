@@ -37,13 +37,17 @@ body{
 }
 
 .galleryBtn.pulse{
-  animation-duration: 5s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
 }
 
 #portfolioBtn > button {
   background-color: #eb3d3c;
   color: #f2f2f2;
+}
+
+#seeMoreBtn{
+  margin: 6vw;
 }
 
 #seeMoreBtn > button {
@@ -84,6 +88,23 @@ body{
   padding: 15px;
   font-size: 30px;
   max-width: 400px;
+}
+
+.gitHub {
+  font-size: inherit;
+  background-color: #e6e600;
+  border-radius: 10px;
+}
+
+.item-info a{
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  color: black;
+}
+
+.item-info a > * {
+  margin: 10px;
 }
 
 #drum{
@@ -139,7 +160,7 @@ h3{
 }
 
 .hide{
-  opacity: 0;
+  display: none;
 }
 
 #tagline{

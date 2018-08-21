@@ -11,28 +11,29 @@ function showGallery(){
     marginBottom: 0
   }, 1000);
   $("#toolkit").css("paddingTop", 0);
-  $("#seeMoreBtn").css("opacity", 1);
+  $("#seeMoreBtn").show();
 }
 
 function showMore(){
   var text = $("#seeMoreBtn>button").text();
-  if (text == "See more demos"){
+  if (text == "Expand more demos"){
     $("#gallery2").show()
       .animate({
       opacity: "1"
     }, 1000);
     $("#seeMoreBtn>button").text("See less");
-    $("#seeMoreBtn").appendTo("#gallery2");
+    $("#seeMoreBtn").insertAfter("#gallery2");
+
     $("#toolkit").animate({
       paddingBottom: 0,
       marginBottom: 0
     }, 1000);
   } else {
-    $("#seeMoreBtn").insertAfter("#toolkit");
+    $("#seeMoreBtn").insertBefore("#toolkit");
     $("#gallery2").animate({
       opacity: 0
     }, 1000).hide();
-    $("#seeMoreBtn>button").text("See more demos");
+    $("#seeMoreBtn>button").text("Expand more demos");
 
     $("#toolkit").animate({
       paddingBottom: 0,
