@@ -32,8 +32,6 @@ function initAudio() {
   }
 }
 
-window.addEventListener("load", initAudio);
-
 function reset() {
   clock = 0;
   counter = 0;
@@ -223,4 +221,9 @@ function countdown() {
     finishUp();
   }
 }
-window.eventlistener('load', prepButtons());
+
+
+$(document).ready(function(){
+  initAudio();
+  prepButtons();
+});
