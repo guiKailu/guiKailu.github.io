@@ -41,3 +41,17 @@ function showMore(){
     }, 1000);
   }
 }
+
+$(document).ready(function(){
+
+  var controller = new ScrollMagic.Controller();
+
+  var buttonContent = $("#seeMoreBtn").text();
+
+  var scene = new ScrollMagic.Scene({triggerElement: "#toolkit"})
+  .setClassToggle("#seeMoreBtn", "jello")
+  .addTo(controller);
+
+})
+
+// jackInTheBox
