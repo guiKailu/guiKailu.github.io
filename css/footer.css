@@ -28,6 +28,15 @@
   padding: 15px 10px;
   color: white;
 }
+#footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#footer-links > span{
+  margin: 10px 0;
+}
+
 #credits{
   padding-bottom: 2vh;
 }
@@ -36,11 +45,8 @@
 }
 
 @media only screen
-  and (max-width: 620px)   {
-  /* #nav-bar > button{
-    font-size: 60px;
-  } */
+  and (max-width: 992px)   {
   #footer {
-    font-size: 36px;
+    font-size: 24px;
   }
 }
