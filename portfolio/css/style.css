@@ -95,25 +95,36 @@ body{
   padding: 15px;
   font-size: 30px;
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .gitHub {
   font-size: inherit;
   background-color: #e6e600;
   border-radius: 10px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: black;
+}
+.gitHub > * {
+  margin: 10px;
 }
 
-.item-info a{
+/* .item-info a{
   display: flex;
   align-items: flex-end;
   text-decoration: none;
   color: black;
-}
+} */
 
-.item-info a > * {
+/* .item-info a > * {
   margin: 10px;
-}
+} */
 
 #drum{
   position: relative;
