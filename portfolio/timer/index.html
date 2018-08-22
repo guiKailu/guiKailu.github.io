@@ -17,24 +17,39 @@
       <h1>pomodoro clock</h1>
 
       <div class="row">
-        <p class="col col-md-4">break length</p>
-        <p class="col offset-md-4 col-md-4">session length</p>
+        <h2 class="col col-md-4">break</h2>
+        <h2 class="col offset-md-4 col-md-4">session</h2>
       </div>
 
-      <div class="row" id="settings">
-        <div class="col col-md-4">
-          <button id="minBr">-</button>
-          <p id="break">5</p>
-          <p>min</p>
-          <button id="plusBr">+</button>
+      <div id="settings">
+
+        <div class="row">
+          <div class="col col-md-4">
+            <button id="minBr">-</button>
+          </div>
+          <div class="col offset-md-4 col-md-4">
+            <button id="minSes">-</button>
+          </div>
         </div>
 
-        <div class="col offset-md-4 col-md-4">
-          <button id="minSes">-</button>
-          <!--onclick="inc(-1, 1)" -->
-          <p id="ses">25</p>
-          <p>min</p>
-          <button id="plusSes">+</button>
+        <div class="row">
+          <div class="col col-md-4">
+            <p id="break">5</p>
+            <span> min</span>
+          </div>
+          <div class="col offset-md-4 col-md-4">
+            <p id="ses">25</p>
+            <span> min</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col-md-4">
+            <button id="plusBr">+</button>
+          </div>
+          <div class="col offset-md-4 col-md-4">
+            <button id="plusSes">+</button>
+          </div>
         </div>
       </div>
 
