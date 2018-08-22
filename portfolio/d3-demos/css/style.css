@@ -6,11 +6,16 @@ body{
 }
 
 header{
-  padding: 20px 0;
+  padding-top: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   background: #f3fafe;
+}
+
+header > * {
+  margin-bottom: 20px;
 }
 
 header > div{
@@ -23,6 +28,7 @@ header > div{
 
 #project-name{
   font-weight: 600;
+  margin: 0 20px;
 }
 
 #title{
@@ -42,8 +48,8 @@ h2{
 }
 
 #chart-area{
-  display: flex;
-  justify-content: center;
+  width: 97vw;
+  overflow: auto;
 }
 
 #chart-area svg{

@@ -133,7 +133,7 @@ var Presentational = function (_React$Component) {
               { className: "btn drum-pad", id: "Cymbal", onClick: this.define },
               "S",
               React.createElement("audio", {
-                src: "sounds/Cymbal-Hit.m4a",
+                src: "sounds/Cymbal-hit.m4a",
                 className: "clip",
                 id: "S"
               })
