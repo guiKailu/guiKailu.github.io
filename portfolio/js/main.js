@@ -1,3 +1,5 @@
+var i = 0;
+
 function showGallery(){
   $("#gallery").show()
     .animate({
@@ -42,16 +44,47 @@ function showMore(){
   }
 }
 
+function addGalleryItems(amount){
+  $.getJSON("data.json", function(data){
+    // console.log(data["gallery-items"][0].codeUrl);
+    $("<div>")
+      .addClass("gallery-item")
+      .html(function(){
+        var html = '<div class="thumbnail">';
+        html += '<a href="' + data["gallery-items"][0].demoUrl;
+        html += '" target="_blank"><div class="centered-img"><img class="thumbnail-img" src="';
+        html += data["gallery-items"][i].img;
+        html += '" alt=""></div></a></div>';
+        return html;
+      })
+      .appendTo(".dynamicContent #gallery");
+  })
+  // loading done -> revert to normal state
+  .done(function(){
+    scene.update(true); //make sure the scene gets the new start position
+    $("#loader").removeClass("active");
+    i++;
+  });
+}
+
+// init controller
+var controller = new ScrollMagic.Controller({addIndicators: true});
+
+var scene = new ScrollMagic.Scene({
+  triggerElement: "#loader",
+  triggerHook: "onEnter"
+});
+
 $(document).ready(function(){
-
-  var controller = new ScrollMagic.Controller();
-
-  var buttonContent = $("#seeMoreBtn").text();
-
-  var scene = new ScrollMagic.Scene({triggerElement: "#seeMoreTrigger"})
-  .setClassToggle("#seeMoreBtn", "jello")
-  .addTo(controller);
-
+  // build scene
+    scene.addTo(controller)
+    .on("enter", function () {
+      if (!$("#loader").hasClass("active")){
+        $("#loader").addClass("active");
+        if (console){
+          console.log("loading new items");
+        }
+        addGalleryItems(2);
+      }
+    });
 })
-
-// jackInTheBox

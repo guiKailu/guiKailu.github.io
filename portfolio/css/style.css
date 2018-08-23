@@ -19,7 +19,7 @@ body{
   /* PERHAPS MAKE 10VW THE BODY'S LEFT/RIGHT MARGIN, TO REDUCE CODE REPETITION  */
   padding: 4vw 10vw;
   font-size: 36px;
-  margin-bottom: 5vw;
+  margin-bottom: 1vw;
 }
 
 .galleryBtn{
@@ -53,10 +53,6 @@ body{
   margin: 6vw;
 }
 
-#seeMoreBtn.jello {
-  animation-iteration-count: 1;
-}
-
 #seeMoreBtn > button {
   background-color: #e6e600;
   color: #444;
@@ -65,8 +61,8 @@ body{
 .gallery{
   display: flex;
   flex-wrap: wrap;
-  display: none;
-  opacity: 0;
+  /* display: none; */
+  /* opacity: 0; */
   padding: 1vw 5vw;
 }
 
@@ -180,6 +176,24 @@ h3{
 
 .hide{
   display: none;
+}
+
+.dynamicContent #gallery {
+	width: 390px;
+	margin: auto;
+	text-align: left;
+}
+
+.dynamicContent #loader {
+	height: 0;
+	overflow: hidden;
+	line-height: 60px;
+}
+.dynamicContent #loader.active {
+	height: 60px;
+}
+.dynamicContent #loader img {
+	vertical-align: text-bottom;
 }
 
 #tagline{

@@ -12,7 +12,11 @@
 
     <!-- JS Libraries -->
     <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/lib/ScrollMagic.min.js"></script>
+    <script type="text/javascript" src="../js/lib/greensock/TweenMax.min.js"></script>
+    <script type="text/javascript" src="../js/scrollmagic/ScrollMagic.min.js"></script>
+    <script type="text/javascript" src="../js/scrollmagic/plugins/animation.gsap.js"></script>
+    <script type="text/javascript" src="../js/scrollmagic/plugins/debug.addIndicators.js"></script>
+    <script type="text/javascript" src="../js/scrollmagic/plugins/jquery.ScrollMagic.js"></script>
 
     <!-- Custom JS -->
     <script src="js/main.js"></script>
@@ -29,163 +33,6 @@
         <p>Hi, I'm Yann. I can build websites for you.</p>
         <p>Past collaborators can vouch for my responsibility and efficiency working both remotely and in the office.</p>
         <p>If you're in Portland, Oregon, let's grab coffee. It's on me.</p>
-      </div>
-
-      <div id="portfolioBtn" class="galleryBtn animated pulse" onclick="showGallery()">
-        <button>See demos</button>
-      </div>
-
-      <div id="gallery" class="gallery">
-
-        <div class="gallery-item">
-          <div class="thumbnail">
-            <a href="d3-demos/heat-map/index.html" target="_blank">
-              <div class="centered-img"><img class="thumbnail-img" src="img/heat-map.png" alt=""></div>
-            </a>
-          </div>
-          <div class="item-info">
-            <a class="gitHub" href="https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/d3-demos/heat-map" target="_blank">
-                <img src="img/GitHub-Mark-32px.png" alt="Github logo"><span class="seeCode">See code</span>
-              </a>
-            <div>
-              <p>Heat map coded in D3 showing global surface temperatures over time.</p>
-              <p>Tooltips allow user to hover over a particular month and see details.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="thumbnail">
-            <a href="d3-demos/gapminder/index.html" target="_blank">
-              <div class="centered-img"><img class="thumbnail-img" src="img/gapminder.png" alt="">
-              </div>
-            </a>
-          </div>
-          <div class="item-info">
-            <a class="gitHub" href="https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/d3-demos/gapminder" target="_blank">
-                <img src="img/GitHub-Mark-32px.png" alt="Github logo"><span class="seeCode">See code</span>
-              </a>
-            <div>
-              <p>Imitation of <a href="https://www.gapminder.org/tools/#$chart-type=bubbles" target="_blank">an interactive Gapminder chart.</a></p>
-              <p>Coded in D3, this data visualization changes for every year in the dataset.</p>
-              <p>The user can easily start and stop, choose a continent, and choose a year.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="thumbnail">
-            <a href="timer/index.html" target="_blank">
-              <div class="centered-img"><img class="thumbnail-img" src="img/timer.png" alt=""></div>
-            </a>
-          </div>
-          <div class="item-info">
-            <a class="gitHub" href="https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/timer" target="_blank">
-                  <img src="img/GitHub-Mark-32px.png" alt="Github logo"><span class="seeCode">See code</span>
-                </a>
-            <div>
-              <p>Pomodoro timer coded in Javascript.</p>
-              <p>Plays sound after session and after break.</p>
-              <p>Alert sound can be toggled on and off.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="thumbnail">
-            <a href="product/index.html" target="_blank">
-              <div class="centered-img"><img class="thumbnail-img" src="img/product.png" alt=""></div>
-            </a>
-          </div>
-          <div class="item-info">
-            <a class="gitHub" href="https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/product" target="_blank">
-                    <img src="img/GitHub-Mark-32px.png" alt="Github logo"><span class="seeCode">See code</span>
-                  </a>
-            <div>
-              <p>Product page with email form, embedded video, and pricing boxes.</p>
-              <p>Menu fluidly resizes for all window sizes.</p>
-              <p id="seeMoreTrigger">Mobile friendly.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="galleryBtn hide animated pulse" id="seeMoreBtn" onclick="showMore()">
-        <button>Expand more demos</button>
-      </div>
-
-      <div id="gallery2" class="gallery">
-
-        <div class="gallery-item">
-          <div class="thumbnail">
-            <a href="drum-machine/index.html" target="_blank">
-              <div class="centered-img"><img class="thumbnail-img" src="img/drum-machine.png"></div>
-            </a>
-          </div>
-          <div class="item-info">
-            <a class="gitHub" href="https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/drum-machine" target="_blank">
-                    <img src="img/GitHub-Mark-32px.png" alt="Github logo"><span class="seeCode">See code</span>
-                  </a>
-            <div>
-              <p>Retro themed drum machine.</p>
-              <p>Coded with React and Sass.</p>
-              <p>Can be played by computer's mouse or keyboard, or by touchscreen.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="thumbnail">
-            <a href="survey/index.html" target="_blank">
-              <div class="centered-img"><img class="thumbnail-img" src="img/survey.png"></div>
-            </a>
-          </div>
-          <div class="item-info">
-            <a class="gitHub" href="https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/survey" target="_blank">
-                    <img src="img/GitHub-Mark-32px.png" alt="Github logo"><span class="seeCode">See code</span>
-                  </a>
-            <div>
-              <p>Survey using HTML5's built-in input validation.</p>
-              <p>Built with CSS3 flexbox grids.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="thumbnail">
-            <a href="calculator/index.html" target="_blank">
-              <div class="centered-img"><img class="thumbnail-img" src="img/calculator.png" alt=""></div>
-            </a>
-          </div>
-          <div class="item-info">
-            <a class="gitHub" href="https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/calculator" target="_blank">
-                    <img src="img/GitHub-Mark-32px.png" alt="Github logo"><span class="seeCode">See code</span>
-                  </a>
-            <div>
-              <p>Calculator coded with CSS flexbox.</p>
-              <p>Able to string together multiple calculations.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="thumbnail">
-            <a href="quotes/index.html" target="_blank">
-              <div class="centered-img"><img class="thumbnail-img" src="img/quotes.png" alt="">
-              </div>
-            </a>
-          </div>
-          <div class="item-info">
-            <a class="gitHub" href="https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/quotes" target="_blank">
-                    <img src="img/GitHub-Mark-32px.png" alt="Github logo"><span class="seeCode">See code</span>
-                  </a>
-            <div>
-              <p>Quote generator coded with jQuery.</p>
-              <p>Data retrieved with json requests.</p>
-              <p>Converts quotes and author's names to twitter URLs for easy tweeting.</p>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div id="toolkit">
@@ -246,6 +93,14 @@
           </div>
         </div>
       </div>
+
+      <section class="dynamicContent">
+        <div id="gallery" class="gallery">
+        </div>
+        <div id="loader">
+          <img src="../img/loading.gif" alt="loading"> LOADING...
+        </div>
+      </section>
 
     </main>
     <footer id="footer">
