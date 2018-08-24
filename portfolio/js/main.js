@@ -67,11 +67,10 @@ function addGalleryItems(amount){
   });
 }
 
-// init controller
 var controller = new ScrollMagic.Controller({addIndicators: true});
 
 var scene = new ScrollMagic.Scene({
-  triggerElement: "#loader",
+	triggerElement: "#loader",
   triggerHook: "onEnter"
 });
 

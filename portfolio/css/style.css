@@ -185,7 +185,7 @@ h3{
 }
 
 .dynamicContent #loader {
-	height: 0;
+  height: 0;
 	overflow: hidden;
 	line-height: 60px;
 }
