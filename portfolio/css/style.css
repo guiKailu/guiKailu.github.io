@@ -19,7 +19,7 @@ body{
   /* PERHAPS MAKE 10VW THE BODY'S LEFT/RIGHT MARGIN, TO REDUCE CODE REPETITION  */
   padding: 4vw 10vw;
   font-size: 36px;
-  margin-bottom: 5vw;
+  margin-bottom: 1vw;
 }
 
 .galleryBtn{
@@ -53,10 +53,6 @@ body{
   margin: 6vw;
 }
 
-#seeMoreBtn.jello {
-  animation-iteration-count: 1;
-}
-
 #seeMoreBtn > button {
   background-color: #e6e600;
   color: #444;
@@ -65,8 +61,7 @@ body{
 .gallery{
   display: flex;
   flex-wrap: wrap;
-  display: none;
-  opacity: 0;
+  justify-content: center;
   padding: 1vw 5vw;
 }
 
@@ -76,18 +71,22 @@ body{
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  /* border: 1px solid red; */
-  padding: 2vw 0 4vw;
+  /* Make thumbnails and info take up about half the screen */
+  width: 40vw;
+  /* Unless the screen is small, then make sure it's visible enough */
+  min-width: 325px;
+  padding: 2vw 25px 4vw;
+  border: 6px solid white;
 }
 
 .thumbnail {
   max-width: 50vw;
-  max-height: 90vh;
+  max-height: 50vh;
 }
 
 .thumbnail-img{
   max-width: 100%;
-  max-height: 90vh;
+  max-height: 50vh;
 }
 
 .item-info{
@@ -182,6 +181,24 @@ h3{
   display: none;
 }
 
+.dynamicContent #gallery {
+	width: 100vw;
+	margin: auto;
+	text-align: left;
+}
+
+.dynamicContent #loader {
+  height: 0;
+	overflow: hidden;
+	line-height: 60px;
+}
+.dynamicContent #loader.active {
+	height: 60px;
+}
+.dynamicContent #loader img {
+	vertical-align: text-bottom;
+}
+
 #tagline{
   width: 225px;
   font-size: 18px;
@@ -197,4 +214,11 @@ h3{
 /* Make links light blue on hover */
 #footer a:hover, #nav-bar a:hover{
   color: #00e6e6;
+}
+
+@media screen and (max-width: 800px) {
+  .gallery-item{
+    width: 70vw;
+    /* padding: 2vw 15px 4vw; */
+  }
 }
