@@ -1,5 +1,7 @@
 var i = 0;
 
+var colors = ["#eee", "#fafafa", "#ffffe7", "#f8ece6", "black"];
+
 function showGallery(){
   $("#gallery").show()
     .animate({
@@ -46,18 +48,46 @@ function showMore(){
 
 function addGalleryItems(amount){
   $.getJSON("data.json", function(data){
-    // console.log(data["gallery-items"][0].codeUrl);
-    $("<div>")
-      .addClass("gallery-item")
-      .html(function(){
-        var html = '<div class="thumbnail">';
-        html += '<a href="' + data["gallery-items"][0].demoUrl;
-        html += '" target="_blank"><div class="centered-img"><img class="thumbnail-img" src="';
-        html += data["gallery-items"][i].img;
-        html += '" alt=""></div></a></div>';
-        return html;
-      })
-      .appendTo(".dynamicContent #gallery");
+
+    // add [amount] gallery items to page
+    for (var a = 0; a < amount; a++){
+
+      // stop code when user reaches bottom of page
+      if (data["gallery-items"][i]){
+        $("<div>")
+          .addClass("gallery-item")
+          .css('backgroundColor', function(){
+            return colors[i % colors.length];
+          })
+          .css('color', function(){
+            return colors[i % colors.length] === 'black' ? 'white' : 'black';
+          })
+          .html(function(){
+            // Add screenshot of website
+            var thumbnail = '<div class="thumbnail">';
+            // With link to that website
+            thumbnail += '<a href="' + data["gallery-items"][i].demoUrl;
+            thumbnail += '" target="_blank"><div class="centered-img"><img class="thumbnail-img" src="';
+            thumbnail += data["gallery-items"][i].img;
+            thumbnail += '" alt=""></div></a></div>';
+
+            // Add info about the website
+            var info = '<div class="item-info"><a class="gitHub" href="';
+            // With link to the code on github
+            info += data["gallery-items"][i].codeUrl + '" target="_blank">';
+            // Github logo for code link
+            info += '<img src="img/GitHub-Mark-32px.png" alt="Github logo">';
+            info += '<span class="seeCode">See code</span></a><div>';
+            for (var j = 0; j < data["gallery-items"][i].info.length; j++){
+              info += '<p>' + data["gallery-items"][i].info[j] + '<p>';
+            }
+            info += '</div></div></div>';
+            return thumbnail + info;
+          })
+          .appendTo(".dynamicContent #gallery");
+          i++;
+        }
+      }
   })
   // loading done -> revert to normal state
   .done(function(){
@@ -67,7 +97,10 @@ function addGalleryItems(amount){
   });
 }
 
-var controller = new ScrollMagic.Controller({addIndicators: true});
+var controller = new ScrollMagic.Controller(
+  // indicators for debugging scrolling issues
+  // {addIndicators: true}
+);
 
 var scene = new ScrollMagic.Scene({
 	triggerElement: "#loader",
