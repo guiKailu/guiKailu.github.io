@@ -13,7 +13,7 @@
       "demoUrl": "d3-demos/gapminder/index.html",
       "codeUrl": "https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/d3-demos/gapminder",
       "info": [
-      	"Imitation of an <a href='https://www.gapminder.org/tools/#$chart-type=bubbles' target='_blank'>interactive Gapminder chart.</a>",
+      	"Imitation of an <a href='https://www.gapminder.org/tools/#$chart-type=bubbles' target='_blank'>interactive Gapminder chart</a>.",
         "Coded in D3, this data visualization changes for every year in the dataset.",
         "The user can easily start and stop, choose a continent, and choose a year."
     	]
