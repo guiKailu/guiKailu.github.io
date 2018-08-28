@@ -5,15 +5,37 @@
 */
 
 // ** Dimensions **
+var navbarHeight = $(".navbar").height();
+var viewWidth = $("html").width() * 0.8;
+var viewHeight = $("html").height();
+
 var margin = {
-	left: 100,
-	right: 10,
-	bottom: 100,
-	top: 10
+	left: viewWidth/8,
+	right: viewWidth/80,
+	bottom: viewHeight/8,
+	top: viewHeight/80
 };
 
-var width = 800 - margin.left - margin.right;
-var height = 500 - margin.bottom - margin.top;
+var width = viewWidth - margin.left - margin.right;
+// Set minimum width to 800.
+// Beyond that, users can scroll
+if (width < 800){
+	width = 800;
+}
+
+var height = viewHeight - navbarHeight - margin.bottom * 2 - margin.top;
+
+// Set minimum height to 800.
+// Beyond that, users can scroll
+if (height < 400){
+	height = 400;
+}
+
+// Reload page if user resizes screen
+// so that graph is at optimal size for screen
+$(window).resize(function(){
+	location.reload();
+});
 
 var legendMargin = {
 	x: width - margin.right,
@@ -218,7 +240,6 @@ function update(data){
 	var continent = $("#continent-select").val();
 
 	var data = data.filter(function(d){
-		console.log(continent);
 		if (continent == "all"){
 			return true;
 		} else {
