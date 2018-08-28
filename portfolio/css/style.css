@@ -200,6 +200,14 @@ h3{
   font-size: 18px;
 }
 
+.black{
+  color: white;
+}
+
+.black p > a{
+  color: #e6e600;
+}
+
 #footer{
   margin-top: 3vw;
   text-align: center;

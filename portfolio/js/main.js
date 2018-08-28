@@ -1,6 +1,6 @@
 var i = 0;
 
-var colors = ["#eee", "#fafafa", "#ffffe7", "#f8ece6", "black"];
+var colors = ["#fafafa", "black", "#f5f5f5"];
 
 function showGallery(){
   $("#gallery").show()
@@ -59,8 +59,10 @@ function addGalleryItems(amount){
           .css('backgroundColor', function(){
             return colors[i % colors.length];
           })
-          .css('color', function(){
-            return colors[i % colors.length] === 'black' ? 'white' : 'black';
+          .addClass(function(){
+            if (colors[i % colors.length] === "black"){
+              return "black";
+            }
           })
           .html(function(){
             // Add screenshot of website
@@ -88,6 +90,7 @@ function addGalleryItems(amount){
           i++;
         }
       }
+    i--;
   })
   // loading done -> revert to normal state
   .done(function(){
