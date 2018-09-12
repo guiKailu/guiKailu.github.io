@@ -1,0 +1,15 @@
+body{
+  font-family: 'Montserrat', sans-serif;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: #eee;
+  text-align: center;
+  padding-top: 22vmin;
+}
+
+main{
+  margin-top: 5vw;
+}

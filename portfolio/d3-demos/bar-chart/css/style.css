@@ -1,0 +1,36 @@
+body{
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+#chart-area svg{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#chart-area svg{
+  background: linear-gradient(#fcfafa, white);
+  border-radius: 15px;
+}
+
+#hello{
+  font-size: 40px;
+}
+
+/* Style from d3-tip.css */
+.tooltip {
+    position: absolute;
+    line-height: 1;
+    padding: 12px;
+    font: 12px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border: 0px;
+    border-radius: 2px;
+    pointer-events: none;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> FCC Survey Form Project </title>
+    <!-- Custom CSS  -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <header>
+      <h1 id="title">
+      <i>Mars Bureau of Immigration</i><sup>®</sup> 2026 Annual Survey
+    </h1>
+    </header>
+
+    <main class="container">
+      <p id="description">Let us know how we can improve the interplanetary immigration process</p>
+      <form id="survey-form" action="">
+        <label id="name-label" for="name">* Name:</label>
+        <input id="name" placeholder="Enter your name" name="name" required>
+
+        <label id="email-label" for="email">* Email:</label>
+        <input type="email" placeholder="Enter your Email" id="email" name="email" required>
+
+        <label id="number-label" for="number">* Age:</label>
+        <input type="number" id="number" name="age" placeholder="Enter your Age" required min="0" max="130">
+
+        <label id="dropdown-label" for="dropdown">Select the option you most identify with (optional):</label>
+        <select id="dropdown">
+      <option>Earthling</option>
+      <option>Martian</option>
+      <option>Other</option>
+    </select>
+
+        <label>Select any areas about your flight with SpaceX that could be improved:</label>
+        <div>
+          <p class="btn-list">
+            <input type="checkbox" value="seats" name="spaceX">
+            <label>Comfort of Seats</label>
+          </p>
+          <p class="btn-list">
+            <input type="checkbox" value="speed" name="spaceX">
+            <label>Speed of Travel</label>
+          </p>
+          <p class="btn-list">
+            <input type="checkbox" value="food" name="spaceX">
+            <label>Food Service</label>
+          </p>
+        </div>
+
+        <label>Purpose of visit (choose one):</label>
+        <div>
+          <p class="btn-list">
+            <input type="radio" value="solar" name="purpose" />
+            <label>Solar farming</label>
+          </p>
+
+          <p class="btn-list">
+            <input type="radio" value="family" name="purpose" />
+            <label>Family Reunion</label>
+          </p>
+
+          <p class="btn-list" id="spy">
+            <input type="radio" value="spy" name="purpose" />
+            <label>Secret Spy Missions</label>
+          </p>
+        </div>
+
+        <label>Please share anything else you would like us to know:</label>
+        <textarea rows="4" cols="50">
+  </textarea>
+
+        <button type="submit" id="submit"><strong>SUBMIT</strong></button>
+
+      </form>
+    </main>
+
+    <footer>
+      <p>Coded by <a href="../index.html" target="_blank">Yann Stoneman</a></p>
+    </footer>
+
+  </body>
+
+</html>
