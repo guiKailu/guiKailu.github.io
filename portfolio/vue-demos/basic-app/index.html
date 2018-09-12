@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Basic Vue App</title>
+  </head>
+  <script src="https://vuejs.org/js/vue.js"></script>
+
+  <body>
+
+
+    <div id="app">
+      <app-username v-bind:username="'Mikaela'" v-on:usrclicked="userWasClicked($event)"></app-username>
+      <app-username v-bind:username="'Haowen'"></app-username>
+      <p :class="{updated: name !== 'Max'}">{{ name }}</p>
+      <p v-if="name !== 'Max'">Name updated!</p>
+      <button @click="changeName"></button>
+      <button @click="addElement">New Element</button>
+      <ul>
+        <li v-for="element in elements" :id="'el' + element" :style="{backgroundColor: getColor(element)}">Element {{ element }}</li>
+      </ul>
+    </div>
+
+    <div id="app2">
+      <p>Second Vue Instance</p>
+      <input type="text" v-model="message">
+      <p>{{ message }}</p>
+    </div>
+
+
+    <style>
+      .updated {
+        background-color: blue;
+        color: yellow;
+        font-size: 30px;
+        font-weight: 800;
+      }
+    </style>
+    <script src="js/main.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:800" rel="stylesheet">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Dosis:800">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body onkeypress="keyboard(event)">
+    <div id="calculator">
+      <h1 id="title">
+  Interwebulator
+</h1>
+
+      <div>
+
+        <input class="result" id="topBox" oninput="display(this.value)" placeholder="0">
+
+        <div class="row">
+          <button onclick="ac()">AC</button>
+          <button onclick="ce()">CE</button>
+          <button onclick="percent()">%</button>
+          <!-- Divide symbol added in document.ready function,
+              because the code editor Atom for some reason doesn't like it here,
+              even though codepen is fine with it. -->
+          <button id="divide" onclick="checkInput('/')"></button>
+        </div>
+
+        <div class="row">
+          <button onclick="checkInput('7')">7</button>
+          <button onclick="checkInput('8')">8</button>
+          <button onclick="checkInput('9')">9</button>
+          <button id="multiply" onclick="checkInput('*')">x</button>
+        </div>
+
+        <div class="row">
+          <button onclick="checkInput('4')">4</button>
+          <button onclick="checkInput('5')">5</button>
+          <button onclick="checkInput('6')">6</button>
+          <button id="minus" onclick="checkInput('-')">-</button>
+        </div>
+
+        <div class="row">
+          <button onclick="checkInput('1')">1</button>
+          <button onclick="checkInput('2')">2</button>
+          <button onclick="checkInput('3')">3</button>
+          <button id="plus" onclick="checkInput('+')">+</button>
+        </div>
+
+        <div class="equals-row">
+          <button id="zero" onclick="checkInput('0')">0</button>
+          <button id="point" onclick="checkInput('.')">.</button>
+          <button id="myBtn" onclick="equals()">=</button>
+        </div>
+
+        <div class="result" id="result">
+          0
+        </div>
+      </div>
+
+      <p id="credits">
+        by <a href="../index.html" target="_blank">Yann Stoneman</a>
+      </p>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+
+  </body>
+
+</html>
