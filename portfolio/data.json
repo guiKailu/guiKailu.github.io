@@ -1,6 +1,14 @@
 {
   "gallery-items": [
     {
+      "img": "img/cloropleth.png",
+      "demoUrl": "d3-demos/cloropleth-map/index.html",
+      "codeUrl": "https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/d3-demos/cloropleth-map",
+      "info": [
+        "Cloropleth map coded in D3 showing college education levels in US by county.",
+        "Data from JSON file informs color shading and information available in tooltips."
+      ]
+    }, {
       "img": "img/heat-map.png",
       "demoUrl": "d3-demos/heat-map/index.html",
       "codeUrl": "https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/d3-demos/heat-map",
