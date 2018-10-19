@@ -1,6 +1,14 @@
 {
   "gallery-items": [
     {
+      "img": "img/treemap.png",
+      "demoUrl": "d3-demos/treemap-diagram/index.html",
+      "codeUrl": "https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/d3-demos/treemap-diagram",
+      "info": [
+        "Treemap diagram coded in D3 showing the values of top Kickstarter campaigns.",
+        "Rectangles tesselated to have ratios as close to a square as possible, thanks to D3's squarify function."
+      ]
+    },{
       "img": "img/cloropleth.png",
       "demoUrl": "d3-demos/cloropleth-map/index.html",
       "codeUrl": "https://github.com/ystoneman/ystoneman.github.io/tree/master/portfolio/d3-demos/cloropleth-map",
