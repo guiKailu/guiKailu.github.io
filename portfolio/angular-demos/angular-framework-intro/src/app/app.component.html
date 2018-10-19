@@ -1,4 +1,22 @@
-<p>
+<app-username [username]='"Chris"' (userClicked)="onUserWasClicked($event)"></app-username>
+<app-username [username]='"Anna"' (userClicked)="onUserWasClicked($event)"></app-username>
+
+<p [ngClass]="{updated: name != 'Yann'}">
   {{name}}
 </p>
+<p *ngIf="name != 'Yann'">Name updated!</p>
 <button (click)="onChangeName()">Change Name</button>
+<button (click)="onAddElement()">New ELement</button>
+<ul>
+  <li *ngFor="let el of elements" [id]="'element' + el" [ngStyle]="{backgroundColor: getColor(el)}">Element {{ el }}</li>
+</ul>
+<input type="text" [(ngModel)]="message">
+<p>{{ message }}</p>
+
+<h1>Exercise for Udemy Angular-reactjs-vuejs-quickstart -- angular:</h1>
+
+<ul>
+  <li *ngFor="let hobby of hobbies">{{ hobby }}</li>
+</ul>
+<button (click)="onAddHobby()"></button>
+<input type="text" [(ngModel)]="hobby">
