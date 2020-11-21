@@ -1,2 +1,1 @@
-# SIGHT
-Free Responsive Web Template
+# Stoneman Cloud Services
