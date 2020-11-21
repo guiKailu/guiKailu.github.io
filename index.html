@@ -11,7 +11,67 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
 		<title>STONEMAN CLOUD SERVICES</title>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<script>
+			function submitToAPI(e) {
+				e.preventDefault();
+				var URL = "https://23425qsh76.execute-api.us-east-1.amazonaws.com/prod/contact";
 
+				var Namere = /[A-Za-z]{1}[A-Za-z]/;
+				if (!Namere.test($("#name-input").val())) {
+					alert("Name can not less than 2 char");
+					return;
+				}
+				var mobilere = /[0-9]{10}/;
+				if (!mobilere.test($("#phone-input").val())) {
+					alert("Please enter valid mobile number");
+					return;
+				}
+				if ($("#email-input").val() == "") {
+					alert("Please enter your email id");
+					return;
+				}
+
+				var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+				if (!reeamil.test($("#email-input").val())) {
+					alert("Please enter valid email address");
+					return;
+				}
+
+				var name = $("#name-input").val();
+				var phone = $("#phone-input").val();
+				var email = $("#email-input").val();
+				var desc = $("#description-input").val();
+				var data = {
+					name: name,
+					phone: phone,
+					email: email,
+					desc: desc
+				};
+
+				$.ajax({
+					type: "POST",
+					url: "https://23425qsh76.execute-api.us-east-1.amazonaws.com/prod/contact",
+					dataType: "json",
+					crossDomain: "true",
+					contentType: "application/json; charset=utf-8",
+					data: JSON.stringify(data),
+
+
+					success: function () {
+						// clear form and show a success message
+						alert("Successfull");
+						document.getElementById("contact-form").reset();
+						location.reload();
+					},
+					error: function () {
+						// show an error message
+						alert("UnSuccessfull");
+					}
+				});
+			}
+		</script>
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/ionicons.min.css">
 		<link rel="stylesheet" href="assets/css/owl.carousel.css">
@@ -20,7 +80,8 @@
 	    <link rel="stylesheet" href="assets/css/about.css">
 	    <link rel="stylesheet" href="assets/css/contact.css">
 	    <link rel="stylesheet" href="assets/css/service.css">
-	    <link rel="stylesheet" href="assets/css/one-page-style.css">
+			<link rel="stylesheet" href="assets/css/one-page-style.css">
+			
 	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 			<!--[if lt IE 9]>
 				<script src="assets/js/html5shiv.js"></script>
@@ -92,7 +153,7 @@
 					<img src="assets/images/about-2.png" alt="about" class="about-img">
 				</div>--> <!-- /.col-md-3 -->
 
-				<div class="col-md-6 col-sm-12">
+				<div >
 					<p class="about-detail">
 						Currently setting up a multi-account structure for a Fortune 1000 company with AWS hybrid connectivity to their data
 						centers, we help companies avoid costly mistakes in the cloud.
@@ -138,7 +199,7 @@
 				<div class="underline purple"></div>
 				<div class="row">
 
-					<div class="col-md-offset-4 col-md-8 col-sm-12 services">
+					<div class="services">
 						<div class="row">
 							<div class="col-xs-6 col-sm-4">
 								<div class="service-item">
@@ -206,8 +267,28 @@
 			</div> <!-- /.section-wrapper -->
 		</div> <!-- /.container -->
 	</section> <!-- /.service -->
-
-
+<!-- Contact with us -->
+<section class="contact section-wrapper" id="contact">
+	<div class="container">
+		<form id="contact-form" method="post">
+			<h4>Name:</h4>
+			<input type="text" style="height:35px;" id="name-input" placeholder="Enter name here…" class="form-control"
+				style="width:100%;" /><br />
+			<h4>Phone:</h4>
+			<input type="phone" style="height:35px;" id="phone-input" placeholder="Enter phone number" class="form-control"
+				style="width:100%;" /><br />
+			<h4>Email:</h4>
+			<input type="email" style="height:35px;" id="email-input" placeholder="Enter email here…" class="form-control"
+				style="width:100%;" /><br />
+			<h4>How can we help you?</h4>
+			<textarea id="description-input" rows="3" placeholder="Enter your message…" class="form-control"
+				style="width:100%;"></textarea><br />
+			<div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys" class="form-control"
+				style="width:100%;"></div>
+			<button type="button" onClick="submitToAPI(event)" class="btn btn-lg" style="margin-top:20px;">Submit</button>
+		</form>
+	</div>
+	</section>
 
 <!-- Footer -->
 	<footer>
